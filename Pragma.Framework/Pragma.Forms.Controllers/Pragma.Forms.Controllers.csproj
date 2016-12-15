@@ -71,6 +71,10 @@
       <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
       <Name>Pragma.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pragma.Excel\Pragma.Excel.csproj">
+      <Project>{CAA6579A-800E-4B62-8065-2F71EFACA93E}</Project>
+      <Name>Pragma.Excel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Extensions\Pragma.Extensions.csproj">
       <Project>{baa712f4-1f97-4de6-97e3-f93a374fd635}</Project>
       <Name>Pragma.Extensions</Name>

@@ -16,6 +16,8 @@ namespace Pragma.Forms.Controls.Controls
     public partial class PragmaDataGrid : PragmaUserControl
     {
 
+        public bool UseOddRowColor { get; set; } = true;
+
         SortOrder OrderDir { get; set; } = SortOrder.None; // Tipo da ordenação
         int IndexOrderCol { get; set; } // Controle da coluna que está ordenada
         int IndexFrozenCol { get; set; }
@@ -27,7 +29,6 @@ namespace Pragma.Forms.Controls.Controls
         PragmaContextMenu MenuContext { get; set; } = new PragmaContextMenu();// Menu de Contexto
         PragmaContextMenu MenuSelection { get; set; } = new PragmaContextMenu();// Menu da seleção do grid
         PragmaContextMenu MenuEmptyGrid { get; set; } = new PragmaContextMenu();// Menu da seleção do gri
-
 
 
 
@@ -472,7 +473,7 @@ namespace Pragma.Forms.Controls.Controls
                 DoNestedGrid(doHideNested);
 
             Grid.Refresh();
-            //  DoPgmGridReordered(this, new EventArgs());
+
         }
 
         /// <summary>
@@ -509,6 +510,8 @@ namespace Pragma.Forms.Controls.Controls
 
         public event DataGridViewCellMouseEventHandler GridCellDoubleClick;
         public virtual void DoDoubleClick(object o, DataGridViewCellMouseEventArgs e) { GridCellDoubleClick?.Invoke(o, e); }
+
+
 
 
 
@@ -554,6 +557,14 @@ namespace Pragma.Forms.Controls.Controls
         private void Grid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DoDoubleClick(sender, e);
+        }
+
+
+        public event DataGridViewCellPaintingEventHandler GridCellPainting;
+        public virtual void DoCellPainting(object o, DataGridViewCellPaintingEventArgs e) { GridCellPainting?.Invoke(o, e); }
+        private void Grid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            DoCellPainting(sender, e);
         }
     }
 }

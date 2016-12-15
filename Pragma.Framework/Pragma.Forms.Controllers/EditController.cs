@@ -38,7 +38,7 @@ namespace Pragma.Forms.Controllers
             form._binder = Binder;
             form.cmdOk.Click += cmdOk_Click;
             form.FormClosed += (s, e) => Dispose();
-
+            form.RegisterDispose(Business);
 
             if (Id.Equals(default(TKey)))
                 Model = new TEntity();
@@ -95,13 +95,13 @@ namespace Pragma.Forms.Controllers
             Binder.EnableAll();
             form.StopLoad();
 
-
+            if (result)
+                form.Close();
 
         }
 
         public void Dispose()
         {
-            Business.Dispose();
             Binder.Dispose();
         }
     }

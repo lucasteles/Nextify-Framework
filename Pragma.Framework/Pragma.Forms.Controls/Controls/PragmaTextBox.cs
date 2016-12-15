@@ -46,7 +46,7 @@ namespace Pragma.Forms.Controls
 
                 if (IsDecimalNumber(_ValueType))
                 {
-                    var text = new string(Text.Where(c => char.IsDigit(c) || c == ',').ToArray());
+                    var text = new string(Text.Where(c => char.IsDigit(c) || c == ',' || c == '-').ToArray());
 
                     decimal value;
                     var newValue = decimal.TryParse(text, out value) ? value : 0;
@@ -311,6 +311,7 @@ namespace Pragma.Forms.Controls
                     currentPos < maskedText.Length &&
                     maskedText[currentPos] != ' ' &&
                     maskedText[currentPos] != ',' &&
+                    maskedText[currentPos] != '-' &&
                     !char.IsDigit(maskedText[currentPos - 1])
                  )
                     currentPos++;
@@ -345,6 +346,9 @@ namespace Pragma.Forms.Controls
             var qtdNewDots = 0;
             var newText = string.Empty;
 
+            var isNegative = Text.Contains("-");
+
+
             string decimalPart = string.Empty;
             string baseText;
 
@@ -357,6 +361,9 @@ namespace Pragma.Forms.Controls
             {
                 baseText = Text;
             }
+
+            if (isNegative)
+                baseText = baseText.Replace("-", string.Empty);
 
             baseText = new string(baseText.Replace(".", "").Reverse().ToArray());
 
@@ -384,7 +391,9 @@ namespace Pragma.Forms.Controls
 
             }
 
-            Text = newText;
+            Text = (isNegative ? "-" : string.Empty) + newText;
+
+
 
             var pos = currentPos + qtdNewDots - qtdPoints;
             if (pos > 0)

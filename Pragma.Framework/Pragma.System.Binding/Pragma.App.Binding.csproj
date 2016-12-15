@@ -76,6 +76,14 @@
       <Project>{8afc4c3d-b7b0-44bb-bf42-7918eeae5d95}</Project>
       <Name>Pragma.DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pragma.Excel\Pragma.Excel.csproj">
+      <Project>{CAA6579A-800E-4B62-8065-2F71EFACA93E}</Project>
+      <Name>Pragma.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Files\Pragma.Files.csproj">
+      <Project>{0BAE336E-CBE1-44E7-8A0E-D621AB974A12}</Project>
+      <Name>Pragma.Files</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Forms.ControlBinding\Pragma.Forms.ControlBinding.csproj">
       <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
       <Name>Pragma.Forms.ControlBinding</Name>

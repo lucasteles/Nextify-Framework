@@ -1,4 +1,5 @@
 ﻿using Pragma.Core;
+using Pragma.Excel;
 using Pragma.Forms.Controls.Controls;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace Pragma.Forms.Controls
 
         object GetSelectedId();
 
+
+
         int Count();
 
         void RunFirstMenuItem();
@@ -49,6 +52,9 @@ namespace Pragma.Forms.Controls
         IOperationResult TryInativate(object id);
 
         void SetSelectedPosition(object id);
+
+
+        void ExportToExcel(IExcelTool tool, string file);
     }
 
 
@@ -57,6 +63,8 @@ namespace Pragma.Forms.Controls
         void SetPredicate(Expression<Func<TView, bool>> predicate);
 
         new TView GetSelected();
+
+
 
         void SetSelectedPosition(Func<TView, bool> predicate);
 

@@ -97,6 +97,15 @@ namespace Pragma.Forms.Controls {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exportando dados....
+        /// </summary>
+        public static string Exporting {
+            get {
+                return ResourceManager.GetString("Exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Carregando.
         /// </summary>
         public static string Loading {

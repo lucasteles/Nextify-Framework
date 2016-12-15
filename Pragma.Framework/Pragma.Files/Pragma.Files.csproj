@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F00A261-2C3C-415D-89BE-9BCEDC3591C0}</ProjectGuid>
+    <ProjectGuid>{0BAE336E-CBE1-44E7-8A0E-D621AB974A12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pragma.App.Forms.Controllers</RootNamespace>
-    <AssemblyName>Pragma.App.Forms.Controllers</AssemblyName>
+    <RootNamespace>Pragma.Files</RootNamespace>
+    <AssemblyName>Pragma.Files</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,42 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grids\CourseGridController.cs" />
+    <Compile Include="FileDialogTool.cs" />
+    <Compile Include="FileExtensions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FileExtensions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="IFileDialogTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
-      <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>
-      <Name>Pragma.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
-      <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
-      <Name>Pragma.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Excel\Pragma.Excel.csproj">
-      <Project>{caa6579a-800e-4b62-8065-2f71efaca93e}</Project>
-      <Name>Pragma.Excel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Forms.Controllers\Pragma.Forms.Controllers.csproj">
-      <Project>{a998e7e4-32f4-4d7c-8a1b-ecdc9caf48db}</Project>
-      <Name>Pragma.Forms.Controllers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Forms.Controls\Pragma.Forms.Controls.csproj">
-      <Project>{de0ad088-613d-4ac5-af9d-5ae0fb5be14b}</Project>
-      <Name>Pragma.Forms.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.IOC\Pragma.IOC.csproj">
-      <Project>{3E5DAE00-770C-4D2A-A1E6-E085FD57BD22}</Project>
-      <Name>Pragma.IOC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.System.Business\Pragma.App.Business.csproj">
-      <Project>{0F287438-5947-4616-AF3F-17B6C95B457A}</Project>
-      <Name>Pragma.App.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.System.Models\Pragma.App.Models.csproj">
-      <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
-      <Name>Pragma.App.Models</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="FileExtensions.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FileExtensions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

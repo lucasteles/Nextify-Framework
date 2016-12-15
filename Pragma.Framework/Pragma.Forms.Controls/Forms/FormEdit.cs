@@ -89,7 +89,8 @@ namespace Pragma.Forms.Controls.Forms
 
         private void cmdCancelar_Click(object sender, System.EventArgs e)
         {
-            this.Close();
+
+
         }
 
 

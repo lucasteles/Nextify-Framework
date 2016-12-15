@@ -106,6 +106,7 @@
             this.Grid.Size = new System.Drawing.Size(336, 241);
             this.Grid.TabIndex = 2;
             this.Grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Grid_CellMouseDoubleClick);
+            this.Grid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.Grid_CellPainting);
             this.Grid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Grid_MouseClick);
             // 
             // PragmaDataGrid

@@ -1,4 +1,5 @@
 ﻿using Pragma.Core;
+using Pragma.Excel;
 using Pragma.Extensions;
 using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Controls;
@@ -16,16 +17,31 @@ namespace Pragma.Forms.Controllers.Abstraction
 
     public abstract class AbstractGridController<TView> : IGridController<TView>
     {
-        public IList<IDisposable> Disposables = new List<IDisposable>();
+
+
+        public IList<TView> GridList { get; set; }
+
+        public IList<IDisposable> Disposables
+                        = new List<IDisposable>();
 
         protected PragmaDataGrid _grid = null;
 
         public int QtdTopResult { get; set; } = 100;
 
+        public IModelFormatRule<TView> Format { get; set; }
+                        = new ModelFormatRule<TView>();
+
         PragmaContextMenu MenuContext { get; set; } = new PragmaContextMenu();// Menu de Contexto
         PragmaContextMenu MenuSelection { get; set; } = new PragmaContextMenu();// Menu da seleção do grid
         PragmaContextMenu MenuEmptyGrid { get; set; } = new PragmaContextMenu();// Menu da seleção do grid
 
+
+        public abstract void SetPredicate(Expression<Func<TView, bool>> predicate);
+
+        public void ExportToExcel(IExcelTool tool, string file)
+        {
+            tool.ExportFromList(GetList<TView>(), file);
+        }
 
         public AbstractGridController()
         {
@@ -39,6 +55,9 @@ namespace Pragma.Forms.Controllers.Abstraction
             };
             item.Click += new EventHandler(CopyToClipboard);
             MenuSelection.Items.Add(item);
+
+
+
         }
 
         public virtual async Task Use(PragmaDataGrid grid)
@@ -47,7 +66,31 @@ namespace Pragma.Forms.Controllers.Abstraction
 
             _grid.SetMenus(MenuContext, MenuSelection, MenuEmptyGrid);
 
+            _grid.GridCellPainting += Grid_CellPainting;
+
+
+            if (_grid.UseOddRowColor)
+            {
+                AddFormat(
+                        new ModelFormat()
+                        {
+                            BackColor = Color.LightGray
+                        },
+                        (m, i, p) => i % 2 != 0
+
+                    );
+
+            }
+
+
             await Refresh();
+
+        }
+
+
+        public void AddFormat(IModelFormat format, Func<TView, int, string, bool> rule)
+        {
+            Format.Add(format, rule);
 
         }
 
@@ -207,15 +250,17 @@ namespace Pragma.Forms.Controllers.Abstraction
         private async Task BindListToGrid()
         {
             var result = await GetForGrid();
+            GridList = result.ToList();
             var bindingList = new BindingList<TView>(result.ToList());
             var source = new BindingSource(bindingList, null);
             _grid.DataSource = source;
+
 
         }
 
         protected abstract Task<IEnumerable<TView>> GetForGrid();
 
-        public abstract void SetPredicate(Expression<Func<TView, bool>> predicate);
+
 
 
 
@@ -259,6 +304,67 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             Disposables.Add(itemToDispose);
         }
+
+
+
+        public IList<T> GetList<T>()
+        {
+            return _grid.GetList<T>();
+        }
+
+
+        private void Grid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            var grade = sender as DataGridView;
+            var col = e.ColumnIndex;
+            var row = e.RowIndex;
+
+
+            if (col < 0 || row < 0 || row >= GridList.Count())
+                return;
+
+            var colName = grade.Columns[e.ColumnIndex].Name;
+            var model = GridList[row];
+
+
+            var formats = Format.GetFormats(model, row, colName);
+
+            foreach (var f in formats)
+            {
+                var cel = e.CellStyle;
+                cel.ForeColor = f.ForeColor ?? cel.ForeColor;
+                cel.BackColor = f.BackColor ?? cel.BackColor;
+
+                FontStyle style = cel.Font.Style;
+                FontFamily family = f.FontFamily ?? cel.Font.FontFamily;
+                var size = f.Size ?? cel.Font.SizeInPoints;
+
+
+                if (f.Bold.HasValue && !style.HasFlag(FontStyle.Bold))
+                    style |= FontStyle.Bold;
+
+                if (f.Italic.HasValue && !style.HasFlag(FontStyle.Italic))
+                    style |= FontStyle.Italic;
+
+                if (f.Strikeout.HasValue && !style.HasFlag(FontStyle.Strikeout))
+                    style |= FontStyle.Strikeout;
+
+                if (f.Underline.HasValue && !style.HasFlag(FontStyle.Underline))
+                    style |= FontStyle.Underline;
+
+
+                cel.Font = new Font(family, size, style);
+
+
+            }
+
+
+
+
+
+        }
+
+
     }
 
 

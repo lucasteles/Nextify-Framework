@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pragma.IOC.Abstraction;
-using Pragma.DAO.Abstraction;
-using Pragma.DAO;
+﻿using Pragma.Excel;
+using Pragma.Files;
 using Pragma.IOC;
-
-using Pragma.Logging;
-using Pragma.Logging.Abstraction;
+using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {
@@ -18,7 +10,8 @@ namespace Pragma.App.Binding
 
         public void SetBinding(IContainer container)
         {
-            
+            container.Register<IExcelTool, ExcelTool>();
+            container.Register<IFileDialogTool, FileDialogTool>();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Pragma.IOC;
+﻿using Pragma.Excel;
+using Pragma.Files;
+using Pragma.IOC;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -152,9 +154,7 @@ namespace Pragma.Forms.Controls.Forms
 
         private async void FormConsult_Load(object sender, System.EventArgs e)
         {
-
             await GridController.Use(Grid);
-
             await FormLoad();
         }
 
@@ -173,6 +173,24 @@ namespace Pragma.Forms.Controls.Forms
         {
             RegisterDispose(GridController);
             base.OnFormClosed(e);
+        }
+
+        private async void cmdExcel_Click(object sender, EventArgs e)
+        {
+
+            var excelTool = _container.Resolve<IExcelTool>();
+            var dialog = _container.Resolve<IFileDialogTool>();
+
+            var location = dialog.PutFile(FileExtensions.Excel);
+
+            if (location == string.Empty)
+                return;
+
+            await RunActionWithLoad(() => GridController.ExportToExcel(excelTool, location), Messages.Exporting);
+
+
+
+
         }
     }
 }

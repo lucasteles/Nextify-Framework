@@ -13,7 +13,6 @@ namespace Pragma.App.Forms
 
         public CoursesEdit(
             IEditController<Course> _controller,
-
             ICoursesBusiness _business
          )
         {

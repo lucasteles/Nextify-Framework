@@ -52,7 +52,7 @@
             // 
             // buttonsPanel
             // 
-            this.buttonsPanel.Location = new System.Drawing.Point(650, 1);
+            this.buttonsPanel.Location = new System.Drawing.Point(872, 1);
             // 
             // TopPanel
             // 
@@ -129,6 +129,7 @@
             this.cmdExcel.Size = new System.Drawing.Size(22, 22);
             this.cmdExcel.TabIndex = 4;
             this.cmdExcel.UseSelectable = true;
+            this.cmdExcel.Click += new System.EventHandler(this.cmdExcel_Click);
             // 
             // cmtFilterInative
             // 

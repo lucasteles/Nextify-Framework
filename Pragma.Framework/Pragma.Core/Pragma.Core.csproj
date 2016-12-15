@@ -46,6 +46,8 @@
     <Compile Include="Abstraction\IModelWithId.cs" />
     <Compile Include="Abstraction\IOperationResult.cs" />
     <Compile Include="Enumerators.cs" />
+    <Compile Include="Abstraction\IModelFormat.cs" />
+    <Compile Include="ModelFormat.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="PragmaColors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
