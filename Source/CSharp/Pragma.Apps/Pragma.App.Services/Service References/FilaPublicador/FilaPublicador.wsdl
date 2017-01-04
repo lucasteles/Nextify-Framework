@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FilaPublicador" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PGM.WebService.FilaPublicador" />
+      <xsd:import schemaLocation="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PGM.SQL.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFilaPublicador_RecebeListaFilaXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecebeListaFilaXml" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_RecebeListaFilaXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecebeListaFilaXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_RecebeListaFila_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecebeListaFila" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_RecebeListaFila_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecebeListaFilaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_PedidoPublicacao_InputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoPublicacao" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_PedidoPublicacao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PedidoPublicacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarListaProcessamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarListaProcessamento" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarListaProcessamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarListaProcessamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarFila_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarFila" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarFila_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarFilaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarListaPedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarListaPedidos" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_EnviarListaPedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarListaPedidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_LimparFila_InputMessage">
+    <wsdl:part name="parameters" element="tns:LimparFila" />
+  </wsdl:message>
+  <wsdl:message name="IFilaPublicador_LimparFila_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LimparFilaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFilaPublicador">
+    <wsdl:operation name="RecebeListaFilaXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/RecebeListaFilaXml" message="tns:IFilaPublicador_RecebeListaFilaXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/RecebeListaFilaXmlResponse" message="tns:IFilaPublicador_RecebeListaFilaXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecebeListaFila">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/RecebeListaFila" message="tns:IFilaPublicador_RecebeListaFila_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/RecebeListaFilaResponse" message="tns:IFilaPublicador_RecebeListaFila_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PedidoPublicacao">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/PedidoPublicacao" message="tns:IFilaPublicador_PedidoPublicacao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/PedidoPublicacaoResponse" message="tns:IFilaPublicador_PedidoPublicacao_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarListaProcessamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarListaProcessamento" message="tns:IFilaPublicador_EnviarListaProcessamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarListaProcessamentoResponse" message="tns:IFilaPublicador_EnviarListaProcessamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarFila">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarFila" message="tns:IFilaPublicador_EnviarFila_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarFilaResponse" message="tns:IFilaPublicador_EnviarFila_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarListaPedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarListaPedidos" message="tns:IFilaPublicador_EnviarListaPedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/EnviarListaPedidosResponse" message="tns:IFilaPublicador_EnviarListaPedidos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LimparFila">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilaPublicador/LimparFila" message="tns:IFilaPublicador_LimparFila_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilaPublicador/LimparFilaResponse" message="tns:IFilaPublicador_LimparFila_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFilaPublicador" type="tns:IFilaPublicador">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecebeListaFilaXml">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/RecebeListaFilaXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecebeListaFila">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/RecebeListaFila" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PedidoPublicacao">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/PedidoPublicacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarListaProcessamento">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/EnviarListaProcessamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarFila">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/EnviarFila" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarListaPedidos">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/EnviarListaPedidos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LimparFila">
+      <soap:operation soapAction="http://tempuri.org/IFilaPublicador/LimparFila" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FilaPublicador">
+    <wsdl:port name="BasicHttpBinding_IFilaPublicador" binding="tns:BasicHttpBinding_IFilaPublicador">
+      <soap:address location="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A307D1C7-3B11-4F36-9FEB-FA9365C4D5E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pragma.App.DAO</RootNamespace>
+    <AssemblyName>Pragma.App.DAO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionData.cs" />
+    <Compile Include="Contexts\PragmaContext.cs" />
+    <Compile Include="Contexts\SysPragmaContext.cs" />
+    <Compile Include="Contexts\SysContext.cs" />
+    <Compile Include="Contexts\InvestContext.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="UnitOfWorks\Galgo\GalgoUnitOfWork.cs" />
+    <Compile Include="UnitOfWorks\Localization\LocalizationUnityOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWorks\Menus\MenuUnitOfWork.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptRelatorioTextoRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptPaginaImportadaRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptPaginaRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptRelatorioInvestimentoRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptRelatorioPaginaRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptRelatorioRepository.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\Repositories\PptRotinaRepository.cs" />
+    <Compile Include="Repositories\Boletador\PreBoletaRepository.cs" />
+    <Compile Include="Repositories\Boletador\PreBoletaVersaoRepository.cs" />
+    <Compile Include="Repositories\Boletador\StatusPreBoletaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Alavancagem\AlavancagemItemRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Alavancagem\AlavancagemRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Antigo\FacAnbidRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Antigo\InstituicaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Antigo\InvestAtivoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Antigo\PagRecDescricaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\IndiceRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoClasseRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoClassificacaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoConjuntoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoExternoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoIsentoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoLiquidezRegraRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoLiquidezRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoRegiaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoSeparacaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoSubClasseRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoTipoControleRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Ativo\Novo\AtivoTipoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Cadunico\CadunicoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Cadunico\ContaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\AjusteRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConciliacaoErroRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConciliacaoExecucaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConciliacaoJustificativaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConciliacaoMotivoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConciliacaoResultadoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Conciliacao\ConferenciaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\ConversaoMoedaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Empresa\EmpresaInstituicaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Empresa\EmpresaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Empresa\EmpresaTipoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\EstrategiaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\ClubeXContaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\CotistaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\InvestimentoMandatoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\InvestimentoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\InvestimentoTipoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Investimento\PortfolioRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Mandato\MandatoItemRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Mandato\MandatoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Mandato\MandatoVersaoRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Moeda\MoedaIndiceRepository.cs" />
+    <Compile Include="Repositories\Cadastros\Moeda\MoedaRepository.cs" />
+    <Compile Include="Repositories\Cadastros\PaisRepository.cs" />
+    <Compile Include="UnitOfWorks\Combos\Repositories\ConnectionsRepository.cs" />
+    <Compile Include="Repositories\Importacao\GalgoLogRepository.cs" />
+    <Compile Include="Repositories\Importacao\GalgoRepository.cs" />
+    <Compile Include="Repositories\Importacao\XmlCotasRepository.cs" />
+    <Compile Include="Repositories\Importacao\XmlHeaderRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Antiga\AluguelRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Antiga\BoletaRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Antiga\MovCartRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Antiga\MovCotaRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\Ativo\MovimentoAtivoItemRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\Ativo\MovimentoAtivoRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\Caixa\MovimentoCaixaRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\LiquidacaoFormaRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\LiquidacaoModoRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\LiquidacaoTipoRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\MovimentacaoEventoRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\MovimentacaoStatusEtapasRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\MovimentacaoStatusRepository.cs" />
+    <Compile Include="Repositories\Movimentação\Nova\Passivo\MovimentoPassivoRepository.cs" />
+    <Compile Include="Repositories\Posições\AtivoCotacaoRepository.cs" />
+    <Compile Include="Repositories\Posições\CotaEspecialRepository.cs" />
+    <Compile Include="Repositories\Posições\CotaOficialDivulgacaoRepository.cs" />
+    <Compile Include="Repositories\Posições\CotaOficialRepository.cs" />
+    <Compile Include="Repositories\Posições\CotSaldoRepository.cs" />
+    <Compile Include="Repositories\Posições\EstCotaRepository.cs" />
+    <Compile Include="Repositories\Posições\FechamentoRepository.cs" />
+    <Compile Include="Repositories\Posições\FundoCotacaoRepository.cs" />
+    <Compile Include="Repositories\Posições\IndiceCotacaoRepository.cs" />
+    <Compile Include="Repositories\Posições\InvestimentoPosicaoRepository.cs" />
+    <Compile Include="Repositories\Posições\PagRecRepository.cs" />
+    <Compile Include="Repositories\Posições\PassivoAtivoRepository.cs" />
+    <Compile Include="Repositories\Posições\ProventoRepository.cs" />
+    <Compile Include="Repositories\Publicação\LiquidezPeriodoRepository.cs" />
+    <Compile Include="Repositories\Publicação\PublicadoCotasRepository.cs" />
+    <Compile Include="Repositories\Publicação\PublicadoIndiceRepository.cs" />
+    <Compile Include="Repositories\Publicação\PublicadoLiquidezRepository.cs" />
+    <Compile Include="Repositories\Publicação\PublicadoMovtoRepository.cs" />
+    <Compile Include="Repositories\Publicação\PublicadoPerfilRepository.cs" />
+    <Compile Include="UnitOfWorks\Sys\Repositories\AjudaSistemaRepository.cs" />
+    <Compile Include="UnitOfWorks\Sys\Repositories\ControleRepository.cs" />
+    <Compile Include="UnitOfWorks\Localization\Repositories\FeriadoGenericoRepository.cs" />
+    <Compile Include="UnitOfWorks\Localization\Repositories\FeriadoRepository.cs" />
+    <Compile Include="UnitOfWorks\Localization\Repositories\CidadeNovoRepository.cs" />
+    <Compile Include="UnitOfWorks\Localization\Repositories\PaisNovoRepository.cs" />
+    <Compile Include="UnitOfWorks\Localization\Repositories\SubdivisaoRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\LogUsuarioRepository.cs" />
+    <Compile Include="UnitOfWorks\Sys\Repositories\MenuRepository.cs" />
+    <Compile Include="UnitOfWorks\Sys\Repositories\ParametrosRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\OrigemExternaRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\UsuExternoRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\UsuarioGrupoRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\UsuarioLoginGrupoRepository.cs" />
+    <Compile Include="UnitOfWorks\Direitos\Repositories\UsuarioLoginRepository.cs" />
+    <Compile Include="Repositories\Teste\ExemploRepository.cs" />
+    <Compile Include="Repositories\Teste\TesteRepository.cs" />
+    <Compile Include="Repositories\XML5\InvestCarteiraRepository.cs" />
+    <Compile Include="Repositories\XML5\InvestFechamentoRepository.cs" />
+    <Compile Include="Repositories\XML5\XML5Repository.cs" />
+    <Compile Include="Repositories\XML5\XMLModelRepository.cs" />
+    <Compile Include="UnitOfWorks\FinanceUnitOfWork.cs" />
+    <Compile Include="UnitOfWorks\PowerPoint\PowerPointUnityOfWork.cs" />
+    <Compile Include="UnitOfWorks\Combos\ComboUnitOfWork.cs" />
+    <Compile Include="UnitOfWorks\Sys\SysUnitOfWork.cs" />
+    <Compile Include="UnitOfWorks\Direitos\DireitosUnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstraction\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Core\Pragma.Core.csproj">
+      <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
+      <Name>Pragma.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.DAO\Pragma.DAO.csproj">
+      <Project>{8afc4c3d-b7b0-44bb-bf42-7918eeae5d95}</Project>
+      <Name>Pragma.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Controls\Pragma.Forms.Controls.csproj">
+      <Project>{DE0AD088-613D-4AC5-AF9D-5AE0FB5BE14B}</Project>
+      <Name>Pragma.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Models\Pragma.App.Models.csproj">
+      <Project>{7c95ee61-ab2a-4230-8495-8e5547cd65e7}</Project>
+      <Name>Pragma.App.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

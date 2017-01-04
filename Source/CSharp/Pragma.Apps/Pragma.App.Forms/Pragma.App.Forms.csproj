@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E04F558-BD47-4A92-B192-BBC1F8D6F95D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pragma.App.Forms</RootNamespace>
+    <AssemblyName>Pragma.App.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentScheduler, Version=5.1.2.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentScheduler.5.1.2\lib\net40\FluentScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.PlatformServices.3.1.1\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Forms, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Windows.Forms.3.1.1\lib\net46\System.Reactive.Windows.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ferramentas\frmComparadorXml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ferramentas\frmComparadorXml.designer.cs">
+      <DependentUpon>frmComparadorXml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sys\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\DI.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\Startup.cs" />
+    <EmbeddedResource Include="Ferramentas\frmComparadorXml.resx">
+      <DependentUpon>frmComparadorXml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Sys\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Config\app-settings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\connection-strings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Business\Pragma.Business.csproj">
+      <Project>{6e705c0b-2c70-4ada-ace4-44ba7d929440}</Project>
+      <Name>Pragma.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Controls\Pragma.Forms.Controls.csproj">
+      <Project>{de0ad088-613d-4ac5-af9d-5ae0fb5be14b}</Project>
+      <Name>Pragma.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Models\Pragma.Forms.Models.csproj">
+      <Project>{fab3cc55-1b71-4841-b471-3da7f1e33fe1}</Project>
+      <Name>Pragma.Forms.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Logging\Pragma.Logging.csproj">
+      <Project>{16E56BAD-E644-433B-A207-DAA82921153D}</Project>
+      <Name>Pragma.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.DAO\Pragma.App.DAO.csproj">
+      <Project>{A307D1C7-3B11-4F36-9FEB-FA9365C4D5E6}</Project>
+      <Name>Pragma.App.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Extensions\Pragma.App.Extensions.csproj">
+      <Project>{275F3A75-28D2-4780-B997-472EC481E921}</Project>
+      <Name>Pragma.App.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Forms.Controllers\Pragma.App.Forms.Controllers.csproj">
+      <Project>{7F00A261-2C3C-415D-89BE-9BCEDC3591C0}</Project>
+      <Name>Pragma.App.Forms.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Core\Pragma.Core.csproj">
+      <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
+      <Name>Pragma.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
+      <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
+      <Name>Pragma.ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Controllers\Pragma.Forms.Controllers.csproj">
+      <Project>{A998E7E4-32F4-4D7C-8A1B-ECDC9CAF48DB}</Project>
+      <Name>Pragma.Forms.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.IOC\Pragma.IOC.csproj">
+      <Project>{3e5dae00-770c-4d2a-a1e6-e085fd57bd22}</Project>
+      <Name>Pragma.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Mapping\Pragma.Mapping.csproj">
+      <Project>{BE74F02F-A056-4020-8438-F8D86B838FB6}</Project>
+      <Name>Pragma.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Scheduling\Pragma.Scheduling.csproj">
+      <Project>{8e4eb077-021c-4c8e-baa5-9e0184176064}</Project>
+      <Name>Pragma.Scheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Binding\Pragma.App.Binding.csproj">
+      <Project>{98b5c86c-2094-4538-91b5-920c319b9a3f}</Project>
+      <Name>Pragma.App.Binding</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Business\Pragma.App.Business.csproj">
+      <Project>{0f287438-5947-4616-af3f-17b6c95b457a}</Project>
+      <Name>Pragma.App.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Mapping\Pragma.App.Mapping.csproj">
+      <Project>{21739FA6-C22E-49DF-8CB2-0282F8433FB8}</Project>
+      <Name>Pragma.App.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Models\Pragma.App.Models.csproj">
+      <Project>{7c95ee61-ab2a-4230-8495-8e5547cd65e7}</Project>
+      <Name>Pragma.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Scheduling\Pragma.App.Scheduling.csproj">
+      <Project>{bef894d5-76d0-47c3-a18c-ce14c7405ccd}</Project>
+      <Name>Pragma.App.Scheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Xml\Pragma.App.Xml.csproj">
+      <Project>{0847765B-0613-4433-9EA6-4FC1D17010C0}</Project>
+      <Name>Pragma.App.Xml</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_small.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PowerPoint\Cadastros\PptPagina\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

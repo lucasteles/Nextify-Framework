@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DbXMLGalgoAssBalStmt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AppHdr" type="DbXMLBusinessApplicationHeaderV01" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SctiesBalAcctgRpt" type="DbXMLSecuritiesBalanceAccountingReportV04" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IdMsgSender" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Xmlns" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Xsd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Xsi" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Cnpj" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DataDaPosicao" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DhGeracaoDoArquivo" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CampoLivre" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLSubAccountIdentification16">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ActvtyInd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BalForSubAcct" type="ArrayOfDbXMLAggregateBalanceInformation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SfkpgAcct" type="DbXMLSecuritiesAccount" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLGenericIdentification">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Bal" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SchmeNm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLAggregateBalanceInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLAggregateBalanceInformation" nillable="true" type="DbXMLAggregateBalanceInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLAggregateBalanceInformation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctBaseCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AddtlBalBrkdwn" type="ArrayOfDbXMLBalanceInformation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AddtlDerivAttrbts" type="DbXMLDerivativeBasicAttributes1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AggtBal" type="DbXMLBalance1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AltrnRptgCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BalAtSfkpgPlc" type="ArrayOfDbXMLAggregateBalanceInformation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BalBrkdwn" type="ArrayOfDbXMLBalanceInformation" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CorpActnOptnTp" xmlns:q1="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q1:CorporateActionOption5Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CorpActnOptnTpFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DaysAcrd" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DaysAcrdFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FinInstrmAttrbts" type="DbXMLFinancialInstrumentAttributes20" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FinInstrmId" type="DbXMLSecurityIdentification14" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FXDtls" type="ArrayOfDbXMLForeignExchangeTerms14" />
+          <xs:element minOccurs="0" maxOccurs="1" name="HldgAddtlDtls" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InstrmCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InvstmtFndsFinInstrmAttrbts" type="DbXMLFinancialInstrument21" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PricDtls" type="ArrayOfDbXMLPriceInformation5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QtyBrkdwn" type="ArrayOfDbXMLQuantityBreakdown4" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ctry" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SfkpgPlcTp3" xmlns:q2="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q2:SafekeepingPlace3Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Tp" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SfkpgPlcTp1" xmlns:q3="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q3:SafekeepingPlace1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SplmtryData" type="ArrayOfDbXMLSupplementaryData1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlcOfListg" type="DbXMLMarketIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalanceAmounts">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AcrdIntrstAmt" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BookVal" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="HldgVal" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrvsHldgVal" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UrlsdGnLoss" type="DbXMLAmountAndDirection6" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLAmountAndDirection6">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Sgn" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBalanceInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBalanceInformation" nillable="true" type="DbXMLBalanceInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalanceInformation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="QtyPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q4="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q4:ItemChoiceType5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AvlbtyInd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SubBalAddtlDtls" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd7" xmlns:q5="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q5:SecuritiesBalanceType7Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd12" xmlns:q6="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q6:SecuritiesBalanceType12Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SubBalTpPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AddtlBalBrkdwnDtls" type="ArrayOfDbXMLBalanceInformation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLDerivativeBasicAttributes1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="IntrstInclInPric" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IntrstInclInPricFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalance1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AmtsdVal" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FaceAmt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Unit" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ShrtLngInd" xmlns:q7="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q7:ShortLong1Code" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLFinancialInstrumentAttributes20">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="UndrlygFinInstrmId" type="ArrayOfDbXMLSecurityIdentification14" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlcOfListg" type="DbXMLMarketIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvsPric" type="DbXMLPrice2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExrcPric" type="DbXMLPrice2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SbcptPric" type="DbXMLPrice2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StrkPric" type="DbXMLPrice2" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CtrctSzItemElementName" xmlns:q8="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q8:ItemChoiceType5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CtrctSzItem" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MinNmnlQtyItemElementName" xmlns:q9="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q9:ItemChoiceType5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MinNmnlQtyItem" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MktOrIndctvPricItemElementName" xmlns:q10="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q10:ItemChoiceType4" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MktOrIndctvPricItem" type="DbXMLPrice2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AltrnClssfctn" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ClssfctnFinInstrm" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DayCntBsisCd" xmlns:q11="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q11:InterestComputationMethod2Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DayCntBsisPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RegnFormCd" xmlns:q12="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q12:FormOfSecurity1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RegnFormPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PmtFrqcyCd" xmlns:q13="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q13:EventFrequency3Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PmtFrqcyPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PmtStsCd" xmlns:q14="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q14:SecuritiesPaymentStatus1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PmtStsPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VarblRateChngFrqcyCd" xmlns:q15="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q15:EventFrequency3Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VarblRateChngFrqcyPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PrefToIncmCd" xmlns:q16="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q16:PreferenceToIncome1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrefToIncmPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="OptnStyleCd" xmlns:q17="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q17:OptionStyle2Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OptnStylePrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="OptnTpCd" xmlns:q18="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q18:OptionType1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OptnTpPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PmtDrctnInd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PmtDrctnPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CpnAttchdNbShrt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CpnAttchdNbLng" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PoolNbShrt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PoolNbLng" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CllblInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CllblIndFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpnDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CurFctrFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DtdDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FltgRateFxgDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FrstPmtDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IndxRateBsisFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IntrstRateFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsseDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MtrtyDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NxtCllblDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NxtFctrFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NxtIntrstRateFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PrvsFctrFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PutblDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PutblInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PutblIndFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VarblRateInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="VarblRateIndFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="XpryDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CurFctr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DnmtnCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FinInstrmAttrAddtlDtls" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IndxRateBsis" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IntrstRate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NxtFctr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NxtIntrstRate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrvsFctr" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpnDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DtdDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FltgRateFxgDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FrstPmtDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsseDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MtrtyDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NxtCllblDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PutblDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="XpryDt" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLSecurityIdentification14">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLSecurityIdentification14" nillable="true" type="DbXMLSecurityIdentification14" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLSecurityIdentification14">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Desc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ISIN" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OthrId" type="ArrayOfDbXMLOtherIdentification1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLOtherIdentification1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLOtherIdentification1" nillable="true" type="DbXMLOtherIdentification1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLOtherIdentification1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Sfx" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q19="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q19:ItemChoiceType2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLMarketIdentification">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q20="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q20:ItemChoiceType3" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd4" xmlns:q21="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q21:MarketType4Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd5" xmlns:q22="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q22:MarketType5Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPrice2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ValTp" xmlns:q23="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q23:PriceValueType1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Yldd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rate" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLForeignExchangeTerms14">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLForeignExchangeTerms14" nillable="true" type="DbXMLForeignExchangeTerms14" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLForeignExchangeTerms14">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="QtdCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NmAndAdr" type="DbXMLNameAndAddress" />
+          <xs:element minOccurs="1" maxOccurs="1" name="QtnDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="QtnDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UnitCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="XchgRate" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLNameAndAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Adr" type="DbXMLPostalAddress" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPostalAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AdrLine" type="ArrayOfString" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AdrTp" xmlns:q24="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q24:AddressType2Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AdrTpFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BldgNb" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ctry" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CtrySubDvsn" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Dept" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PstCd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StrtNm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SubDept" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TwnNm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Flr" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLFinancialInstrument21">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BaseCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ClssTp" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CtryOfDmcl" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DnmtnCcy" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DstrbtnPlcy" xmlns:q25="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q25:DistributionPolicy1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DstrbtnPlcyFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DualFndInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DualFndIndFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PdctGrp" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RegdDstrbtnCtry" type="ArrayOfString" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReqdNAVCcy" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SctiesForm" xmlns:q26="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q26:FormOfSecurity1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SctiesFormFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UmbrllNm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLPriceInformation5">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLPriceInformation5" nillable="true" type="DbXMLPriceInformation5" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPriceInformation5">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="SrcOfPric" type="DbXMLMarketIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q27="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q27:ItemChoiceType1" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Item" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q28="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q28:TypeOfPrice11Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rate" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UknwnInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ValTp" xmlns:q29="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q29:PriceValueType1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Yldd" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLQuantityBreakdown4">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLQuantityBreakdown4" nillable="true" type="DbXMLQuantityBreakdown4" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLQuantityBreakdown4">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctBaseCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AltrnRptgCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InstrmCcyAmts" type="DbXMLBalanceAmounts" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LotDtTmItemElementName" xmlns:q30="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q30:ItemChoiceType1" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LotDtTmItem" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Shrt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Lng" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LotPric" type="DbXMLPrice2" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LotQtyItemElementName" xmlns:q31="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q31:ItemChoiceType5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LotQtyItem" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q32="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q32:TypeOfPrice14Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLSupplementaryData1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLSupplementaryData1" nillable="true" type="DbXMLSupplementaryData1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLSupplementaryData1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BalForSubAcctBrData" type="DbXMLBalForSubAcctBrData" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PlcAndNm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="CcyFwdOptnTpCd" xmlns:q33="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q33:BalForSubAcctBrDataCcyFwdOptnTPCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Guar" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CorpRiskLvCd" xmlns:q34="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q34:BalForSubAcctBrDataCorpRiskLvCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ConvInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ProfSharInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DebeRiskLvCd" xmlns:q35="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q35:BalForSubAcctBrDataDebeRiskLvCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SpeInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GoveRiskLvCd" xmlns:q36="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q36:BalForSubAcctBrDataGoveRiskLvCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="GuarCd" xmlns:q37="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q37:BalForSubAcctBrDataGuarCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HedgTpCd" xmlns:q38="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q38:BalForSubAcctBrDataHedgTpCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RiskLvCd" xmlns:q39="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q39:BalForSubAcctBrDataRiskLvCD" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Swap" type="DbXMLBalForSubAcctBrDataSwap" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RealStatePrtfl" type="DbXMLBalForSubAcctBrDataRealStatePrtfl" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StrtDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UndrlygSctiesMtrtyDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StrtDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UndrlygSctiesMtrtyDt" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Expn" type="DbXMLExpnType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PensPlanPart" type="ArrayOfDbXMLBalForSubAcctBrDataPens" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Brk" type="ArrayOfDbXMLBrkTypeBrkId" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ShHldg" type="ArrayOfDbXMLShHldgIdType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LongPos" type="DbXMLPositionType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ShortPos" type="DbXMLPositionType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceInvstmtFnd" type="DbXMLReceInvstmtFndType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataSwap">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="GuarCd" xmlns:q40="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q40:BalForSubAcctBrDataSwapGuarCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="HedgTpCd" xmlns:q41="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q41:BalForSubAcctBrDataSwapHedgTpCD" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LongPos" type="DbXMLPositionType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ShortPos" type="DbXMLPositionType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StrtDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StrtDtFieldSpecified" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPositionType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Bal" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IndxRt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataRealStatePrtfl">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Desc" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PropTpCd" xmlns:q42="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q42:BalForSubAcctBrDataRealStatePrtflPropTpCD" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Code" xmlns:q43="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q43:BalForSubAcctBrDataRealStatePrtflRatBookValCode" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UseTpCd" xmlns:q44="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q44:BalForSubAcctBrDataRealStatePrtflUseTpCD" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RegnNb" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValtInf" type="DbXMLBalForSubAcctBrDataRealStatePrtflValtInf" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LgObjtInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RpOptnDtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RpOptnInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="RpOptnDt" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="BookVal" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FundPartProperty" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Enterprise" type="ArrayOfDbXMLBalForSubAcctBrDataRealStatePrtflEnterprise" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Lease" type="ArrayOfDbXMLBalForSubAcctBrDataRealStatePrtflLease" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NmAndAdr" type="DbXMLNameAndAddress" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataRealStatePrtflValtInf">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q45="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q45:BalForSubAcctBrDataRealStatePrtflValtInfEvaTpCD" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PrtryId" xmlns:q46="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q46:BalForSubAcctBrDataRealStatePrtflValtInfPrtryID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SchmeNm" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TtlValAmt" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TtlValAmtFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ValDate" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ValDateFieldSpecified" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBalForSubAcctBrDataRealStatePrtflEnterprise">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBalForSubAcctBrDataRealStatePrtflEnterprise" nillable="true" type="DbXMLBalForSubAcctBrDataRealStatePrtflEnterprise" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataRealStatePrtflEnterprise">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrtryId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SchmeNm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBalForSubAcctBrDataRealStatePrtflLease">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBalForSubAcctBrDataRealStatePrtflLease" nillable="true" type="DbXMLBalForSubAcctBrDataRealStatePrtflLease" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataRealStatePrtflLease">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Amt" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q47="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q47:BalForSubAcctBrDataRealStatePrtflLeaseTPCD" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLExpnType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="EqulIndex" type="ArrayOfDbXMLEqulIndexType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rate" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MgmtFeeRate" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLEqulIndexType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLEqulIndexType" nillable="true" type="DbXMLEqulIndexType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLEqulIndexType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rate" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBalForSubAcctBrDataPens">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBalForSubAcctBrDataPens" nillable="true" type="DbXMLBalForSubAcctBrDataPens" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBalForSubAcctBrDataPens">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Percpart" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBrkTypeBrkId">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBrkTypeBrkId" nillable="true" type="DbXMLBrkTypeBrkId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBrkTypeBrkId">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q48="http://www.anbimacom.br/BalanceForSubAccountBrazil" type="q48:BrkTypeBrkIdBrkfSvcrTpCD" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Brkr" type="ArrayOfDbXMLBrkrType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TransactionNb" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TransactionNbFieldSpecified" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLBrkrType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLBrkrType" nillable="true" type="DbXMLBrkrType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBrkrType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BrkrPdVlCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BrkrPdVlValue" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MktIdrCd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RebaVlCcy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RebaVlValue" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLShHldgIdType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLShHldgIdType" nillable="true" type="DbXMLShHldgIdType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLShHldgIdType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Sgn" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLReceInvstmtFndType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Ccy" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Sgn" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLSecuritiesAccount">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Dsgnt" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q49="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q49:SecuritiesAccountPurposeType1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLStatement20">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ActvtyInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AudtdInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="FrqcyCd" xmlns:q50="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q50:EventFrequency4Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FrqcyPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QryRef" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RptNb" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StmtBsisCd" xmlns:q51="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q51:StatementBasis1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StmtBsisPrtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q52="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q52:ItemChoiceType1" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Item" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StmtId" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SubAcctInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TaxLotInd" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TaxLotIndFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UpdTpCd" xmlns:q53="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q53:StatementUpdateType1Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UpdTpPrtry" type="DbXMLGenericIdentification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLIntermediary21">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrAnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrPrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrNmAndAdr" type="DbXMLNameAndAddress" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IdAnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IdPrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IdNmAndAdr" type="DbXMLNameAndAddress" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Cd" xmlns:q54="urn:iso:std:iso:20022:tech:xsd:semt.003.001.04" type="q54:InvestmentFundRole2Code" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prtry" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Txt" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLTotalValueInPageAndStatement2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="TtlBookValOfStmt" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TtlHldgsValOfPg" type="DbXMLAmountAndDirection6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TtlHldgsValOfStmt" type="DbXMLAmountAndDirection6" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLSecuritiesBalanceAccountingReportV04">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctBaseCcyTtlAmts" type="DbXMLTotalValueInPageAndStatement2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctOwnrAnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctOwnrPrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrAnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrPrtryId" type="DbXMLGenericIdentification" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AcctSvcrNmAndAdr" type="DbXMLNameAndAddress" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AltrnRptgCcyTtlAmts" type="DbXMLTotalValueInPageAndStatement2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BalForAcct" type="ArrayOfDbXMLAggregateBalanceInformation" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IntrmyInf" type="ArrayOfDbXMLIntermediary21" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LastPgInd" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PgNb" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SfkpgAcct" type="DbXMLSecuritiesAccount" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StmtGnlDtls" type="DbXMLStatement20" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SubAcctDtls" type="ArrayOfDbXMLSubAccountIdentification16" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLIntermediary21">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLIntermediary21" nillable="true" type="DbXMLIntermediary21" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLSubAccountIdentification16">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLSubAccountIdentification16" nillable="true" type="DbXMLSubAccountIdentification16" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLGenericPersonIdentification1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q55="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q55:ItemChoiceType7" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPersonIdentification5">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="BirthDt" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CityOfBirth" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CtryOfBirth" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrvcOfBirth" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Othr" type="ArrayOfDbXMLGenericPersonIdentification1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLGenericPersonIdentification1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLGenericPersonIdentification1" nillable="true" type="DbXMLGenericPersonIdentification1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLGenericOrganisationIdentification1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q56="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q56:ItemChoiceType6" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLOrganisationIdentification7">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AnyBIC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Othr" type="ArrayOfDbXMLGenericOrganisationIdentification1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfDbXMLGenericOrganisationIdentification1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbXMLGenericOrganisationIdentification1" nillable="true" type="DbXMLGenericOrganisationIdentification1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DbXMLContactDetails2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="EmailAdr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FaxNb" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MobNb" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NmPrfx" xmlns:q57="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q57:NamePrefix1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NmPrfxFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Othr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PhneNb" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLPartyIdentification42">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="CtctDtls" type="DbXMLContactDetails2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CtryOfRes" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OrgId" type="DbXMLOrganisationIdentification7" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PrvtId" type="DbXMLPersonIdentification5" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PstlAdr" type="DbXMLPostalAddress" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLGenericFinancialIdentification1">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Issr" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q58="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q58:ItemChoiceType9" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLClearingSystemMemberIdentification2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ItemElementName" xmlns:q59="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q59:ItemChoiceType8" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Item" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MmbId" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLFinancialInstitutionIdentification8">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BICFI" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ClrSysMmbId" type="DbXMLClearingSystemMemberIdentification2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Othr" type="DbXMLGenericFinancialIdentification1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PstlAdr" type="DbXMLPostalAddress" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBranchData2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Nm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PstlAdr" type="DbXMLPostalAddress" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DbXMLBusinessApplicationHeaderV01">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DbXMLModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="BizMsgIdr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BizSvc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CharSet" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpyDplct" xmlns:q60="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" type="q60:CopyDuplicate1Code" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CpyDplctFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="CreDt" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FrBrnchId" type="DbXMLBranchData2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FrFinInstnId" type="DbXMLFinancialInstitutionIdentification8" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FrOrgId" type="DbXMLPartyIdentification42" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MsgDefIdr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Prty" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PssblDplct" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PssblDplctFieldSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Rltd" type="DbXMLBusinessApplicationHeaderV01" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Sgntr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToBrnchId" type="DbXMLBranchData2" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToFinInstnId" type="DbXMLFinancialInstitutionIdentification8" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToOrgId" type="DbXMLPartyIdentification42" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e2873b36-a9e6-4bec-8bae-fb4f3e45389e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FilaPublicador.xsd" MetadataType="Schema" ID="6b5b7d94-d8a7-4fb3-9251-fb097697bfe4" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd2" />
+    <MetadataFile FileName="FilaPublicador.wsdl" MetadataType="Wsdl" ID="2372e685-05ed-40ae-a894-56ef0f8da9ad" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?wsdl" />
+    <MetadataFile FileName="FilaPublicador.disco" MetadataType="Disco" ID="a7973773-475c-4078-a1e4-1666dd8e9c85" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?disco" />
+    <MetadataFile FileName="FilaPublicador1.xsd" MetadataType="Schema" ID="3f1768a7-d204-479f-a92d-dbcdaf375cda" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd1" />
+    <MetadataFile FileName="FilaPublicador2.xsd" MetadataType="Schema" ID="4d7f2f10-ad0a-480d-bdb7-699c7ee07416" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd0" />
+    <MetadataFile FileName="FilaPublicador3.xsd" MetadataType="Schema" ID="516452da-a34e-4c81-a187-2ac4c9acd88e" SourceId="1" SourceUrl="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

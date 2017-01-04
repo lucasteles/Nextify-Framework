@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pragma.Business</RootNamespace>
+    <AssemblyName>Pragma.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstraction\AbstractBusiness.cs" />
+    <Compile Include="Abstraction\ISimpleBusiness.cs" />
+    <Compile Include="SimpleBusiness.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Abstraction\IBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
+      <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
+      <Name>Pragma.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.DAO\Pragma.DAO.csproj">
+      <Project>{8AFC4C3D-B7B0-44BB-BF42-7918EEAE5D95}</Project>
+      <Name>Pragma.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.IOC\Pragma.IOC.csproj">
+      <Project>{3e5dae00-770c-4d2a-a1e6-e085fd57bd22}</Project>
+      <Name>Pragma.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Mapping\Pragma.Mapping.csproj">
+      <Project>{BE74F02F-A056-4020-8438-F8D86B838FB6}</Project>
+      <Name>Pragma.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Validations\Pragma.Validations.csproj">
+      <Project>{5eda394e-0f70-437a-a783-f93b6d8c4838}</Project>
+      <Name>Pragma.Validations</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

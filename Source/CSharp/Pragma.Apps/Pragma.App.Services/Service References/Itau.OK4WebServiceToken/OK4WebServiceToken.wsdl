@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken">
+      <s:element name="GerarToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GerarTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidarTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarTokenUsuarioGenerico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarTokenUsuarioGenericoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GerarTokenUsuarioGenericoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GerarTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarToken" />
+  </wsdl:message>
+  <wsdl:message name="GerarTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidarTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarToken" />
+  </wsdl:message>
+  <wsdl:message name="ValidarTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GerarTokenUsuarioGenericoSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarTokenUsuarioGenerico" />
+  </wsdl:message>
+  <wsdl:message name="GerarTokenUsuarioGenericoSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarTokenUsuarioGenericoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OK4WebServiceTokenSoap">
+    <wsdl:operation name="GerarToken">
+      <wsdl:input message="tns:GerarTokenSoapIn" />
+      <wsdl:output message="tns:GerarTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarToken">
+      <wsdl:input message="tns:ValidarTokenSoapIn" />
+      <wsdl:output message="tns:ValidarTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarTokenUsuarioGenerico">
+      <wsdl:input message="tns:GerarTokenUsuarioGenericoSoapIn" />
+      <wsdl:output message="tns:GerarTokenUsuarioGenericoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OK4WebServiceTokenSoap" type="tns:OK4WebServiceTokenSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GerarToken">
+      <soap:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/GerarToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarToken">
+      <soap:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/ValidarToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarTokenUsuarioGenerico">
+      <soap:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/GerarTokenUsuarioGenerico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OK4WebServiceTokenSoap12" type="tns:OK4WebServiceTokenSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GerarToken">
+      <soap12:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/GerarToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarToken">
+      <soap12:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/ValidarToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarTokenUsuarioGenerico">
+      <soap12:operation soapAction="ww73.itau.com.br/OK4Inet5/OK4WebServiceToken/GerarTokenUsuarioGenerico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OK4WebServiceToken">
+    <wsdl:port name="OK4WebServiceTokenSoap" binding="tns:OK4WebServiceTokenSoap">
+      <soap:address location="https://ww73.itau.com.br/ok4ordem/servicos/OK4WebServiceToken.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OK4WebServiceTokenSoap12" binding="tns:OK4WebServiceTokenSoap12">
+      <soap12:address location="https://ww73.itau.com.br/ok4ordem/servicos/OK4WebServiceToken.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

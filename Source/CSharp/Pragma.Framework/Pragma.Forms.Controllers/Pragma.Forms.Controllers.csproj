@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A998E7E4-32F4-4D7C-8A1B-ECDC9CAF48DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pragma.Forms.Controllers</RootNamespace>
+    <AssemblyName>Pragma.Forms.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.PlatformServices.3.1.1\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Forms, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Windows.Forms.3.1.1\lib\net46\System.Reactive.Windows.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Combo\AbstractComboBusinessController.cs" />
+    <Compile Include="Combo\AbstractComboController.cs" />
+    <Compile Include="Abstraction\IEditController.cs" />
+    <Compile Include="Combo\ComboController.cs" />
+    <Compile Include="Combo\ComboBusinessController.cs" />
+    <Compile Include="Combo\ComboViewBaseController.cs" />
+    <Compile Include="Combo\ComboViewController.cs" />
+    <Compile Include="EditController.cs" />
+    <Compile Include="F4\F4Controller.cs" />
+    <Compile Include="ItemsContainer\AbstractPragmaItemsContainerController.cs" />
+    <Compile Include="Grid\GridListController.cs" />
+    <Compile Include="ItemsContainer\PragmaItemsContainerViewController.cs" />
+    <Compile Include="ItemsContainer\PragmaItemsContainerController.cs" />
+    <Compile Include="Abstraction\IGridListController.cs" />
+    <Compile Include="Grid\AbstractGridBusinessController.cs" />
+    <Compile Include="Grid\AbstractGridController.cs" />
+    <Compile Include="Grid\GridController.cs" />
+    <Compile Include="Grid\GridViewController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pragma.Apps\Pragma.App.Models\Pragma.App.Models.csproj">
+      <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
+      <Name>Pragma.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
+      <Project>{6e705c0b-2c70-4ada-ace4-44ba7d929440}</Project>
+      <Name>Pragma.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
+      <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
+      <Name>Pragma.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Excel\Pragma.Excel.csproj">
+      <Project>{CAA6579A-800E-4B62-8065-2F71EFACA93E}</Project>
+      <Name>Pragma.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Extensions\Pragma.Extensions.csproj">
+      <Project>{baa712f4-1f97-4de6-97e3-f93a374fd635}</Project>
+      <Name>Pragma.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
+      <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
+      <Name>Pragma.ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Forms.Controls\Pragma.Forms.Controls.csproj">
+      <Project>{de0ad088-613d-4ac5-af9d-5ae0fb5be14b}</Project>
+      <Name>Pragma.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Forms.Models\Pragma.Forms.Models.csproj">
+      <Project>{FAB3CC55-1B71-4841-B471-3DA7F1E33FE1}</Project>
+      <Name>Pragma.Forms.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.IOC\Pragma.IOC.csproj">
+      <Project>{3E5DAE00-770C-4D2A-A1E6-E085FD57BD22}</Project>
+      <Name>Pragma.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Mapping\Pragma.Mapping.csproj">
+      <Project>{BE74F02F-A056-4020-8438-F8D86B838FB6}</Project>
+      <Name>Pragma.Mapping</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

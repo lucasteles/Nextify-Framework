@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PGM.WebService.FilaPublicador" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGM.WebService.FilaPublicador" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.127:9090/PGM.WebService/FilaPublicador/FilaPublicador.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PGM.SQL.Models" />
+  <xs:complexType name="ArrayOfFiltroInvestimento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FiltroInvestimento" nillable="true" type="tns:FiltroInvestimento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFiltroInvestimento" nillable="true" type="tns:ArrayOfFiltroInvestimento" />
+  <xs:complexType name="FiltroInvestimento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataBase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DtAte" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DtDe" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Investimento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FiltroInvestimento" nillable="true" type="tns:FiltroInvestimento" />
+  <xs:complexType name="ArrayOfGuiaInvestimentos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GuiaInvestimentos" nillable="true" type="tns:GuiaInvestimentos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGuiaInvestimentos" nillable="true" type="tns:ArrayOfGuiaInvestimentos" />
+  <xs:complexType name="GuiaInvestimentos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Concluido" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DataBase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Erro" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Expirou" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Filtro" nillable="true" type="tns:FiltroInvestimento" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Machine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPedidos" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeProcessFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TimeProcessInit" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UltPedido" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PGM.SQL.Models" minOccurs="0" name="User" nillable="true" type="q1:DbUsuLogin" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GuiaInvestimentos" nillable="true" type="tns:GuiaInvestimentos" />
+</xs:schema>

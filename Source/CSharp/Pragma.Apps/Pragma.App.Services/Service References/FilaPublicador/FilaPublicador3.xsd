@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PGM.SQL.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGM.SQL.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DbUsuLogin">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DbModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ListGrups" nillable="true" type="tns:ArrayOfDbUsuLoginGrupo" />
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PkId" type="xs:int" />
+          <xs:element minOccurs="0" name="Senha" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DbUsuLogin" nillable="true" type="tns:DbUsuLogin" />
+  <xs:complexType name="DbModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DhAlteracao" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DhInclusao" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Inativo" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbModel" nillable="true" type="tns:DbModel" />
+  <xs:complexType name="ArrayOfDbUsuLoginGrupo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbUsuLoginGrupo" nillable="true" type="tns:DbUsuLoginGrupo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbUsuLoginGrupo" nillable="true" type="tns:ArrayOfDbUsuLoginGrupo" />
+  <xs:complexType name="DbUsuLoginGrupo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DbModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FkUsuGrupo" type="xs:int" />
+          <xs:element minOccurs="0" name="FkUsuLogin" type="xs:int" />
+          <xs:element minOccurs="0" name="PkId" type="xs:int" />
+          <xs:element minOccurs="0" name="UsuGrupo" nillable="true" type="tns:DbUsuGrupo" />
+          <xs:element minOccurs="0" name="UsuLogin" nillable="true" type="tns:DbUsuLogin" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DbUsuLoginGrupo" nillable="true" type="tns:DbUsuLoginGrupo" />
+  <xs:complexType name="DbUsuGrupo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DbModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdmAprovacao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AdmInvestimento" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AdmMenuSistema" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ListUsers" nillable="true" type="tns:ArrayOfDbUsuLoginGrupo" />
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PkId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DbUsuGrupo" nillable="true" type="tns:DbUsuGrupo" />
+</xs:schema>

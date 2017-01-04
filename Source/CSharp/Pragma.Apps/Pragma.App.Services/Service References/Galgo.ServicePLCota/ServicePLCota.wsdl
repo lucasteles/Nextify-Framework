@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.stianbid.com.br/ServicePLCota/" name="ServicePLCota" targetNamespace="http://www.stianbid.com.br/ServicePLCota/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="ServicePLCota_InlineSchema1.xsd" />
+        <binding hasEncoding="false" imported="true" name="ServicePLCotaSOAP" originalBindingStyle="document" />
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:Q1="http://www.stianbid.com.br/SchemaPLCota" xmlns:Q2="http://www.stianbid.com.br/Common" xmlns:Q3="urn:iso:std:iso:20022:tech:xsd:reda.001.001.03" targetNamespace="http://www.stianbid.com.br/ServicePLCota/">
+      <xsd:include schemaLocation="https://ws.producao.sistemagalgo:7843/ServicePLCota?xsd=xsd0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsumirRequest">
+    <wsdl:part name="parameters" element="tns:Consumir" />
+  </wsdl:message>
+  <wsdl:message name="ConsumirResponse">
+    <wsdl:part name="parameters" element="tns:ConsumirResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consumir_faultMsg">
+    <wsdl:part name="parameters" element="tns:Consumir_fault" />
+  </wsdl:message>
+  <wsdl:message name="EnviarRequest">
+    <wsdl:part name="parameters" element="tns:Enviar" />
+  </wsdl:message>
+  <wsdl:message name="EnviarResponse">
+    <wsdl:part name="parameters" element="tns:EnviarResponse" />
+  </wsdl:message>
+  <wsdl:message name="Enviar_faultMsg">
+    <wsdl:part name="parameters" element="tns:Enviar_fault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumirPendentesRequest">
+    <wsdl:part name="parameters" element="tns:ConsumirPendentes" />
+  </wsdl:message>
+  <wsdl:message name="ConsumirPendentesResponse">
+    <wsdl:part name="parameters" element="tns:ConsumirPendentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumirPendentes_faultMsg">
+    <wsdl:part name="parameters" element="tns:ConsumirPendentes_fault" />
+  </wsdl:message>
+  <wsdl:message name="CancelarRequest">
+    <wsdl:part name="parameters" element="tns:Cancelar" />
+  </wsdl:message>
+  <wsdl:message name="CancelarResponse">
+    <wsdl:part name="parameters" element="tns:CancelarResponse" />
+  </wsdl:message>
+  <wsdl:message name="Cancelar_faultMsg">
+    <wsdl:part name="parameters" element="tns:Cancelar_fault" />
+  </wsdl:message>
+  <wsdl:message name="RetornarAvaliacaoPLCotaRequest">
+    <wsdl:part name="parameters" element="tns:RetornarAvaliacaoPLCota" />
+  </wsdl:message>
+  <wsdl:message name="RetornarAvaliacaoPLCotaResponse">
+    <wsdl:part name="parameters" element="tns:RetornarAvaliacaoPLCotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornarAvaliacaoPLCota_faultMsg">
+    <wsdl:part name="parameters" element="tns:RetornarAvaliacaoPLCota_fault" />
+  </wsdl:message>
+  <wsdl:portType name="ServicePLCota">
+    <wsdl:operation name="Consumir">
+      <wsdl:input message="tns:ConsumirRequest" />
+      <wsdl:output message="tns:ConsumirResponse" />
+      <wsdl:fault name="fault" message="tns:Consumir_faultMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="Enviar">
+      <wsdl:input message="tns:EnviarRequest" />
+      <wsdl:output message="tns:EnviarResponse" />
+      <wsdl:fault name="fault" message="tns:Enviar_faultMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsumirPendentes">
+      <wsdl:input message="tns:ConsumirPendentesRequest" />
+      <wsdl:output message="tns:ConsumirPendentesResponse" />
+      <wsdl:fault name="fault" message="tns:ConsumirPendentes_faultMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancelar">
+      <wsdl:input message="tns:CancelarRequest" />
+      <wsdl:output message="tns:CancelarResponse" />
+      <wsdl:fault name="fault" message="tns:Cancelar_faultMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornarAvaliacaoPLCota">
+      <wsdl:documentation>Retorno de Avaliação de PL Cot</wsdl:documentation>
+      <wsdl:input message="tns:RetornarAvaliacaoPLCotaRequest" />
+      <wsdl:output message="tns:RetornarAvaliacaoPLCotaResponse" />
+      <wsdl:fault name="fault" message="tns:RetornarAvaliacaoPLCota_faultMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicePLCotaSOAP" type="tns:ServicePLCota">
+    <wsdl:documentation>Servico de PLCOTA</wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Consumir">
+      <soap:operation soapAction="http://www.stianbid.com.br/ServicePLCota/Consumir" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Enviar">
+      <soap:operation soapAction="http://www.stianbid.com.br/ServicePLCota/Enviar" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumirPendentes">
+      <soap:operation soapAction="http://www.stianbid.com.br/ServicePLCota/ConsumirPendentes" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Cancelar">
+      <soap:operation soapAction="http://www.stianbid.com.br/ServicePLCota/Cancelar" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetornarAvaliacaoPLCota">
+      <soap:operation soapAction="http://www.stianbid.com.br/ServicePLCota/RetornarAvaliacaoPLCota" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePLCota">
+    <wsdl:port name="ServicePLCotaSOAP" binding="tns:ServicePLCotaSOAP">
+      <soap:address location="https://ws.producao.sistemagalgo:7843/ServicePLCota" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
