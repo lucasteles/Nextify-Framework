@@ -1,11 +1,45 @@
 ﻿using Pragma.Core;
-using System;
+using Pragma.IOC.Abstraction;
 
 namespace Pragma.IOC
 {
-    public class ContainerFactory : IFactory<IContainer>
+    public class ContainerFactory : IFactory<IContainer>, IContainerFactory
     {
-        public static IContainer Container;
+        public static IContainer Instance;
+
+        public IContainer GetDryIocImplementation()
+        {
+
+            Instance = new DryIocContainer();
+            Instance.RegisterDelegate(
+                    e =>
+                    {
+                        return Instance;
+                    }
+                , Lifecircle.Singleton);
+
+
+            return Instance;
+
+        }
+
+
+        public IContainer GetImplementation(IBinder[] binders)
+        {
+            Instance = new DryIocContainer();
+            Instance.RegisterBinders(binders);
+
+            Instance.RegisterDelegate(
+                    e =>
+                    {
+                        return Instance;
+                    }
+                , Lifecircle.Singleton);
+
+
+            return Instance;
+
+        }
 
         public IContainer GetImplementation()
         {
@@ -14,17 +48,7 @@ namespace Pragma.IOC
 
         public IContainer GetImplementation(int option)
         {
-            throw new NotImplementedException();
-        }
-
-        public static IContainer GetDryIocImplementation()
-        {
-            var dic = new DryIocContainer();
-
-            dic.Register<IContainer, DryIocContainer>(Lifecircle.Singleton);
-            Container = dic;
-            return dic;
-
+            return GetImplementation();
         }
 
     }

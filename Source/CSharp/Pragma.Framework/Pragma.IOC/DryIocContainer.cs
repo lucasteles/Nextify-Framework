@@ -1,8 +1,10 @@
 ﻿using DryIoc;
+using DryIoc.WebApi;
 using Pragma.IOC.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace Pragma.IOC
 {
@@ -26,46 +28,52 @@ namespace Pragma.IOC
 
         }
 
+
+        public bool IsRegistered<T>(object serviceKey = null) => _container.IsRegistered<T>(serviceKey);
+
+        public bool IsRegistered(Type T, object serviceKey = null) => _container.IsRegistered(T, serviceKey);
+
+        public void Register<T>(Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
+        {
+            _container.Register<T>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+        }
+
+        public void Register(Type type, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
+        {
+
+            _container.Register(type, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+        }
+
+        public void Register<TService, TImplementation>(Lifecircle reuse = Lifecircle.Transient, object serviceKey = null) where TImplementation : TService
+        {
+            _container.Register<TService, TImplementation>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+        }
+
+        public void Register(Type service, Type implementation, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
+        {
+            _container.Register(service, implementation, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+        }
+
         public void RegisterBinders(params IBinder[] binders)
         {
             foreach (var item in binders)
                 item.SetBinding(this);
         }
 
-        public void Register<T>(Lifecircle reuse = Lifecircle.Transient)
+        public void RegisterDelegate<TService>(Func<IContainer, TService> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
-            _container.Register<T>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace);
+            var handler = factoryDelegate;
+            if (handler != null)
+                _container.RegisterDelegate((e) => handler(this), reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
         }
 
-        public void Register(Type type, Lifecircle reuse = Lifecircle.Transient)
+        public void RegisterDelegate(Type type, Func<IContainer, object> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
-
-            _container.Register(type, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace);
-        }
-
-        public void Register<TService, TImplementation>(Lifecircle reuse = Lifecircle.Transient) where TImplementation : TService
-        {
-            _container.Register<TService, TImplementation>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace);
-        }
-
-        public void Register(Type service, Type implementation, Lifecircle reuse = Lifecircle.Transient)
-        {
-            _container.Register(service, implementation, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace);
-        }
-
-        public T Resolve<T>()
-        {
-            return _container.Resolve<T>();
-        }
-
-        public object Resolve(Type type)
-        {
-            return _container.Resolve(type);
+            _container.RegisterDelegate(type, (e) => factoryDelegate?.Invoke(this), reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
         }
 
         public void RegisterMany<T>()
         {
-
             var type = typeof(T);
 
             _container.RegisterMany(
@@ -84,6 +92,33 @@ namespace Pragma.IOC
 
         }
 
+        public T Resolve<T>(object serviceKey = null)
+        {
+            return _container.Resolve<T>(serviceKey: serviceKey);
+        }
+
+        public object Resolve(Type type, object serviceKey = null)
+        {
+            return _container.Resolve(type, serviceKey: serviceKey);
+        }
+
+
+        public IEnumerable<T> ResolveMany<T>()
+        {
+            return _container.ResolveMany<T>();
+        }
+
+        public IEnumerable<object> ResolveMany(Type type)
+        {
+            return _container.ResolveMany(type);
+        }
+
+        public void WithWebApi(HttpConfiguration config)
+        {
+            _container
+              .WithWebApi(config);
+        }
+
         private static Type[] GetAssemblyTypes(Type type)
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(e => e.FullName.Contains(nameof(Pragma)));
@@ -96,6 +131,7 @@ namespace Pragma.IOC
             return result;
         }
     }
+
 
 }
 

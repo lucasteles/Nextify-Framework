@@ -2,7 +2,7 @@
 using Pragma.Core;
 using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Forms;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controllers
@@ -24,10 +24,8 @@ namespace Pragma.Forms.Controllers
         {
             Binder = binder;
         }
-
         public async Task<IModelViewBinder<TEntity>> UseAsync(FormEdit form, IBusiness<TEntity, TKey> business)
         {
-
             PersistData = form.PersistData;
             this.form = form;
             var Id = (TKey)(form.ID ?? default(TKey));
@@ -47,10 +45,8 @@ namespace Pragma.Forms.Controllers
             else
             {
                 if (PersistData)
-                {
                     Model = await business.GetForEditAsync(Id);
-
-                }
+                //Model = business.GetForEdit(Id);
                 else
                 {
                     if (!(form.ItemsModel is TEntity))
@@ -58,23 +54,19 @@ namespace Pragma.Forms.Controllers
 
                     Model = (TEntity)form.ItemsModel;
                 }
-
                 form.lblId.Text = $"ID: {Model.Id.ToString()}";
             }
 
-            Binder.SetModel(Model);
-            Binder.EnableAll();
-            form.StopLoad();
+            Binder.SetSource(Model);
+            //Binder.EnableAll();
+            //form.StopLoad();
 
             return Binder;
-
         }
 
         protected async virtual Task<bool> AddEntityAsync()
         {
-            IOperationResult result;
-
-            result = !PersistData ? await Business.ValidAsync(Model) : await Business.AddAsync(Model);
+            var result = !PersistData ? await Business.ValidAsync(Model) : await Business.AddAsync(Model);
 
             form.ShowMessage(result);
             form.ID = Model.Id;
@@ -86,23 +78,17 @@ namespace Pragma.Forms.Controllers
                     form.ItemsModel = null;
 
             return result.Success;
-
         }
 
         protected async virtual Task<bool> UpdateAsync()
         {
-
-            IOperationResult result;
-
-            result = !PersistData ? await Business.ValidAsync(Model) : await Business.UpdateAsync(Model);
+            var result = !PersistData ? await Business.ValidAsync(Model) : await Business.UpdateAsync(Model);
             form.ShowMessage(result);
             return result.Success;
-
         }
 
         private async void cmdOk_ClickAsync(object sender, System.EventArgs e)
         {
-
             var button = sender as PragmaButton;
             var result = true;
 
@@ -111,7 +97,7 @@ namespace Pragma.Forms.Controllers
             button.Enabled = false;
 
             if (!PersistData)
-                Binder.FillModel();
+                Binder.FillSource();
 
             if (await form.ValidateAsync())
             {
@@ -130,7 +116,6 @@ namespace Pragma.Forms.Controllers
 
             if (result)
                 form.Close();
-
         }
 
         public void Dispose()

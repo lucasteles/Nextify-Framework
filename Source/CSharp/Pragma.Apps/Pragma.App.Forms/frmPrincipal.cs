@@ -1,20 +1,22 @@
-﻿using Pragma.App.Business.Sys;
+﻿using Pragma.App.Forms.Sys;
+using Pragma.Core.Icons;
+using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Forms;
+using Pragma.Forms.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pragma.App.Forms
 {
     public partial class frmPrincipal : FormBase
     {
-
-        private readonly IMenuPrincipalBusiness MenuBusiness;
-        public bool OK => true;//Login.OK;
-        public frmPrincipal(IMenuPrincipalBusiness menuBusiness)
+        
+        public frmPrincipal()
         {
-            MenuBusiness = menuBusiness;
+            var Login = DI.Resolve<frmLogin>();
+            Login.ShowDialog();
 
-            //Login = DI.Resolve<frmLogin>();
-            //Login.ShowDialog();
+
 
             InitializeComponent();
         }
@@ -24,15 +26,17 @@ namespace Pragma.App.Forms
             if (e.KeyChar == 27) Close();
         }
 
-        private async void frmPrincipal_Load(object sender, System.EventArgs e)
+        private void frmPrincipal_Load(object sender, System.EventArgs e)
         {
-            var dummyList = await MenuBusiness.GetAllMenus();
-            //var b = dummyList.ToList();
-            //var menuList = (IEnumerable)await MenuBusiness.GetAllMenus();
+            var menus = new List<PragmaMenuItem>
+            {
+                new PragmaMenuItem() {Name="Cursos", Icon = Weather.rain },
+                new PragmaMenuItem() {Name="Authors", Icon = Weather.rain },
+                new PragmaMenuItem() {Name="Tags", Icon = Weather.rain },
+                new PragmaMenuItem() {Name="Cover", Icon = Weather.rain }
+            };
 
-            //var menuList = ParseMenu(dummyList);
-
-            pgmMenu1.SetMenus(dummyList.ToList());
+            pgmMenu1.SetMenus(menus);
         }
     }
 }

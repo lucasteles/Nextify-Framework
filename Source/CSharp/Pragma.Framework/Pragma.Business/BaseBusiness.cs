@@ -19,12 +19,12 @@ namespace Pragma.Business
             _entityRepository = UnitOfWork.TryGetRepositoryOfType<TEntity, TKey>();
         }
 
-        public virtual TEntity Get(TKey id)
+        public virtual TEntity GetById(TKey id)
         {
             return _entityRepository.GetById(id);
         }
 
-        public TEntity GetForEdit(TKey id)
+        public virtual TEntity GetForEdit(TKey id)
         {
             return _entityRepository.GetForEdit(id);
         }

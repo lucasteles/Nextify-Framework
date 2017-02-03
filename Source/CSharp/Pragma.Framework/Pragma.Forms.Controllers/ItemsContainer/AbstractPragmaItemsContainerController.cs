@@ -1,4 +1,6 @@
-﻿using Pragma.Forms.Controllers.Abstraction;
+﻿using Pragma.Core;
+using Pragma.Core.Icons;
+using Pragma.Forms.Controllers.Abstraction;
 using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Abstraction;
 using Pragma.Forms.Controls.Forms;
@@ -10,7 +12,7 @@ namespace Pragma.Forms.Controllers.GridItems
 {
     public abstract class AbstractPragmaItemsContainerController<TModel> : IPragmaItemsContainerController where TModel : class, new()
     {
-        readonly IContainer _container = ContainerFactory.Container;
+        readonly IContainer _container = ContainerFactory.Instance;
 
         protected PragmaItemsContainer _gridItems;
 

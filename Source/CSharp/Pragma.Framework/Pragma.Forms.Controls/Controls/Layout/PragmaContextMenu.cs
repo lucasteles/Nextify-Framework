@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pragma.Core.Icons;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;

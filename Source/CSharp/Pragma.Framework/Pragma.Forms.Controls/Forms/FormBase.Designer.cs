@@ -1,4 +1,6 @@
-﻿namespace Pragma.Forms.Controls.Forms
+﻿using Pragma.Core.Icons;
+
+namespace Pragma.Forms.Controls.Forms
 {
     partial class FormBase
     {
@@ -108,7 +110,7 @@
             // 
             // cmdHelp
             // 
-            this.cmdHelp.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.help;
+            this.cmdHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdHelp.BackgroundImage")));
             this.cmdHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmdHelp.Location = new System.Drawing.Point(2, 2);
             this.cmdHelp.Name = "cmdHelp";
@@ -191,11 +193,12 @@
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FormBase";
             this.Padding = new System.Windows.Forms.Padding(10, 60, 10, 10);
-            this.ShowInTaskbar = false;
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.SystemShadow;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Sistema Pragma";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormBase_FormClosed);
             this.Load += new System.EventHandler(this.FormBase_LoadAsync);
+            this.Shown += new System.EventHandler(this.FormBase_ShownAsync);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormBase_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.MetroStyleManager)).EndInit();
             this.MainPanel.ResumeLayout(false);

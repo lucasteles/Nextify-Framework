@@ -1,17 +1,62 @@
-﻿using Pragma.Business.Abstraction;
+﻿using Equin.ApplicationFramework;
+using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Forms.Controls;
 using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pragma.Forms.Controllers.Abstraction
 {
     public abstract class AbstractGridBusinessController<TModel, TKey, TView> : AbstractGridSimpleBusinessController<TModel, TView> where TModel : class, IModelWithKey<TKey>, new()
     {
+        private List<object> NestingValues { get; set; }
+        private Func<TView, object> ChildProperty { get; set; }
+        private Func<TView, object> FatherProperty { get; set; }
         protected AbstractGridBusinessController(IBusiness<TModel, TKey> business) : base(business)
         {
             Business = business;
+        }
+
+        protected override void ToggleNestedVisibility(DataGridViewCellMouseEventArgs eventArgs)
+        {
+            if (!IsNested || eventArgs.Button != MouseButtons.Left || eventArgs.RowIndex < 0)
+                return;
+
+            var value = FatherProperty(GetSelected());
+            if (NestingValues.Contains(value))
+                NestingValues.Remove(value);
+            else
+                NestingValues.Add(value);
+
+            NestingComparer = new Comparer(FatherProperty, ChildProperty, GridList);
+
+            GridList.Refresh();
+        }
+
+        protected void UseNesting(object value, Func<TView, object> fatherProperty, Func<TView, object> childProperty)
+        {
+            IsNested = true;
+            NestingValues = new List<object>(new object[] { value });
+            ChildProperty = childProperty;
+            FatherProperty = fatherProperty;
+            NestingComparer = new Comparer(FatherProperty, ChildProperty, GridList);
+        }
+        protected override void Dummy()
+        {
+            if (!IsNested)
+                return;
+            NestingComparer = new Comparer(FatherProperty, ChildProperty, GridList);
+        }
+
+        protected override bool DoNestingFilter(TView model)
+        {
+            if (!IsNested)
+                return true;
+
+            return NestingValues.Contains(ChildProperty(model));
         }
 
         public async override Task<IOperationResult> TryDelete(object id)
@@ -19,7 +64,7 @@ namespace Pragma.Forms.Controllers.Abstraction
             if (!(id is TKey))
                 throw new Exception("Id types dont match");
 
-            var item = (Business as IBusiness<TModel, TKey>).Get((TKey)id);
+            var item = (Business as IBusiness<TModel, TKey>).GetById((TKey)id);
 
             var result = await Business.RemoveAsync(item);
 
@@ -31,11 +76,59 @@ namespace Pragma.Forms.Controllers.Abstraction
             if (!(id is TKey))
                 throw new Exception("Id types dont match");
 
-            var item = (Business as IBusiness<TModel, TKey>).Get((TKey)id);
+            var item = (Business as IBusiness<TModel, TKey>).GetById((TKey)id);
 
             var result = await Business.InativeAsync(item);
 
             return result;
+        }
+        class Comparer : IComparer<TView>
+        {
+            private BindingListView<TView> GridList;
+
+            private Func<TView, object> ChildProperty { get; set; }
+            private Func<TView, object> FatherProperty { get; set; }
+
+            public Comparer(Func<TView, object> fatherProperty, Func<TView, object> childProperty, BindingListView<TView> gridList)
+            {
+                ChildProperty = childProperty;
+                FatherProperty = fatherProperty;
+                GridList = gridList;
+            }
+
+            public int Compare(TView x, TView y)
+            {
+                if (ChildProperty(x) == ChildProperty(y))
+                    return ChildProperty(x).ToString().CompareTo(ChildProperty(y).ToString());
+
+                var listX = GetParents(x);
+                var listY = GetParents(y);
+
+                for (int i = 0; i < listX.Count; i++)
+                {
+                    if (listX[i].Equals(listY[i]))
+                        continue;
+                    if (i == listY.Count)
+                        return 1;
+
+                    return FatherProperty(listX[i]).ToString().CompareTo(FatherProperty(listY[i]).ToString());
+                }
+                return -1;
+            }
+
+            private List<TView> GetParents(TView item)
+            {
+                var father = ((List<TView>)GridList.DataSource).Find(i => FatherProperty(i) == ChildProperty(item));
+
+                if (father == null)
+                    return new List<TView>(new TView[] { item });
+                else
+                {
+                    var list = GetParents(father);
+                    list.Add(item);
+                    return list;
+                }
+            }
         }
     }
 
@@ -66,8 +159,8 @@ namespace Pragma.Forms.Controllers.Abstraction
             {
                 PgmGrid.UseCustomFilter = true;
 
-                var change =
-                     Observable.FromEventPattern<EventArgs>(grid, nameof(grid.FilterTextChanged));
+                var change = Observable.FromEventPattern<EventArgs>(grid, nameof(grid.FilterTextChanged));
+
                 TextChange = change
                     .Throttle(TimeSpan.FromSeconds(.5))
                     .ObserveOn(PgmGrid)

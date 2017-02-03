@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -104,6 +108,10 @@
       <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
       <Name>Pragma.App.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModelViewBinder\ModelViewBinder.csproj">
+      <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
+      <Name>ModelViewBinder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
       <Project>{6e705c0b-2c70-4ada-ace4-44ba7d929440}</Project>
       <Name>Pragma.Business</Name>
@@ -119,10 +127,6 @@
     <ProjectReference Include="..\Pragma.Extensions\Pragma.Extensions.csproj">
       <Project>{baa712f4-1f97-4de6-97e3-f93a374fd635}</Project>
       <Name>Pragma.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
-      <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
-      <Name>Pragma.ModelViewBinder</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.Forms.Controls\Pragma.Forms.Controls.csproj">
       <Project>{de0ad088-613d-4ac5-af9d-5ae0fb5be14b}</Project>

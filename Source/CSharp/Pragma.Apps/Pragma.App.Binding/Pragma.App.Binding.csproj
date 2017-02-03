@@ -64,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Pragma.Framework\ModelViewBinder\ModelViewBinder.csproj">
+      <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
+      <Name>ModelViewBinder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Business\Pragma.Business.csproj">
       <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>
       <Name>Pragma.Business</Name>
@@ -83,10 +87,6 @@
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Files\Pragma.Files.csproj">
       <Project>{0BAE336E-CBE1-44E7-8A0E-D621AB974A12}</Project>
       <Name>Pragma.Files</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
-      <Project>{457EB5C5-144B-43B5-BE00-AB1BE9C3F8B9}</Project>
-      <Name>Pragma.ModelViewBinder</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Controllers\Pragma.Forms.Controllers.csproj">
       <Project>{A998E7E4-32F4-4D7C-8A1B-ECDC9CAF48DB}</Project>

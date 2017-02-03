@@ -19,7 +19,7 @@ namespace Pragma.Forms.Controllers.GridItems
         public PragmaItemsContainerController(IGridListController<TView> gridController) : base(gridController)
         {
             GridController = gridController;
-            Mapper = IOC.ContainerFactory.Container.Resolve<IMapper>();
+            Mapper = IOC.ContainerFactory.Instance.Resolve<IMapper>();
         }
 
         private async Task ConfigureMappingAsync()

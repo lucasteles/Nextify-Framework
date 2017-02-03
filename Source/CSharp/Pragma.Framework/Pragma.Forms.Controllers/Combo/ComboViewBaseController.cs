@@ -21,17 +21,17 @@ namespace Pragma.Forms.Controllers
         {
             throw new NotImplementedException();
         }
-
-        public override void SetPredicate(Expression<Func<TView, bool>> predicate)
-        {
-            Predicate = predicate;
-        }
         public override void SetOrder(Expression<Func<TView, object>> predicate)
         {
             PredicateOrdem = predicate.Compile();
         }
 
-        protected async override Task<IEnumerable<TView>> GetForComboAsync()
+        public override void SetPredicate(Expression<Func<TView, bool>> predicate)
+        {
+            Predicate = predicate;
+        }
+
+        public override async Task<IEnumerable<TView>> GetForComboAsync()
         {
             IEnumerable<TView> list;
             list = Predicate != null || FilterInative ? await Business.GetAsync(TreatPredicate(Predicate)) : await Business.GetAsync<TView>();
@@ -41,6 +41,7 @@ namespace Pragma.Forms.Controllers
 
             return list;
         }
+
         protected virtual Expression<Func<TView, bool>> TreatPredicate(Expression<Func<TView, bool>> predicate)
         {
             return predicate;

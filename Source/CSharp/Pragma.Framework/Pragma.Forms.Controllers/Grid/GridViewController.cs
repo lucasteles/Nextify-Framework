@@ -1,4 +1,5 @@
-﻿using Pragma.Business.Abstraction;
+﻿using Equin.ApplicationFramework;
+using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Extensions;
 using Pragma.Forms.Controllers.Abstraction;
@@ -46,7 +47,7 @@ namespace Pragma.Forms.Controllers
         {
             var result = await Business.FindViewAllPropertiesAsync(QtdTopResult, TreatPredicate(Predicate), PgmGrid.FilterText.Split('|'));
 
-            GridList = new BindingList<TView>(result.ToList());
+            GridList = new BindingListView<TView>(result.ToList());
         }
         public override object GetSelectedModel()
         {

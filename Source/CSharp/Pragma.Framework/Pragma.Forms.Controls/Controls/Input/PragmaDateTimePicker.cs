@@ -1,6 +1,6 @@
 ﻿using Pragma.Core;
 using Pragma.Forms.Controls.Abstraction;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using System;
 using System.Drawing;
 using System.Threading.Tasks;

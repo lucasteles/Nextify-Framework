@@ -50,17 +50,17 @@ namespace Pragma.Core
         /// <summary>
         /// Define o tamanho da coluna.
         /// </summary>
-        public int? ColumnSize { get; set; }
+        public int ColumnSize { get; set; } = 100;
 
         /// <summary>
         /// Define o tamanho máximo da coluna.
         /// </summary>
-        public int? ColumnMaxSize { get; set; }
+        public int ColumnMaxSize { get; set; }
 
         /// <summary>
         /// Define o tamanho mínimo da coluna.
         /// </summary>
-        public int? ColumnMinSize { get; set; }
+        public int ColumnMinSize { get; set; }
 
         /// <summary>
         /// Define o alinhamento do texto.

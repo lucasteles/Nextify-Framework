@@ -154,7 +154,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(625, 398);
+            this.MaximizeBox = false;
             this.Name = "FormEdit";
+            this.Resizable = false;
             this.Text = "FormEdit";
             this.Load += new System.EventHandler(this.FormEdit_Load);
             this.MainPanel.ResumeLayout(false);

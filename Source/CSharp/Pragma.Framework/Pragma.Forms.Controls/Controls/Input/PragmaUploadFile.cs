@@ -1,4 +1,5 @@
 ﻿using Pragma.Core;
+using Pragma.Core.Icons;
 using Pragma.Files;
 using Pragma.Forms.Controls.Abstraction;
 using Pragma.Forms.Controls.Validations;
@@ -50,7 +51,7 @@ namespace Pragma.Forms.Controls
                 {
                     ControlFile.SetContent(content);
                     cmdDownloadFile.Enabled = true;
-                    cmdDownloadFile.BackgroundImage = Pragma.Forms.Controls.BaseIcons.download;
+                    cmdDownloadFile.BackgroundImage = BaseIcons.download;
                     cmdRemoveFile.Enabled = true;
                     txtPathFile.Enabled = false;
 
@@ -86,7 +87,7 @@ namespace Pragma.Forms.Controls
         {
             ControlFile.Clear();
             cmdDownloadFile.Enabled = false;
-            cmdDownloadFile.BackgroundImage = Pragma.Forms.Controls.BaseIcons.upload;
+            cmdDownloadFile.BackgroundImage = BaseIcons.upload;
             cmdRemoveFile.Enabled = false;
             txtPathFile.Enabled = true;
             txtPathFile.SetValue("");

@@ -2,7 +2,6 @@
 using Pragma.Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -21,38 +20,24 @@ namespace Pragma.Business.Abstraction
         /// método destinado a encontrar todos os registros de uma tabela vinculada a uma Model.
         /// </summary>
         /// <returns>Implementação de IList com os registros encontrados.</returns>
-        IQueryable<TEntity> Get();
+        IEnumerable<TEntity> Get();
         Task<IEnumerable<TEntity>> GetAsync();
 
-        IQueryable<TView> Get<TView>();
+        IEnumerable<TView> Get<TView>();
         Task<IEnumerable<TView>> GetAsync<TView>();
 
-        IQueryable<TView> Get<TView>(Expression<Func<TView, bool>> predicate);
+        IEnumerable<TView> Get<TView>(Expression<Func<TView, bool>> predicate);
         Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> predicate);
 
-        IQueryable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate);
         Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> predicate);
 
-        /// <summary>
-        /// método  destinado a encontrar um unico registro de uma tabela vinculada a uma model.
-        /// </summary>
-        /// <param name="predicate">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
-        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
 
         Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
 
-        /// <summary>
-        /// método de IBaseDAO destinado a encontrar um unico registro de uma tabela vinculada a uma model.
-        /// </summary>
-        /// <param name="predicate">Delegate contendo parâmetros para composição de WHERE</param>
-        /// <returns>Objeto de classe modelo preenchido com registro encontrado</returns>
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
-        Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
-        /// <summary>
-        /// método destinado a atualizar uma coleção de registros.
-        /// </summary>
-        /// <param name="entity">Coleção de registros a inserir na base</param>
+
         IOperationResult Add(params TEntity[] entity);
 
         Task<IOperationResult> AddAsync(params TEntity[] entity);
@@ -94,15 +79,15 @@ namespace Pragma.Business.Abstraction
         Task<int> CountAsync(Expression<Func<TEntity, bool>> where);
 
         Task<IEnumerable<TEntity>> GetAsync(int top);
-        IQueryable<TEntity> Get(int top);
-        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top);
+        IEnumerable<TEntity> Get(int top);
+        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top);
         Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate, int top);
 
-        IQueryable<TView> Get<TView>(int top);
+        IEnumerable<TView> Get<TView>(int top);
         Task<IEnumerable<TView>> GetAsync<TView>(int top);
-        IQueryable<TView> Get<TView>(Expression<Func<TView, bool>> where, int top);
+        IEnumerable<TView> Get<TView>(Expression<Func<TView, bool>> where, int top);
         Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> where, int top);
-        IQueryable<TView> Get<TView>(Expression<Func<TEntity, bool>> where, int top);
+        IEnumerable<TView> Get<TView>(Expression<Func<TEntity, bool>> where, int top);
         Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> where, int top);
         Task<IEnumerable<TEntity>> FindAllPropertiesAsync(int top, Expression<Func<TEntity, bool>> where, params string[] value);
 

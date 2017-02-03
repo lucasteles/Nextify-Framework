@@ -113,7 +113,7 @@ namespace Pragma.Forms.Controls
                 if (IsInt(value.GetType()))
                     _Value = value;
 
-                if (_Value?.ToString() == "0" && BlankIfZero && IsNumber(_Value.GetType()))
+                if (value?.ToString() == "0" && BlankIfZero && IsNumber(value.GetType()))
                     Text = string.Empty;
                 else if (!Text.Equals(value.ToString()))
                 {
@@ -124,7 +124,7 @@ namespace Pragma.Forms.Controls
                 {
                     var splitText = Text.Split(',');
 
-                    if (splitText[1].Length > QtdDecimais)
+                    if (splitText[1].Length > QtdDecimais && QtdDecimais > 0)
                         Text = $"{splitText[0]},{splitText[1].Substring(0, QtdDecimais)}";
 
                     FormatNumber();
@@ -256,15 +256,14 @@ namespace Pragma.Forms.Controls
                 decimal num;
                 decimal.TryParse(Text, out num);
 
-                if (QtdDecimais == 0)
-                    QtdDecimais = 2;
+
 
                 Text = num == 0 ? "" : num.ToString("#,0." + (new string('0', QtdDecimais)) + "#;-#,0." + (new string('0', QtdDecimais)) + "#").Trim();
 
                 if (Text.Contains(","))
                 {
                     var qtdEfetiveDecimals = Text.Substring(Text.IndexOf(",") + 1).Length;
-                    if (qtdEfetiveDecimals > QtdDecimais)
+                    if (qtdEfetiveDecimals > QtdDecimais && QtdDecimais > 0)
                         Text = Text.Substring(0, Text.Length - (qtdEfetiveDecimals - QtdDecimais));
                 }
             }
@@ -290,6 +289,11 @@ namespace Pragma.Forms.Controls
         {
             if (IsDecimalNumber(_ValueType))
             {
+                if (QtdDecimais == 0)
+                {
+                    Text = Text.Replace(",", string.Empty);
+                    return;
+                }
                 if (!Text.Contains(","))
                     Text = $"{Text},{new string('0', QtdDecimais)}";
                 else if (Text.Split(',')[1].Length < QtdDecimais)

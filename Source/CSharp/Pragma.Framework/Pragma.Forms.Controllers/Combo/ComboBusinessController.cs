@@ -30,7 +30,7 @@ namespace Pragma.Forms.Controllers
         {
 
         }
-        protected override async Task<IEnumerable<TModel>> GetForComboAsync()
+        public override async Task<IEnumerable<TModel>> GetForComboAsync()
         {
             IEnumerable<TModel> list;
             list = Predicate != null || FilterInative ? await Business.GetAsync(TreatPredicate(Predicate)) : await Business.GetAsync();

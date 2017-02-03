@@ -8,9 +8,7 @@ namespace Pragma.App.Binding
     {
         public void SetBinding(IContainer container)
         {
-            container.Register<InvestContext>();
-            container.Register<SysContext>();
-            container.Register<IntraContext>();
+
         }
     }
 }

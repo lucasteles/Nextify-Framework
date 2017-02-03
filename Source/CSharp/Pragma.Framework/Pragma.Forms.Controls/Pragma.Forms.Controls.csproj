@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Equin.ApplicationFramework.BindingListView, Version=1.4.5222.35545, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Equin.ApplicationFramework.BindingListView.1.4.5222.35545\lib\net40-Client\Equin.ApplicationFramework.BindingListView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
@@ -267,6 +271,10 @@
     <Compile Include="Validations\PragmaTextBoxValidation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelViewBinder\ModelViewBinder.csproj">
+      <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
+      <Name>ModelViewBinder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
       <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>
       <Name>Pragma.Business</Name>
@@ -286,10 +294,6 @@
     <ProjectReference Include="..\Pragma.Files\Pragma.Files.csproj">
       <Project>{0BAE336E-CBE1-44E7-8A0E-D621AB974A12}</Project>
       <Name>Pragma.Files</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
-      <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
-      <Name>Pragma.ModelViewBinder</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.Forms.Models\Pragma.Forms.Models.csproj">
       <Project>{fab3cc55-1b71-4841-b471-3da7f1e33fe1}</Project>

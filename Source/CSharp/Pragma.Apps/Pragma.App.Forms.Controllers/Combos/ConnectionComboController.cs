@@ -1,27 +1,27 @@
-﻿using Pragma.App.Business;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pragma.App.Business;
 using Pragma.App.Model;
 using Pragma.Forms.Controllers;
 using Pragma.Forms.Controls;
 
 namespace Pragma.App.Forms.Controllers.Combos
 {
-    public interface IConnectionComboController : IComboController<DbComboConnection, string>
+    public interface IConnectionComboController : IComboController<ConnectionInfo, string>
     {
     }
-    public class ConnectionComboController : ComboBusinessController<DbComboConnection, int, string>, IConnectionComboController
+    public class ConnectionComboController : ComboController<ConnectionInfo, string>, IConnectionComboController
     {
-        public ConnectionComboController(IConnectionBusiness business) : base(business)
+        public ConnectionComboController()
         {
             FilterInative = true;
-
-#if !DEBUG
-                SetOrdem(o => o.Ordem);
-#endif
         }
 
-        public override void SelectedChanceItem(DbComboConnection o)
+        public async override Task<IEnumerable<ConnectionInfo>> GetForComboAsync()
         {
-            base.SelectedChanceItem(o);
+            return await Task.FromResult(AppConfiguration.GetConnections());
         }
+
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Pragma.App.Business;
 using Pragma.App.Forms.Controllers.Combos;
+using Pragma.Core;
 using Pragma.Forms.Controls.Forms;
 using System;
 using System.Threading.Tasks;
@@ -9,18 +10,16 @@ namespace Pragma.App.Forms.Sys
     public partial class frmLogin : FormBase
     {
         AppConfiguration config { get; set; }
-        IUsuarioLoginBusiness UsuarioLoginBusiness { get; set; }
+        
         IConnectionComboController ConnectionComboController { get; set; }
         public bool OK { get; set; } = false;
 
         public frmLogin(
-            IUsuarioLoginBusiness usuarioLoginBusiness,
             IConnectionComboController connectionComboController
         )
         {
             InitializeComponent();
             config = new AppConfiguration();
-            UsuarioLoginBusiness = usuarioLoginBusiness;
             ConnectionComboController = connectionComboController;
             
             txtLogin.Text = Environment.UserName.ToUpper();
@@ -40,7 +39,7 @@ namespace Pragma.App.Forms.Sys
 
         public async override Task FormLoadAsync()
         {
-            await ConnectionComboController.UseAsync(cmbConnection, o => o.ValueMember, o => o.DisplayMember);
+            await ConnectionComboController.UseAsync(cmbConnection, o => o.Name, o => o.Name);
         }
 
         private async void cmdOk_ClickAsync(object sender, EventArgs e)
@@ -49,7 +48,8 @@ namespace Pragma.App.Forms.Sys
         }
         private async Task DoLoginAsync()
         {
-            var loginTry = await UsuarioLoginBusiness.LoginAsync(txtLogin.Text, txtSenha.Text);
+            await Task.Delay(1000);
+            var loginTry = OperationResult.Ok();
 
             if (!ShowMessage(loginTry))
             {

@@ -79,5 +79,7 @@ namespace Pragma.Forms.Controls
         void SetSelectedPosition(Func<TView, bool> predicate);
 
         void SetSelectedPosition(int pos);
+
+        IEnumerable<TView> GetList();
     }
 }

@@ -96,12 +96,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ferramentas\frmComparadorXml.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ferramentas\frmComparadorXml.designer.cs">
-      <DependentUpon>frmComparadorXml.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,9 +117,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\Startup.cs" />
-    <EmbeddedResource Include="Ferramentas\frmComparadorXml.resx">
-      <DependentUpon>frmComparadorXml.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,10 +181,6 @@
       <Project>{A307D1C7-3B11-4F36-9FEB-FA9365C4D5E6}</Project>
       <Name>Pragma.App.DAO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pragma.App.Extensions\Pragma.App.Extensions.csproj">
-      <Project>{275F3A75-28D2-4780-B997-472EC481E921}</Project>
-      <Name>Pragma.App.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pragma.App.Forms.Controllers\Pragma.App.Forms.Controllers.csproj">
       <Project>{7F00A261-2C3C-415D-89BE-9BCEDC3591C0}</Project>
       <Name>Pragma.App.Forms.Controllers</Name>
@@ -201,10 +188,6 @@
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Core\Pragma.Core.csproj">
       <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
       <Name>Pragma.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.ControlBinding\Pragma.ModelViewBinder.csproj">
-      <Project>{457eb5c5-144b-43b5-be00-ab1be9c3f8b9}</Project>
-      <Name>Pragma.ModelViewBinder</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Forms.Controllers\Pragma.Forms.Controllers.csproj">
       <Project>{A998E7E4-32F4-4D7C-8A1B-ECDC9CAF48DB}</Project>
@@ -242,22 +225,10 @@
       <Project>{bef894d5-76d0-47c3-a18c-ce14c7405ccd}</Project>
       <Name>Pragma.App.Scheduling</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pragma.App.Xml\Pragma.App.Xml.csproj">
-      <Project>{0847765B-0613-4433-9EA6-4FC1D17010C0}</Project>
-      <Name>Pragma.App.Xml</Name>
-    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\logo.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo_small.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo_vector.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PowerPoint\Cadastros\PptPagina\" />
+    <None Include="Resources\courses.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

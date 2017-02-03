@@ -1,4 +1,7 @@
 ﻿using Pragma.App.DAO;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
 
 namespace Pragma.App.Business
 {
@@ -15,19 +18,22 @@ namespace Pragma.App.Business
         {
             ConnectionData.MainConnection = connectionName;
         }
-        public void SetSysConnection(string connectionName)
+      
+        public static IEnumerable<ConnectionInfo> GetConnections()
         {
-            ConnectionData.SysConnection = connectionName;
+            foreach (ConnectionStringSettings c in ConfigurationManager.ConnectionStrings)
+                yield return new ConnectionInfo() { Name = c.Name, ConnectionString = c.ConnectionString };
         }
+
+
     }
 }
 
 public class ConnectionInfo
 {
-    public ConnectionInfo(string display, string name)
+    public ConnectionInfo()
     {
-        Name = name;
-        DisplayName = display;
+        
     }
     /// <summary>
     /// Nome da conexão no arquivo de configuração
@@ -36,5 +42,5 @@ public class ConnectionInfo
     /// <summary>
     /// Alias para a conexão. Exemplo OficialConnection = Oficial ou Base Oficial
     /// </summary>
-    public string DisplayName { get; set; } = string.Empty;
+    public string ConnectionString { get; set; } = string.Empty;
 }

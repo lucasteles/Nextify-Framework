@@ -120,15 +120,15 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cmdHelp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGmSURBVFhHzZYBsYMwDIZnAAMTMAMYwAAGEDAbMzADGJgA
-        DGAAT33v49Zd1/6UlO2u2913x/6mSUhD4PT/cz+EFGshxVpIsRZSrIUUNzmfz24YBne/393j8XDLsqxw
-        jcYaNmqvASkmEOB2u72C74HtgaSk+Ebf926eZxk0B3vYq3xuIMUXOFOBSihISIor30jEY0xIiut5546G
-        tev16i6Xi2uaxrVtm+0p7A09JMXdZiV4mHDXdes+EoxtPfiM40SkIkGUsxDsSMj/Jwk0qhTaxexUJxWZ
-        FcpRSDxnfDIQ2sXgO4wVkYoEUo5y+CD0kFr34DuOF5CK4R1boG84HvaO4yhtPPiO4wWkonKSg6qQjLWi
-        KuaTVFQOtuBOSaSkmirmk1QscUzj5h7nmOJjOtLAVoob2PJoH6X40bYMPfD9gv00TdImpnjogeXbJRx0
-        lr459DoA7iD3ogRfGdirzEcvSviZTwjPNxIyJgJSfANne0emYE9BIiDFBM7b0tQebA09EiPFTQjArGB4
-        hZOaazTWDiThkWItpFgLKdZCirWQYi2kWIGT+wP8yLDMp8qwTAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAaZJREFUWEfNlgGxgzAMhmcAAxMwAxjAAAYQMBszMAMYmAAMYABPfe/j1l3X/pSU
+        7a7b3XfH/qZJSEPg9P9zP4QUayHFWkixFlKshRQ3OZ/PbhgGd7/f3ePxcMuyrHCNxho2aq8BKSYQ4Ha7
+        vYLvge2BpKT4Rt/3bp5nGTQHe9irfG4gxRc4U4FKKEhIiivfSMRjTEiK63nnjoa16/XqLpeLa5rGtW2b
+        7SnsDT0kxd1mJXiYcNd16z4SjG09+IzjRKQiQZSzEOxIyP8nCTSqFNrF7FQnFZkVylFIPGd8MhDaxeA7
+        jBWRigRSjnL4IPSQWvfgO44XkIrhHVugbzge9o7jKG08+I7jBaSicpKDqpCMtaIq5pNUVA624E5JpKSa
+        KuaTVCxxTOPmHueY4mM60sBWihvY8mgfpfjRtgw98P2C/TRN0iameOiB5dslHHSWvjn0OgDuIPeiBF8Z
+        2KvMRy9K+JlPCM83EjImAlJ8A2d7R6ZgT0EiIMUEztvS1B5sDT0SI8VNCMCsYHiFk5prNNYOJOGRYi2k
+        WAsp1kKKtZBiLaRYgZP7A/zIsMynyrBMAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="MetroStyleManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

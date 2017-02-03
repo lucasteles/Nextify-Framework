@@ -12,7 +12,6 @@ namespace Pragma.Core
         public int? Owner { get; set; }
 
         [Column("DH_INCLUSAO")]
-        [PgmColumn(DisplayText = "Data de Inclusão")]
         public DateTime? DhInclusao { get; set; }
 
         [Column("DH_ALTERACAO")]

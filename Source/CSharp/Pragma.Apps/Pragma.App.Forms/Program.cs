@@ -18,7 +18,7 @@ namespace Pragma.App.Forms
             Application.SetCompatibleTextRenderingDefault(false);
 
             Startup.Start();
-            var form = DI.Resolve<frmComparadorXml>();
+            var form = DI.Resolve<frmPrincipal>();
             Application.Run(form);
         }
     }

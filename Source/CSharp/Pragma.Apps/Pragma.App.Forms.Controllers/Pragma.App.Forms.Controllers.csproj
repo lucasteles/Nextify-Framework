@@ -77,13 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combos\ConnectionComboController.cs" />
-    <Compile Include="F4\UsuarioLoginF4Controller.cs" />
-    <Compile Include="ItemsContainer\UsersGridItemsController.cs" />
-    <Compile Include="Grids\IndiceGridController.cs" />
-    <Compile Include="Grids\MenuSistemaGridController.cs" />
-    <Compile Include="Grids\XMLFilesGridController.cs" />
-    <Compile Include="Grids\UsuarioLoginGridController.cs" />
-    <Compile Include="Grids\UserDTOGridController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,12 +112,12 @@
       <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
       <Name>Pragma.App.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pragma.App.Xml\Pragma.App.Xml.csproj">
-      <Project>{0847765B-0613-4433-9EA6-4FC1D17010C0}</Project>
-      <Name>Pragma.App.Xml</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="F4\" />
+    <Folder Include="Grids\" />
+    <Folder Include="ItemsContainer\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

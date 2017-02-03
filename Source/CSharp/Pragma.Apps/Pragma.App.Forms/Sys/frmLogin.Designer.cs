@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.pragmaLabel1 = new Pragma.Forms.Controls.PragmaLabel();
             this.pragmaLabel2 = new Pragma.Forms.Controls.PragmaLabel();
             this.cmdOk = new Pragma.Forms.Controls.PragmaButton();
@@ -77,6 +78,7 @@
             // 
             // cmdHelp
             // 
+            this.cmdHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdHelp.BackgroundImage")));
             this.cmdHelp.Visible = false;
             // 
             // lblLoading
@@ -132,18 +134,6 @@
             // 
             this.txtLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.txtLogin.BlankIfZero = true;
-            // 
-            // 
-            // 
-            this.txtLogin.CustomButton.Image = null;
-            this.txtLogin.CustomButton.Location = new System.Drawing.Point(122, 1);
-            this.txtLogin.CustomButton.Name = "";
-            this.txtLogin.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtLogin.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtLogin.CustomButton.TabIndex = 1;
-            this.txtLogin.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtLogin.CustomButton.UseSelectable = true;
-            this.txtLogin.CustomButton.Visible = false;
             this.txtLogin.ForeColor = System.Drawing.Color.Black;
             this.txtLogin.Lines = new string[0];
             this.txtLogin.Location = new System.Drawing.Point(328, 38);
@@ -172,18 +162,6 @@
             // 
             this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.txtSenha.BlankIfZero = true;
-            // 
-            // 
-            // 
-            this.txtSenha.CustomButton.Image = null;
-            this.txtSenha.CustomButton.Location = new System.Drawing.Point(122, 1);
-            this.txtSenha.CustomButton.Name = "";
-            this.txtSenha.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtSenha.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSenha.CustomButton.TabIndex = 1;
-            this.txtSenha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSenha.CustomButton.UseSelectable = true;
-            this.txtSenha.CustomButton.Visible = false;
             this.txtSenha.ForeColor = System.Drawing.Color.Black;
             this.txtSenha.Lines = new string[0];
             this.txtSenha.Location = new System.Drawing.Point(328, 71);
@@ -210,22 +188,25 @@
             // 
             // cmbConnection
             // 
+            this.cmbConnection.BackColor = System.Drawing.Color.White;
             this.cmbConnection.FormattingEnabled = true;
             this.cmbConnection.ItemHeight = 23;
             this.cmbConnection.Location = new System.Drawing.Point(10, 116);
             this.cmbConnection.Name = "cmbConnection";
+            this.cmbConnection.Required = false;
             this.cmbConnection.Size = new System.Drawing.Size(226, 29);
             this.cmbConnection.TabIndex = 65;
             this.cmbConnection.UseSelectable = true;
+            this.cmbConnection.Validator = null;
             this.cmbConnection.Value = "";
             // 
             // pcbLogo
             // 
-            this.pcbLogo.Image = global::Pragma.App.Forms.ImageResource.logo_vector;
+            this.pcbLogo.Image = global::Pragma.App.Forms.ImageResource.courses;
             this.pcbLogo.Location = new System.Drawing.Point(2, 21);
             this.pcbLogo.Name = "pcbLogo";
-            this.pcbLogo.Size = new System.Drawing.Size(253, 90);
-            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbLogo.Size = new System.Drawing.Size(249, 97);
+            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbLogo.TabIndex = 85;
             this.pcbLogo.TabStop = false;
             // 

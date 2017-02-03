@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controllers
 {
-    public class ComboController<TView, TViewKey> : AbstractComboController<TView, TViewKey> where TView : class, IModelWithKey<TViewKey>, IBase, new()
+    public class ComboController<TView, TViewKey> : AbstractComboController<TView, TViewKey> where TView : class, new()
     {
         public ComboController()
         {
@@ -31,13 +31,13 @@ namespace Pragma.Forms.Controllers
         {
             return predicate;
         }
-        protected override Task<IEnumerable<TView>> GetForComboAsync()
+        public override Task<IEnumerable<TView>> GetForComboAsync()
         {
             throw new NotImplementedException();
         }
     }
 
-    public class ComboController<TView> : ComboController<TView, int> where TView : class, IModelWithKey, IBase, new()
+    public class ComboController<TView> : ComboController<TView, int> where TView : class, new()
     {
         public ComboController()
         {

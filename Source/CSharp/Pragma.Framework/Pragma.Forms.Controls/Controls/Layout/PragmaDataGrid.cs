@@ -1,4 +1,5 @@
-﻿using Pragma.Core;
+﻿using Equin.ApplicationFramework;
+using Pragma.Core;
 using Pragma.Forms.Controls.Tools;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,7 @@ namespace Pragma.Forms.Controls
         /// <typeparam name="TView">Tipo da View.</typeparam>
         /// <param name="list">Lista de dados.</param>
         /// <param name="columns">Colunas da Grid</param>
-        public void BindList<TView>(BindingList<TView> list, List<PgmColumn> columns)
+        public void BindList<TView>(BindingListView<TView> list, List<PgmColumn> columns)
         {
             if (!UseCustomFilter)
                 ClearFilter();
@@ -154,8 +155,7 @@ namespace Pragma.Forms.Controls
                 if (header.Control == ControlType.CheckBox)
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                col.Width = header.ColumnSize ?? 100;
-
+                col.Width = header.ColumnSize;
                 col.SortMode = DataGridViewColumnSortMode.Programmatic;
 
                 grdView.Columns.Add(col);
@@ -203,24 +203,6 @@ namespace Pragma.Forms.Controls
         public void SetSelectedRow(int index)
         {
             grdView.Rows[index].Selected = true;
-        }
-        /// <summary>
-        /// Filtra a Grid a partir do campo de filtro.
-        /// </summary>
-        private void FilterGrid()
-        {
-            var cm = (CurrencyManager)BindingContext[grdView.DataSource];
-            cm.SuspendBinding();
-            foreach (DataGridViewRow row in GetRows())
-            {
-                var matchesFilter = false;
-                foreach (DataGridViewCell cell in row.Cells)
-                    matchesFilter |=
-                        cell.Value?.ToString().IndexOf(FilterText, StringComparison.CurrentCultureIgnoreCase) >= 0;
-                row.Visible = matchesFilter;
-            }
-            cm.ResumeBinding();
-            UpdateQuantityLabel();
         }
         /// <summary>
         /// Atualiza a quantidade de linhas visíveis.
@@ -351,9 +333,6 @@ namespace Pragma.Forms.Controls
         {
             if (!IsSortable)
                 return;
-
-            if (!UseCustomFilter)
-                FilterGrid();
 
             FilterTextChanged?.Invoke(sender, e);
         }

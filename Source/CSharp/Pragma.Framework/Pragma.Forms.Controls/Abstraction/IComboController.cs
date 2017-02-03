@@ -1,6 +1,7 @@
 ﻿using Pragma.Core;
 using Pragma.Forms.Controls;
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -21,6 +22,7 @@ namespace Pragma.Forms.Controls
         TKey GetSelectedKey();
         TView GetSelectedView();
         void SelectedChanceItem(TView o);
+        Task<IEnumerable<TView>> GetForComboAsync();
     }
     public interface IComboController<TView> : IComboController<TView, int>
     {

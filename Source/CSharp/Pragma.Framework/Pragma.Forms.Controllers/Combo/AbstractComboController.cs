@@ -20,17 +20,16 @@ namespace Pragma.Forms.Controllers.Abstraction
         /// </summary>
         public IList<TView> ComboList { get; set; }
         public bool FilterInative { get; set; }
-        public int SelectedIndex { get; set; }
+        public int SelectedIndex { get; set; } = 0;
         public IList<IDisposable> Disposables { get; set; } = new List<IDisposable>();
         Func<TView, TKey> ExpKey { get; set; }
         Func<TView, object> ExpValue { get; set; }
-
         #endregion
 
         #region Metodos
         public abstract void SetPredicate(Expression<Func<TView, bool>> predicate);
         public abstract void SetOrder(Expression<Func<TView, object>> predicate);
-        protected abstract Task<IEnumerable<TView>> GetForComboAsync();
+        public abstract Task<IEnumerable<TView>> GetForComboAsync();
         public void SetSelectedId(TKey key)
         {
             if (typeof(TKey) == typeof(string))

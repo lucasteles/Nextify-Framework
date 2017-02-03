@@ -11,7 +11,7 @@ namespace Pragma.Business.Abstraction
     /// <typeparam name="TEntity">Model (espelho da entidade da base de dados) para tipagem da abstração.</typeparam>
     public interface IBusiness<TEntity, TKey> : ISimpleBusiness<TEntity> where TEntity : class, IModelWithKey<TKey>
     {
-        TEntity Get(TKey id);
+        TEntity GetById(TKey id);
 
         Task<TEntity> GetAsync(TKey id);
 

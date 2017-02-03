@@ -1,5 +1,5 @@
 ﻿using Pragma.Core;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;

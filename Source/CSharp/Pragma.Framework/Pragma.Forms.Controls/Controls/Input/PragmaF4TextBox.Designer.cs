@@ -1,4 +1,6 @@
-﻿namespace Pragma.Forms.Controls
+﻿using Pragma.Core.Icons;
+
+namespace Pragma.Forms.Controls
 {
     partial class PragmaF4TextBox
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PragmaF4TextBox));
             this.txtF4 = new Pragma.Forms.Controls.PragmaTextBox();
             this.cmdFind = new Pragma.Forms.Controls.PragmaButton();
             this.SuspendLayout();
@@ -50,19 +52,21 @@
             this.txtF4.CustomButton.UseSelectable = true;
             this.txtF4.CustomButton.Visible = false;
             this.txtF4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtF4.ForeColor = System.Drawing.Color.Black;
             this.txtF4.Lines = new string[0];
             this.txtF4.Location = new System.Drawing.Point(0, 0);
             this.txtF4.Mask = "";
             this.txtF4.MaxLength = 32767;
             this.txtF4.Name = "txtF4";
             this.txtF4.PasswordChar = '\0';
-            this.txtF4.QtdDecimais = 2;
+            this.txtF4.QtdDecimais = 0;
             this.txtF4.RemoveMaskOnGetValue = true;
             this.txtF4.Required = false;
             this.txtF4.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtF4.SelectedText = "";
             this.txtF4.SelectionLength = 0;
             this.txtF4.SelectionStart = 0;
+            this.txtF4.ShortcutsEnabled = true;
             this.txtF4.Size = new System.Drawing.Size(105, 25);
             this.txtF4.TabIndex = 1;
             this.txtF4.UseCustomBackColor = true;
@@ -75,7 +79,7 @@
             // 
             // cmdFind
             // 
-            this.cmdFind.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.search;
+            this.cmdFind.BackgroundImage = BaseIcons.search;
             this.cmdFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdFind.Dock = System.Windows.Forms.DockStyle.Right;
             this.cmdFind.Location = new System.Drawing.Point(105, 0);

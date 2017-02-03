@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\Business.cs" />
     <Compile Include="Abstraction\AbstractBusiness.cs" />
     <Compile Include="Abstraction\ISimpleBusiness.cs" />
     <Compile Include="SimpleBusiness.cs" />

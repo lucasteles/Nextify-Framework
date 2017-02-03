@@ -1,4 +1,5 @@
 ﻿using Pragma.Core;
+using Pragma.Core.Icons;
 using Pragma.Excel;
 using Pragma.Files;
 using Pragma.IOC;
@@ -10,21 +11,18 @@ namespace Pragma.Forms.Controls.Forms
 {
     public partial class FormConsult : FormBase
     {
-
         protected IGridController GridController;
 
         public bool HasEdit { get; set; } = true;
         public bool HasAdd { get; set; } = true;
         public bool HasDelete { get; set; } = false;
         public bool HasInative { get; set; } = true;
-
         private bool Loaded { get; set; } = false;
-
         protected bool Filter { get; set; }
         protected bool FilterInative { get; set; }
-        protected IContainer _container { get; set; } = ContainerFactory.Container;
+        protected IContainer _container { get; set; } = ContainerFactory.Instance;
 
-        private Type FormEditType;
+        private Type _FormEditType;
 
         public FormConsult(IGridController gridController)
         {
@@ -35,14 +33,11 @@ namespace Pragma.Forms.Controls.Forms
 
             if (gridController != null)
                 Configure(gridController);
-
         }
-
         public FormConsult()
         {
             InitializeComponent();
         }
-
         public void Configure(IGridController gridController)
         {
             GridController = gridController;
@@ -54,20 +49,18 @@ namespace Pragma.Forms.Controls.Forms
         }
         public void SetFormEdit<TForm>() where TForm : FormEdit
         {
-            FormEditType = typeof(TForm);
+            _FormEditType = typeof(TForm);
         }
-
         public FormEdit GetEditForm()
         {
-            if (FormEditType == null)
+            if (_FormEditType == null)
                 throw new Exception("FormEdit type was not set");
 
-            var form = _container.Resolve(FormEditType) as FormEdit;
+            var form = _container.Resolve(_FormEditType) as FormEdit;
 
             form.SetParentForm(this);
 
             return form;
-
         }
 
         public async virtual Task Edit()
@@ -81,11 +74,9 @@ namespace Pragma.Forms.Controls.Forms
             {
                 var id = GridController.GetSelectedId();
                 EditForm.ShowDialog(id);
-
             }
 
             await RefreshGrid(EditForm.ID);
-
         }
 
         public async virtual Task Add()
@@ -118,7 +109,6 @@ namespace Pragma.Forms.Controls.Forms
 
                 if (result.Success)
                     await RefreshGrid();
-
             }
         }
 
@@ -130,7 +120,6 @@ namespace Pragma.Forms.Controls.Forms
             if (id != null)
                 GridController.SetSelectedPosition(id);
             Grid.Enabled = true;
-
         }
 
         public virtual async Task Delete()
@@ -150,9 +139,7 @@ namespace Pragma.Forms.Controls.Forms
 
                 if (result.Success)
                     await RefreshGrid();
-
             }
-
         }
 
         private void AddContextMenus()
@@ -172,7 +159,6 @@ namespace Pragma.Forms.Controls.Forms
 
             if (HasEdit)
                 GridController.InsertAsyncMenu(Messages.Edit, Edit, BaseIcons.edit, 0);
-
         }
 
         private void cmdFilter_Click(object sender, EventArgs e)
@@ -189,17 +175,14 @@ namespace Pragma.Forms.Controls.Forms
             GridController.FilterInative = FilterInative;
             var id = GridController.GetSelectedId();
             await GridController.RefreshAsync();
-
         }
 
-        private async void FormConsult_Load(object sender, System.EventArgs e)
+        private async void FormConsult_LoadAsync(object sender, System.EventArgs e)
         {
             if (DesignMode)
                 return;
 
-            await DoLoad();
-            await FormLoadAsync();
-
+            await RunWithLoadAsync(DoLoad, "Carregando...");
         }
 
         public async Task DoLoad()
@@ -237,7 +220,6 @@ namespace Pragma.Forms.Controls.Forms
 
         private async void cmdExcel_Click(object sender, EventArgs e)
         {
-
             var excelTool = _container.Resolve<IExcelTool>();
             var dialog = _container.Resolve<IFileDialogTool>();
 

@@ -17,11 +17,14 @@ namespace Pragma.Forms.Controls
         public PragmaButton()
         {
             InitializeComponent();
-            ThemeActive = this.Theme;
+            ThemeActive = Theme;
         }
 
         private void PragmaButton_CustomPaint(object sender, MetroFramework.Drawing.MetroPaintEventArgs e)
         {
+            if (DesignMode)
+                return;
+
             // TODO: Terminar a inversão de cores
             var but = (MetroButton)sender;
             if (but.BackgroundImage == null)

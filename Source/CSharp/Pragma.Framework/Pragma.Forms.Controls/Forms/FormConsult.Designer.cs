@@ -1,4 +1,6 @@
-﻿namespace Pragma.Forms.Controls.Forms
+﻿using Pragma.Core.Icons;
+
+namespace Pragma.Forms.Controls.Forms
 {
     partial class FormConsult
     {
@@ -98,7 +100,7 @@
             // 
             this.cmdClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdClose.Location = new System.Drawing.Point(0, 339);
+            this.cmdClose.Location = new System.Drawing.Point(0, 500);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(20, 22);
             this.cmdClose.TabIndex = 65;
@@ -125,7 +127,7 @@
             // cmdDelete
             // 
             this.cmdDelete.AutoSize = true;
-            this.cmdDelete.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.trash;
+            this.cmdDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdDelete.BackgroundImage")));
             this.cmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdDelete.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdDelete.Location = new System.Drawing.Point(208, 2);
@@ -153,7 +155,7 @@
             // cmdEditar
             // 
             this.cmdEditar.AutoSize = true;
-            this.cmdEditar.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.edit;
+            this.cmdEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdEditar.BackgroundImage")));
             this.cmdEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdEditar.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdEditar.Location = new System.Drawing.Point(156, 2);
@@ -167,7 +169,7 @@
             // cmdAdd
             // 
             this.cmdAdd.AutoSize = true;
-            this.cmdAdd.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.add_list;
+            this.cmdAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdAdd.BackgroundImage")));
             this.cmdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdAdd.Location = new System.Drawing.Point(130, 2);
@@ -181,7 +183,7 @@
             // cmdExcel
             // 
             this.cmdExcel.AutoSize = true;
-            this.cmdExcel.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.excel;
+            this.cmdExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExcel.BackgroundImage")));
             this.cmdExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdExcel.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdExcel.Location = new System.Drawing.Point(104, 2);
@@ -195,7 +197,7 @@
             // cmtFilterInative
             // 
             this.cmtFilterInative.AutoSize = true;
-            this.cmtFilterInative.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.glasses;
+            this.cmtFilterInative.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmtFilterInative.BackgroundImage")));
             this.cmtFilterInative.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmtFilterInative.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmtFilterInative.Location = new System.Drawing.Point(78, 2);
@@ -209,7 +211,7 @@
             // cmdFilter
             // 
             this.cmdFilter.AutoSize = true;
-            this.cmdFilter.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.empty_filter;
+            this.cmdFilter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdFilter.BackgroundImage")));
             this.cmdFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdFilter.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdFilter.Location = new System.Drawing.Point(52, 2);
@@ -223,7 +225,7 @@
             // cmdRefresh
             // 
             this.cmdRefresh.AutoSize = true;
-            this.cmdRefresh.BackgroundImage = global::Pragma.Forms.Controls.BaseIcons.refresh;
+            this.cmdRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdRefresh.BackgroundImage")));
             this.cmdRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdRefresh.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdRefresh.Location = new System.Drawing.Point(26, 2);
@@ -243,7 +245,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "FormConsult";
             this.Text = "FormConsult";
-            this.Load += new System.EventHandler(this.FormConsult_Load);
+            this.Load += new System.EventHandler(this.FormConsult_LoadAsync);
             this.MainPanel.ResumeLayout(false);
             this.buttonsPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);

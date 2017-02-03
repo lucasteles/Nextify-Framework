@@ -66,11 +66,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\IContext.cs" />
+    <Compile Include="Abstraction\IEntityConfiguration.cs" />
     <Compile Include="Abstraction\IRepository.cs" />
     <Compile Include="Abstraction\IUnitOfWork.cs" />
     <Compile Include="BaseContext.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Abstraction\ISimpleRepository.cs" />
+    <Compile Include="Configuration\EntityFrameworkConfiguration.cs" />
     <Compile Include="ModelState.cs" />
     <Compile Include="SimpleRepository.cs" />
     <Compile Include="MissingDllHack.cs" />

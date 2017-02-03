@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Pragma.DAO
 {
-    public class SimpleRepository<TEntity> : ISimpleRepository<TEntity> where TEntity : class
+    public class SimpleRepository<TEntity> : ISimpleRepository<TEntity>, IEntityConfiguration<TEntity> where TEntity : class
     {
 
         #region propriedades
@@ -375,13 +375,17 @@ namespace Pragma.DAO
         private void SetContext(IContext context)
         {
             Context = context as BaseContext;
+            Table = Context.Set<TEntity>();
+        }
 
+        public EntityTypeConfiguration<TEntity> GetConfiguration()
+        {
             var config = new EntityTypeConfiguration<TEntity>();
+
             OnModelConfiguration(config);
             Context.AddConfiguration(config);
 
-            Table = Context.Set<TEntity>();
-
+            return config;
         }
 
 #pragma warning disable CC0057 // Unused parameters
@@ -418,6 +422,8 @@ namespace Pragma.DAO
             }
 
         }
+
+      
 
 
 

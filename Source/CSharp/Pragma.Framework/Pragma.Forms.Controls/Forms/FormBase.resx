@@ -120,10 +120,23 @@
   <metadata name="MetroStyleManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cmdHelp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGISURBVFhH7ZZh
+        jYQwEEbPEwbWAAIwgAEMYAMBGMAABjCAAAxgoJe3yVyaZqadsnsJP/iSL9ml05lHOxR+wo30wFh6YCxV
+        wxzHEeZ5DsMwhK7rQtM0b/Oba4wRc0VuGAqM4/hXvGRia6FcMMuyhNfrpRbNmTnM9aoIQzKtUI29QFmY
+        b4CIPUAmDPud2xrGpmkK+76H8zzDtm3ZniK+1EMmTKlZKR4Dr+v6ngdgGismZ04qDEW0ZLERQPIfCMQq
+        xXGpc6ujwnBWaIlip+eMwKA4LjW5LakwFNIS5SxF6CFtXExuSypMfMce0zdsD+r7Xo0Rk9uSCqMlyZlV
+        Aca7opY+huFOAalZTUsfbxONm3ucU1dv05UG9rq6gT2P9lVXP9qeQw9LvxDftq0ak7r60EOeb5f4oPP0
+        zaXXAeIOci9KLCuDSyvz0YsS3eYTQvQNIA8IKsIgkpW2TDNzvCDIBYPYb09Ti4kt9UgqN4yIApwVHF7x
+        Sc1vrjFWCyGqhvlPPTCWHhhLN4IJ4Re6CyWi2Q++QQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="StatusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>223, 56</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ToolRights.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

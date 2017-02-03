@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Pragma.Core.Icons;
+using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controls.Forms
 {
@@ -12,7 +13,6 @@ namespace Pragma.Forms.Controls.Forms
             FilterInative = true;
 
             cmtFilterInative.BackgroundImage = BaseIcons.glasses_invert;
-
         }
 
         public async Task SetController(IGridController controller)

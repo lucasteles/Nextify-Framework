@@ -5,13 +5,12 @@ using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Abstraction;
 using Pragma.Forms.Controls.Forms;
 using Pragma.IOC;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using System;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controllers
 {
-
     public class F4Controller<TModel> : F4Controller<TModel, int> where TModel : class, IModelWithKey, new()
     {
         public F4Controller(IGridController grid, IBusiness<TModel> business, IContainer container) : base(grid, business, container)
@@ -27,7 +26,6 @@ namespace Pragma.Forms.Controllers
         public F4Controller(IGridController grid, IBusiness<TModel, TKey> business, IContainer container) : base(grid, container)
         {
             Business = business;
-
         }
 
         protected override bool BaseValidate()
@@ -39,16 +37,18 @@ namespace Pragma.Forms.Controllers
 
             var key = (TKey)item;
 
-            if (key.Equals(default(TKey)))
+            if (key.Equals(default(TKey)) || key?.ToString() == string.Empty)
             {
                 Model = null;
                 F4.Value = null;
+                Binder.SetSource(Model);
+                Binder.FillTargets();
                 return true;
             }
             Model = Business.GetForEdit(key);
 
-            Binder.SetModel(Model);
-            Binder.FillControls();
+            Binder.SetSource(Model);
+            Binder.FillTargets();
             if (Model == null)
             {
                 F4.ShowTootipMessage(Messages.InvalidKey, FailureSeverity.Warning);
@@ -64,7 +64,6 @@ namespace Pragma.Forms.Controllers
                         F4.ShowTootipMessage(Messages.InativedItem, FailureSeverity.Warning);
                         return false;
                     }
-
                 }
             }
             if (Validate())
@@ -74,9 +73,7 @@ namespace Pragma.Forms.Controllers
             }
             else
                 return false;
-
         }
-
     }
 
     public class F4SimpleController<TModel> : IF4Controller<TModel>, IDisposable where TModel : class, new()
@@ -95,7 +92,6 @@ namespace Pragma.Forms.Controllers
         {
             GridController = grid;
             Container = container;
-
         }
 
         public void SetForm<TForm>() where TForm : FormConsult
@@ -133,7 +129,6 @@ namespace Pragma.Forms.Controllers
 
         protected virtual void WindowOpen(object sender, EventArgs args)
         {
-
             OnWindowOpenAsync();
 
             Form?.ShowDialog();
@@ -160,20 +155,18 @@ namespace Pragma.Forms.Controllers
             Model = model;
 
             BaseValidate();
-
         }
 
         protected void OnValid()
         {
             F4.Valid = BaseValidate();
             F4.DoChange();
-
         }
 
         protected virtual bool BaseValidate()
         {
-            Binder.SetModel(Model);
-            Binder.FillControls();
+            Binder.SetSource(Model);
+            Binder.FillTargets();
             return Validate();
         }
         protected virtual bool Validate()

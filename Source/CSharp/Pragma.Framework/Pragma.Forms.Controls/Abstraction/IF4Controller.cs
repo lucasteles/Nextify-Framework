@@ -1,4 +1,4 @@
-﻿using Pragma.ModelViewBinder;
+﻿using ModelViewBinder;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controls.Abstraction

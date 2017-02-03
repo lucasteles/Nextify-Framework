@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Pragma.Business.Abstraction
 
 {
-    public abstract class AbstractBusiness<TEntity> : ISimpleBusiness<TEntity> where TEntity : class
+    public abstract class AbstractBusiness<TEntity> : Business, ISimpleBusiness<TEntity> where TEntity : class
     {
         protected IValidator<TEntity> _deleteValidator;
         protected ISimpleRepository<TEntity> _entityRepository;
@@ -71,7 +71,7 @@ namespace Pragma.Business.Abstraction
                 item.Dispose();
 
         }
-        public async Task<IEnumerable<TEntity>> FindAllPropertiesAsync(int qtd, Expression<Func<TEntity, bool>> predicate, params string[] value)
+        public virtual async Task<IEnumerable<TEntity>> FindAllPropertiesAsync(int qtd, Expression<Func<TEntity, bool>> predicate, params string[] value)
         {
             return await _entityRepository.FindAllPropertiesAsync(
                             top: qtd,
@@ -79,7 +79,7 @@ namespace Pragma.Business.Abstraction
                             value: value
                     );
         }
-        public async Task<IEnumerable<TView>> FindViewAllPropertiesAsync<TView>(int qtd, Expression<Func<TView, bool>> predicate, params string[] value)
+        public virtual async Task<IEnumerable<TView>> FindViewAllPropertiesAsync<TView>(int qtd, Expression<Func<TView, bool>> predicate, params string[] value)
         {
             return await _entityRepository.FindViewAllPropertiesAsync(
                           top: qtd,
@@ -88,107 +88,107 @@ namespace Pragma.Business.Abstraction
                   );
         }
 
-        public IQueryable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate, int qtd)
+        public virtual IEnumerable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate, int qtd)
         {
-            return _entityRepository.Get<TView>(predicate, qtd);
+            return _entityRepository.Get<TView>(predicate, qtd).ToList();
         }
 
-        public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
         {
-            return _entityRepository.Get(predicate);
+            return _entityRepository.Get(predicate).ToList();
         }
 
-        public virtual IQueryable<TEntity> Get()
+        public virtual IEnumerable<TEntity> Get()
         {
 
-            return _entityRepository.Get();
+            return _entityRepository.Get().ToList();
         }
 
-        public IQueryable<TView> Get<TView>()
+        public virtual IEnumerable<TView> Get<TView>()
         {
-            return _entityRepository.Get<TView>();
+            return _entityRepository.Get<TView>().ToList();
         }
 
-        public IQueryable<TView> Get<TView>(Expression<Func<TView, bool>> predicate)
+        public virtual IEnumerable<TView> Get<TView>(Expression<Func<TView, bool>> predicate)
         {
-            return _entityRepository.Get(predicate);
+            return _entityRepository.Get(predicate).ToList();
         }
 
-        public IQueryable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TView> Get<TView>(Expression<Func<TEntity, bool>> predicate)
         {
-            return _entityRepository.Get<TView>(predicate);
+            return _entityRepository.Get<TView>(predicate).ToList();
         }
 
-        public IQueryable<TEntity> Get(int top)
+        public virtual IEnumerable<TEntity> Get(int top)
         {
-            return _entityRepository.Get(top);
+            return _entityRepository.Get(top).ToList();
         }
 
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate, int top)
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate, int top)
         {
-            return _entityRepository.Get(predicate, top);
+            return _entityRepository.Get(predicate, top).ToList();
         }
 
-        public IQueryable<TView> Get<TView>(int top)
+        public virtual IEnumerable<TView> Get<TView>(int top)
         {
-            return _entityRepository.Get<TView>(top);
+            return _entityRepository.Get<TView>(top).ToList();
         }
 
-        public IQueryable<TView> Get<TView>(Expression<Func<TView, bool>> predicate, int qtd)
+        public virtual IEnumerable<TView> Get<TView>(Expression<Func<TView, bool>> predicate, int qtd)
         {
-            return _entityRepository.Get<TView>(predicate, qtd);
+            return _entityRepository.Get<TView>(predicate, qtd).ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAsync()
         {
             return await _entityRepository.GetAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _entityRepository.GetAsync(predicate);
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>()
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>()
         {
             return await _entityRepository.GetAsync<TView>();
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> predicate)
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> predicate)
         {
             return await _entityRepository.GetAsync(predicate);
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> predicate)
         {
             return await GetAsync<TView>(predicate);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync(int top)
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(int top)
         {
             return await _entityRepository.GetAsync(top);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate, int top)
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate, int top)
         {
             return await _entityRepository.GetAsync(predicate, top);
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>(int qtd)
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>(int qtd)
         {
             return await _entityRepository.GetAsync<TView>(qtd);
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> predicate, int qtd)
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TView, bool>> predicate, int qtd)
         {
             return await _entityRepository.GetAsync<TView>(predicate, qtd);
         }
 
-        public async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> predicate, int qtd)
+        public virtual async Task<IEnumerable<TView>> GetAsync<TView>(Expression<Func<TEntity, bool>> predicate, int qtd)
         {
             return await _entityRepository.GetAsync<TView>(predicate, qtd);
         }
-        public IOperationResult Inative(params TEntity[] entity)
+        public virtual IOperationResult Inative(params TEntity[] entity)
         {
 
             foreach (var item in entity)
@@ -201,7 +201,7 @@ namespace Pragma.Business.Abstraction
             return Ok();
         }
 
-        public async Task<IOperationResult> InativeAsync(params TEntity[] entity)
+        public virtual async Task<IOperationResult> InativeAsync(params TEntity[] entity)
         {
             foreach (var item in entity)
                 if (item is IBase)
@@ -214,12 +214,12 @@ namespace Pragma.Business.Abstraction
             return Ok();
         }
 
-        public bool IsModified(TEntity entity)
+        public virtual bool IsModified(TEntity entity)
         {
             return _entityRepository.IsModified(entity);
         }
 
-        public bool IsNew(TEntity entity)
+        public virtual bool IsNew(TEntity entity)
         {
             return _entityRepository.IsNew(entity);
         }
@@ -264,19 +264,19 @@ namespace Pragma.Business.Abstraction
             return await _entityRepository.SingleOrDefaultAsync(predicate);
         }
 
-        public IOperationResult Update(params TEntity[] entity)
+        public virtual IOperationResult Update(params TEntity[] entity)
         {
             return _update(entity);
 
         }
 
-        public async Task<IOperationResult> UpdateAsync(params TEntity[] entity)
+        public virtual async Task<IOperationResult> UpdateAsync(params TEntity[] entity)
         {
 
             return await _updateAsync(entity);
         }
 
-        public IOperationResult Valid(params TEntity[] entity)
+        public virtual IOperationResult Valid(params TEntity[] entity)
         {
             var error = _validEntity(_validator, entity.ToArray());
             if (error.Any(e => !e.Success))
@@ -284,7 +284,7 @@ namespace Pragma.Business.Abstraction
 
             return Ok();
         }
-        public async Task<IOperationResult> ValidAsync(params TEntity[] entity)
+        public virtual async Task<IOperationResult> ValidAsync(params TEntity[] entity)
         {
             var error = await _validEntityAsync(_validator, entity);
             if (error.Any(e => !e.Success))
@@ -293,7 +293,7 @@ namespace Pragma.Business.Abstraction
             return Ok();
         }
 
-        public IOperationResult ValidDelete(params TEntity[] entity)
+        public virtual IOperationResult ValidDelete(params TEntity[] entity)
         {
             var error = _validEntity(_deleteValidator, entity.ToArray());
             if (error.Any(e => !e.Success))
@@ -301,7 +301,7 @@ namespace Pragma.Business.Abstraction
 
             return Ok();
         }
-        public async Task<IOperationResult> ValidDeleteAsync(params TEntity[] entity)
+        public virtual async Task<IOperationResult> ValidDeleteAsync(params TEntity[] entity)
         {
             var error = await _validEntityAsync(_deleteValidator, entity);
             if (error.Any(e => !e.Success))
@@ -310,41 +310,8 @@ namespace Pragma.Business.Abstraction
             return Ok();
         }
 
-        protected static IOperationResult BadResult(params string[] Messages)
-        {
-            return CreateResult(false, FailureSeverity.Warning, Messages);
 
-        }
-
-        protected static IOperationResult CreateResult(bool valid, FailureSeverity severity, params string[] Messages)
-        {
-            return new OperationResult
-            {
-                Success = valid,
-                ErrorList = Messages.Select(e => (IErrorMessage)new ErrorMessage { Message = e, Severity = severity }).ToList()
-
-            };
-        }
-
-        protected static IOperationResult CreateResult(bool valid, params string[] Messages)
-        {
-            return CreateResult(valid, FailureSeverity.Warning, Messages);
-
-        }
-
-        protected static IOperationResult CreateResult(bool valid, params IErrorMessage[] Messages)
-        {
-            return new OperationResult
-            {
-                Success = valid,
-                ErrorList = Messages.ToList()
-            };
-        }
-
-        protected static IOperationResult Ok()
-        {
-            return new OperationResult { Success = true, ErrorList = new List<IErrorMessage>() };
-        }
+    
         protected virtual IOperationResult _add(params TEntity[] entity)
         {
             var result = Valid(entity);
@@ -383,7 +350,7 @@ namespace Pragma.Business.Abstraction
             return Ok();
         }
 
-        protected async Task<IOperationResult> _updateAsync(params TEntity[] entity)
+        protected virtual async Task<IOperationResult> _updateAsync(params TEntity[] entity)
         {
 
             var result = await ValidAsync(entity);
@@ -429,7 +396,7 @@ namespace Pragma.Business.Abstraction
             ItensToDispose.Add(dispose);
         }
 
-        private void Save(params TEntity[] entity)
+        protected virtual void Save(params TEntity[] entity)
         {
 
             if (SaveChildren)
@@ -438,7 +405,7 @@ namespace Pragma.Business.Abstraction
                 _UnitOfWork.Complete(entity);
         }
 
-        private async Task SaveAsync(params TEntity[] entity)
+        protected virtual async Task SaveAsync(params TEntity[] entity)
         {
 
             if (SaveChildren)

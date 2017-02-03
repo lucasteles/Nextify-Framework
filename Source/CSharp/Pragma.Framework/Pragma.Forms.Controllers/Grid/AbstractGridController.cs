@@ -1,4 +1,6 @@
-﻿using Pragma.Core;
+﻿using Equin.ApplicationFramework;
+using Pragma.Core;
+using Pragma.Core.Icons;
 using Pragma.Excel;
 using Pragma.Extensions;
 using Pragma.Forms.Controls;
@@ -42,7 +44,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         /// <summary>
         /// Ultima ordenação realizada.
         /// </summary>
-        private Tuple<int, SortOrder> LastOrdering { get; set; }
+        private Tuple<int, ListSortDirection> LastOrdering { get; set; }
         /// <summary>
         /// A Grid que o controlador usa.
         /// </summary>
@@ -51,13 +53,16 @@ namespace Pragma.Forms.Controllers.Abstraction
         public IList<IDisposable> Disposables { get; set; } = new List<IDisposable>();
 
         /// <summary>
-        /// Lista que está vinculada à Grid.
+        /// BindingList que está vinculada à Grid.
         /// </summary>
-        public BindingList<TView> GridList { get; set; }
+        protected BindingListView<TView> GridList { get; set; }
         /// <summary>
         /// Colunas da Grid.
         /// </summary>
         public List<PgmColumn> Columns { get; set; }
+        private List<PropertyDescriptor> Properties { get; set; }
+        protected bool IsNested { get; set; }
+        protected IComparer<TView> NestingComparer { get; set; }
         /// <summary>
         /// Quantidade de resultados buscados da database.
         /// </summary>
@@ -109,15 +114,18 @@ namespace Pragma.Forms.Controllers.Abstraction
 
             PgmGrid = grid;
 
-            PgmGrid.Grid.CellPainting += Grid_CellPainting;
             PgmGrid.GridNotSelectedRightMouseClick += PgmGrid_GridNotSelectedRightMouseClick;
             PgmGrid.GridSelectedRightMouseClick += PgmGrid_GridSelectedRightMouseClick;
+            PgmGrid.FilterTextChanged += PgmGrid_FilterTextChanged;
+            PgmGrid.Grid.CellPainting += Grid_CellPainting;
             PgmGrid.Grid.ColumnHeaderMouseClick += Grid_ColumnHeaderMouseClick;
             PgmGrid.Grid.CellMouseDoubleClick += Grid_CellMouseDoubleClick;
+
             _loaded = true;
 
             await RefreshAsync();
         }
+
         public void SetSelectedPosition(Func<TView, bool> predicate)
         {
             var index = GridList.FindIndex(predicate);
@@ -127,7 +135,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             for (var i = 0; i < GridList.Count(); i++)
             {
-                if (id.Equals(GridList[i].GetKeyAtributteValue()))
+                if (id.Equals(GridList[i].Object.GetKeyAtributteValue()))
                 {
                     PgmGrid.SetSelectedRow(i);
                     break;
@@ -147,21 +155,27 @@ namespace Pragma.Forms.Controllers.Abstraction
             PgmGrid.BindList(GridList, Columns);
             OrderByColumn();
 
-            if (atual < GridList.Count())
-                PgmGrid.SetSelectedRow(atual);
-            else
-                PgmGrid.SetSelectedRow(GridList.Count() - 1);
+            if (GridList.Count > 0)
+                if (atual < GridList.Count())
+                    PgmGrid.SetSelectedRow(atual);
+                else
+                    PgmGrid.SetSelectedRow(GridList.Count() - 1);
 
             DoEndLoad(this, EventArgs.Empty);
 
         }
         public virtual TView GetSelected()
         {
-            return GridList[PgmGrid.GetSelectedRowIndex()];
+            var ind = PgmGrid.GetSelectedRowIndex();
+            if (GridList.Count > ind)
+                return GridList[ind].Object;
+            else
+                return default(TView);
         }
         public virtual void SetSelected(TView item)
         {
-            GridList[PgmGrid.GetSelectedRowIndex()] = item;
+            //TODO:arrumar
+            //GridList[PgmGrid.GetSelectedRowIndex()] = item;
         }
         public virtual object GetSelectedModel()
         {
@@ -172,7 +186,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             var item = GridList[PgmGrid.GetSelectedRowIndex()];
 
-            var keyValue = item.GetKeyAtributteValue();
+            var keyValue = item.Object.GetKeyAtributteValue();
 
             if (keyValue == null)
                 throw new Exception("A view não tem uma key definida");
@@ -251,7 +265,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         protected void OrderByColumn(int? nullableIndex = null)
         {
             int index;
-            Tuple<int, SortOrder> newOrdering;
+            Tuple<int, ListSortDirection> newOrdering;
             if (nullableIndex == null)
             {
                 if (LastOrdering == null)
@@ -259,33 +273,59 @@ namespace Pragma.Forms.Controllers.Abstraction
 
                 index = LastOrdering.Item1;
 
-                newOrdering = LastOrdering.Item2 == SortOrder.Ascending
-                    ? new Tuple<int, SortOrder>(index, SortOrder.Ascending)
-                    : new Tuple<int, SortOrder>(index, SortOrder.Descending);
+                newOrdering = LastOrdering.Item2 == ListSortDirection.Ascending
+                    ? new Tuple<int, ListSortDirection>(index, ListSortDirection.Ascending)
+                    : new Tuple<int, ListSortDirection>(index, ListSortDirection.Descending);
             }
             else
             {
                 index = nullableIndex.Value;
-                newOrdering = LastOrdering == null ? new Tuple<int, SortOrder>(index, SortOrder.Ascending) : LastOrdering.Item1 == index && LastOrdering.Item2 == SortOrder.Ascending
-                        ? new Tuple<int, SortOrder>(index, SortOrder.Descending)
-                        : new Tuple<int, SortOrder>(index, SortOrder.Ascending);
+                newOrdering = LastOrdering == null
+                    ? new Tuple<int, ListSortDirection>(index, ListSortDirection.Ascending)
+                    : LastOrdering.Item1 == index && LastOrdering.Item2 == ListSortDirection.Ascending
+                        ? new Tuple<int, ListSortDirection>(index, ListSortDirection.Descending)
+                        : new Tuple<int, ListSortDirection>(index, ListSortDirection.Ascending);
             }
-            var property = typeof(TView).GetProperty(PgmGrid.GetColumns()[index].DataPropertyName);
-            var list = GridList.ToList();
-
-            GridList.Clear();
-
-            list = newOrdering.Item2 == SortOrder.Ascending
-                ? list.OrderBy(i => property.GetValue(i)).ToList()
-                : list.OrderByDescending(i => property.GetValue(i)).ToList();
-
-            foreach (var item in list)
-                GridList.Add(item);
-
-            PgmGrid.GetColumns()[index].HeaderCell.SortGlyphDirection = newOrdering.Item2;
-
+            var property = TypeDescriptor.GetProperties(typeof(TView)).Find(PgmGrid.GetColumns()[index].DataPropertyName, false);
+            GridList.ApplySort(property, newOrdering.Item2);
+            if (IsNested)
+                Dummy();
+            if (IsNested && NestingComparer != null)
+                GridList.ApplySort(NestingComparer);
+            PgmGrid.GetColumns()[index].HeaderCell.SortGlyphDirection = (SortOrder)newOrdering.Item2 + 1;
             LastOrdering = newOrdering;
         }
+
+        private void PgmGrid_FilterTextChanged(object sender, KeyEventArgs e)
+        {
+            var cols = Columns.Select(i => i.PropertyName);
+            Properties = new List<PropertyDescriptor>();
+            foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(typeof(TView)))
+                if (cols.Contains(prop.Name))
+                    Properties.Add(prop);
+
+            var filter = PgmGrid.FilterText;
+            GridList.ApplyFilter(FilterByTextBox);
+        }
+
+        private bool FilterByTextBox(TView model)
+        {
+            if (IsNested && !DoNestingFilter(model))
+                return false;
+
+            foreach (var prop in Properties)
+            {
+                var val = prop.GetValue(model);
+                if (val == null)
+                    continue;
+                if (val.ToString().IndexOf(PgmGrid.FilterText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+            return false;
+        }
+
+        protected abstract bool DoNestingFilter(TView model);
+        protected abstract void Dummy();
 
         /// <summary>
         /// Adiciona uma regra de formatação à Grid.
@@ -312,12 +352,22 @@ namespace Pragma.Forms.Controllers.Abstraction
             return GridList as IList<T> ?? ((IEnumerable<T>)GridList).ToList();
         }
         /// <summary>
+        /// Retorna a lista usada pela Grid.
+        /// </summary>
+        /// <typeparam name="T">Tipo da lista.</typeparam>
+        /// <returns>A lista usada pela Grid.</returns>
+        public IEnumerable<TView> GetList()
+        {
+            return GetList<TView>();
+        }
+        /// <summary>
         /// Carrega a lista de dados como BindingList.
         /// </summary>
         protected async Task GetBindingListAsync()
         {
             var result = await GetForGridAsync();
-            GridList = new BindingList<TView>(result as IList<TView> ?? result.ToList());
+            var list = await Task.Run(() => result.ToList());
+            GridList = new BindingListView<TView>(list);
         }
         /// <summary>
         ///     Copia as células selecionadas para o clipboard.
@@ -329,6 +379,7 @@ namespace Pragma.Forms.Controllers.Abstraction
             Clipboard.SetDataObject(PgmGrid.GetClipboardContent(), true);
         }
         #endregion
+
         #region Context Menu
         public virtual void AddMenu(Dictionary<string, Action> theMenu)
         {
@@ -407,7 +458,7 @@ namespace Pragma.Forms.Controllers.Abstraction
             var colName = grade.Columns[col].Name;
             var model = GridList[row];
 
-            var formats = Format.GetFormats(model, row, colName);
+            var formats = Format.GetFormats(model.Object, row, colName);
 
             foreach (var f in formats)
             {
@@ -453,8 +504,14 @@ namespace Pragma.Forms.Controllers.Abstraction
 
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
-            RunFirstMenuItem();
+            if (IsNested)
+                ToggleNestedVisibility(e);
+            else
+                RunFirstMenuItem();
         }
+
+        protected abstract void ToggleNestedVisibility(DataGridViewCellMouseEventArgs eventArgs);
+
         private void Grid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (PgmGrid.GetRows().Count == 0)

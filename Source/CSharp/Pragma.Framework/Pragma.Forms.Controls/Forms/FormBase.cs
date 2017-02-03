@@ -45,6 +45,11 @@ namespace Pragma.Forms.Controls.Forms
             await Task.FromResult(0);
         }
 
+        public async virtual Task FormAfterLoadAsync()
+        {
+            await Task.FromResult(0);
+        }
+
         public void StartLoad(string text)
         {
             SpinnerLoad.Value = 0;
@@ -162,14 +167,13 @@ namespace Pragma.Forms.Controls.Forms
 
         public async Task RunActionWithLoadAsync(Action resultBody, string message, params Control[] control)
         {
-
             StartLoad(message);
             SetControlsEnabled(false, control);
-            var task = new Task(resultBody);
-            await task;
+
+            await Task.Run(resultBody);
+
             SetControlsEnabled(true, control);
             StopLoad();
-            task.Dispose();
         }
 
         protected static void SetControlsEnabled(bool enabled, params Control[] controls)
@@ -294,19 +298,26 @@ namespace Pragma.Forms.Controls.Forms
 
         }
 
-        protected virtual async void FormBase_LoadAsync(object sender, EventArgs e)
+        protected virtual  void FormBase_LoadAsync(object sender, EventArgs e)
         {
-            foreach (var item in GetAllControls(null, null))
-                if (item is IMetroControl)
-                    (item as IMetroControl).StyleManager = MetroStyleManager;
 
-            await FormLoadAsync();
         }
 
         private void FormBase_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F12 && e.Shift)
                 StyleManager.Theme = StyleManager.Theme == MetroThemeStyle.Dark ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+        }
+
+        protected virtual async void FormBase_ShownAsync(object sender, EventArgs e)
+        {
+            Application.DoEvents();
+            foreach (var item in GetAllControls(null, null))
+                if (item is IMetroControl)
+                    (item as IMetroControl).StyleManager = MetroStyleManager;
+
+            await FormLoadAsync();
+            await FormAfterLoadAsync();
         }
     }
 }

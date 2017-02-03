@@ -10,7 +10,8 @@
 
 namespace Pragma.App.Forms {
     using System;
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -62,29 +63,9 @@ namespace Pragma.App.Forms {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Bitmap courses {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_small {
-            get {
-                object obj = ResourceManager.GetObject("logo_small", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_vector {
-            get {
-                object obj = ResourceManager.GetObject("logo_vector", resourceCulture);
+                object obj = ResourceManager.GetObject("courses", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

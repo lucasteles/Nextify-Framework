@@ -1,11 +1,11 @@
 ﻿using Pragma.Core;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controls.Forms
 {
-
     public partial class FormEdit : FormBase
     {
         public IModelViewBinder _binder;
@@ -21,12 +21,12 @@ namespace Pragma.Forms.Controls.Forms
 
         public virtual void RefreshControls()
         {
-            _binder.FillControls();
+            _binder.FillTargets();
         }
 
         public virtual void RefreshModel()
         {
-            _binder.FillModel();
+            _binder.FillSource();
         }
 
         public override bool ShowMessage(IOperationResult operation, string title = null)
@@ -42,7 +42,7 @@ namespace Pragma.Forms.Controls.Forms
             {
                 foreach (var item in info)
                 {
-                    var control = _binder.GetControlFromProperty<Control>(item.Property);
+                    var control = _binder.GetTargetFromProperty<Control>(item.Property);
                     ShowControlTooltip(control, item.Severity, item.Message);
                 }
             }
@@ -51,7 +51,7 @@ namespace Pragma.Forms.Controls.Forms
             {
                 foreach (var item in warnings)
                 {
-                    var control = _binder.GetControlFromProperty<Control>(item.Property);
+                    var control = _binder.GetTargetFromProperty<Control>(item.Property);
                     ShowControlTooltip(control, item.Severity, item.Message);
                 }
             }
@@ -72,38 +72,38 @@ namespace Pragma.Forms.Controls.Forms
         {
             ID = id;
             ShowDialog();
-
         }
 
         public void ShowDialog<TModel>(TModel model) where TModel : class, new()
         {
             ItemsModel = model;
             ShowDialog();
-
         }
         public void Show<TModel>(TModel model) where TModel : class, new()
         {
             ItemsModel = model;
             Show();
-
         }
-
         private void FormEdit_Load(object sender, System.EventArgs e)
         {
-            if (!DesignMode)
-            {
-                if (PersistData)
-                    _binder.SetForm(this);
-                else
-                    _binder.FillControls();
-            }
+            Enabled = false;
         }
 
+        public override Task FormAfterLoadAsync()
+        {
+            if (PersistData)
+                _binder.SetForm(this);
+            else
+                _binder.FillTargets();
+
+            Enabled = true;
+            StopLoad();
+
+            return Task.FromResult(0);
+        }
         private void cmdCancelar_Click(object sender, System.EventArgs e)
         {
             Close();
         }
-
     }
-
 }

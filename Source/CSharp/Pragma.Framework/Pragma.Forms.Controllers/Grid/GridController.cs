@@ -1,4 +1,5 @@
-﻿using Pragma.Business.Abstraction;
+﻿using Equin.ApplicationFramework;
+using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Extensions;
 using Pragma.Forms.Controllers.Abstraction;
@@ -18,7 +19,6 @@ namespace Pragma.Forms.Controllers
 
             LoadFunctionWithFilter = Business.GetAsync;
             LoadFunction = Business.GetAsync;
-
         }
         public override object GetSelectedModel()
         {
@@ -28,7 +28,7 @@ namespace Pragma.Forms.Controllers
         {
             var result = await Business.FindAllPropertiesAsync(QtdTopResult, TreatPredicate(Predicate), PgmGrid.FilterText.Split('|'));
 
-            GridList = new BindingList<TModel>(result.ToList());
+            GridList = new BindingListView<TModel>(result.ToList());
         }
         protected override Expression<Func<TModel, bool>> TreatPredicate(Expression<Func<TModel, bool>> predicate)
         {

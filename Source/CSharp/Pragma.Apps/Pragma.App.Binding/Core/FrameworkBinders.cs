@@ -12,7 +12,7 @@ using Pragma.Logging;
 using Pragma.Logging.Abstraction;
 using Pragma.Mapping;
 using Pragma.Mapping.Core;
-using Pragma.ModelViewBinder;
+using ModelViewBinder;
 using Pragma.Scheduling;
 
 namespace Pragma.App.Binding
