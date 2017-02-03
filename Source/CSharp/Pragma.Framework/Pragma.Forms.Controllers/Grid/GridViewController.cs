@@ -17,7 +17,7 @@ namespace Pragma.Forms.Controllers
         public GridViewController(IBusiness<TModel, TKey> business) : base(business)
         {
 
-            AddFormat(new ModelFormat { Strikeout = true }, (e, i, p) => e.Inativo == 1);
+            AddFormat(new ModelFormat { Strikeout = true }, (e, i, p) => e.Inative);
         }
 
         protected override Expression<Func<TView, bool>> TreatPredicate(Expression<Func<TView, bool>> predicate)
@@ -26,7 +26,7 @@ namespace Pragma.Forms.Controllers
                 return predicate;
 
             var fluent = (predicate != null) ?
-             new FluentLambda<TView>(predicate).And(e => e.Inativo == 0).Exp() : e => e.Inativo == 0;
+             new FluentLambda<TView>(predicate).And(e => e.Inative == false).Exp() : e => e.Inative == false;
 
             return fluent;
         }

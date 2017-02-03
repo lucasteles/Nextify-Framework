@@ -1,24 +1,21 @@
-﻿using MetroFramework;
-using MetroFramework.Controls;
+﻿using Pragma.Forms.Controls.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Pragma.Forms.Controls
+namespace Pragma.App.Forms
 {
-    public partial class PragmaButton : MetroButton
+    public partial class Form1 : FormEdit
     {
-
-        public PragmaButton()
+        public Form1()
         {
             InitializeComponent();
-
         }
-
     }
 }

@@ -16,13 +16,13 @@ namespace Pragma.Core
         /// </summary>
         [PgmColumn(DisplayText = "Data e Hora de Inclusão")]
         [Range(typeof(DateTime), "1/1/1900", "6/6/2079")]
-        DateTime? DhInclusao { get; set; }
+        DateTime? Created { get; set; }
         /// <summary>
         /// Propriedade contendo a data de atualização do registro
         /// </summary>
         [PgmColumn(DisplayText = "Data e Hora da Alteração")]
         [Range(typeof(DateTime), "1/1/1900", "6/6/2079")]
-        DateTime? DhAlteracao { get; set; }
+        DateTime? Updated { get; set; }
 
     }
 
@@ -32,9 +32,9 @@ namespace Pragma.Core
         /// Propriedade indicando se o registro está ativo
         /// </summary>
         [PgmColumn(DisplayText = "Inativo")]
-        decimal? Inativo { get; set; }
+        bool Inative { get; set; }
 
-        bool IsInative();
+
 
     }
 

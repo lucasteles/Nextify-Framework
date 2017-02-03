@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
+using System.Reflection;
 
 namespace Pragma.DAO
 {
@@ -13,7 +14,6 @@ namespace Pragma.DAO
     public abstract class BaseContext : DbContext, IContext
     {
         internal IList<Action<DbModelBuilder>> modelConfigurationActions = new List<Action<DbModelBuilder>>();
-        internal IList<Type> modelConfiguration = new List<Type>();
         protected bool loaded;
         protected BaseContext(string connectionString) : base(connectionString)
         {
@@ -35,8 +35,8 @@ namespace Pragma.DAO
         {
             Database.SetInitializer<BaseContext>(null);
             Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
-            Database.CommandTimeout = 99999;
+            Configuration.ProxyCreationEnabled = true;
+            Database.CommandTimeout = int.MaxValue;
 
 
         }
@@ -48,22 +48,38 @@ namespace Pragma.DAO
             return serverDate;
         }
 
-        public void AddConfiguration<TEntity>(EntityTypeConfiguration<TEntity> config) where TEntity : class
+
+        internal void LoadRepository<T>() where T : class, IEntityConfiguration<T>, new()
         {
+            var repository = (T)Activator.CreateInstance(typeof(T), args: null);
 
-            var t = typeof(TEntity);
-            if (modelConfiguration.Contains(t) || loaded)
-                return;
-
-            modelConfiguration.Add(t);
             modelConfigurationActions.Add(c =>
-                c.Configurations.Add(config)
+                c.Configurations.Add(repository.GetConfiguration())
             );
+        }   
+        
+          
+        protected virtual void SetRepositories(DbModelBuilder modelBuilder)
+        {
+            var type = typeof(IEntityConfiguration<>);
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
+
+            foreach (var item in types)
+            {
+                var method = item.GetMethod(nameof(IEntityConfiguration<string>.GetConfiguration));
+                var genericMethod = method.MakeGenericMethod(type);
+                genericMethod.Invoke(null, null); 
+            }
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             loaded = true;
+            SetRepositories(modelBuilder);
+
             foreach (var item in modelConfigurationActions)
                 item(modelBuilder);
         }

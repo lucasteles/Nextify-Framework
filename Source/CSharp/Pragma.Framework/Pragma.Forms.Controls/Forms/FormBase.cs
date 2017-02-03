@@ -311,6 +311,9 @@ namespace Pragma.Forms.Controls.Forms
 
         protected virtual async void FormBase_ShownAsync(object sender, EventArgs e)
         {
+            if (DesignMode)
+                return;
+
             Application.DoEvents();
             foreach (var item in GetAllControls(null, null))
                 if (item is IMetroControl)

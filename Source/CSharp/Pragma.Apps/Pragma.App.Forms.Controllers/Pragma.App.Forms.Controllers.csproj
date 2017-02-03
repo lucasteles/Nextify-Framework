@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combos\ConnectionComboController.cs" />
+    <Compile Include="Grids\CourseGridController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="F4\" />
-    <Folder Include="Grids\" />
     <Folder Include="ItemsContainer\" />
   </ItemGroup>
   <ItemGroup>

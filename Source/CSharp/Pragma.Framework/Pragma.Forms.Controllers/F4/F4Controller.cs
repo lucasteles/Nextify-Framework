@@ -59,7 +59,7 @@ namespace Pragma.Forms.Controllers
                 if (Model is IInative)
                 {
                     var inativeEntity = (IInative)Model;
-                    if (inativeEntity.IsInative())
+                    if (inativeEntity.Inative)
                     {
                         F4.ShowTootipMessage(Messages.InativedItem, FailureSeverity.Warning);
                         return false;

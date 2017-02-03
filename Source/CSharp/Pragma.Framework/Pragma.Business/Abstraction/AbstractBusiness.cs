@@ -193,7 +193,7 @@ namespace Pragma.Business.Abstraction
 
             foreach (var item in entity)
                 if (item is IBase)
-                    ((IBase)item).Inativo = ((IBase)item).Inativo == 0 ? 1 : 0;
+                    ((IBase)item).Inative = !((IBase)item).Inative;
                 else
                     throw new Exception("Model cant be casted to IBase");
 
@@ -205,7 +205,7 @@ namespace Pragma.Business.Abstraction
         {
             foreach (var item in entity)
                 if (item is IBase)
-                    ((IBase)item).Inativo = ((IBase)item).Inativo == 0 ? 1 : 0;
+                    ((IBase)item).Inative = !((IBase)item).Inative;
                 else
                     throw new Exception("Model cant be casted to IBase");
 

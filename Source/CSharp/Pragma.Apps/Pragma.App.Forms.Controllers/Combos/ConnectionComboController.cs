@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Pragma.App.Business;
-using Pragma.App.Model;
+
 using Pragma.Forms.Controllers;
 using Pragma.Forms.Controls;
 

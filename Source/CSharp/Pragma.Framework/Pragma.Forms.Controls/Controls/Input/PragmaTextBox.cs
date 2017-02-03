@@ -15,7 +15,7 @@ namespace Pragma.Forms.Controls
         public PragmaTextBox()
         {
             InitializeComponent();
-
+            
             Configure();
         }
 

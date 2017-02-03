@@ -46,7 +46,7 @@ namespace Pragma.Forms.Controllers
                 return predicate;
 
             var fluent = (predicate != null) ?
-                new FluentLambda<TModel>(predicate).And(e => e.Inativo == 0).Exp() : e => e.Inativo == 0;
+                new FluentLambda<TModel>(predicate).And(e => e.Inative == false).Exp() : e => e.Inative == false;
 
             return fluent;
         }

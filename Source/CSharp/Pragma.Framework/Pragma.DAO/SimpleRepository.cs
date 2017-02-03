@@ -381,10 +381,7 @@ namespace Pragma.DAO
         public EntityTypeConfiguration<TEntity> GetConfiguration()
         {
             var config = new EntityTypeConfiguration<TEntity>();
-
             OnModelConfiguration(config);
-            Context.AddConfiguration(config);
-
             return config;
         }
 
@@ -402,15 +399,15 @@ namespace Pragma.DAO
                 var baseEntity = entity as IBase;
 
                 var changed = false;
-                if (Context.Entry(baseEntity).State == EntityState.Added || (!baseEntity.DhInclusao.HasValue))
+                if (Context.Entry(baseEntity).State == EntityState.Added || (!baseEntity.Created.HasValue))
                 {
-                    baseEntity.DhInclusao = DateTime.Now;
+                    baseEntity.Created = DateTime.Now;
                     changed = true;
                 }
 
                 if (Context.Entry(baseEntity).State == EntityState.Modified)
                 {
-                    baseEntity.DhAlteracao = DateTime.Now;
+                    baseEntity.Updated = DateTime.Now;
                     changed = true;
                 }
 

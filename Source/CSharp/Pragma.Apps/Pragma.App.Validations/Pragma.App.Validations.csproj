@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDeleteValidator.cs" />
+    <Compile Include="CourseValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationMessages1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -59,6 +61,10 @@
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Extensions\Pragma.Extensions.csproj">
       <Project>{BAA712F4-1F97-4DE6-97E3-F93A374FD635}</Project>
       <Name>Pragma.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Validations\Pragma.Validations.csproj">
+      <Project>{5EDA394E-0F70-437A-A783-F93B6D8C4838}</Project>
+      <Name>Pragma.Validations</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.App.Models\Pragma.App.Models.csproj">
       <Project>{7c95ee61-ab2a-4230-8495-8e5547cd65e7}</Project>

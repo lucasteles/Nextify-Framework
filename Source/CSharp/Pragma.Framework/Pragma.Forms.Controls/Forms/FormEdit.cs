@@ -86,6 +86,9 @@ namespace Pragma.Forms.Controls.Forms
         }
         private void FormEdit_Load(object sender, System.EventArgs e)
         {
+            if (DesignMode)
+                return;
+
             Enabled = false;
         }
 

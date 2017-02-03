@@ -8,7 +8,7 @@ namespace Pragma.App.Binding
     {
         public void SetBinding(IContainer container)
         {
-
+            container.Register<MainContext>(Lifecircle.InResolutionScope);
         }
     }
 }

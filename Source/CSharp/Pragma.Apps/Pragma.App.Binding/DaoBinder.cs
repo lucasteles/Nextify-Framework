@@ -8,7 +8,9 @@ namespace Pragma.App.Binding
     {
         public void SetBinding(IContainer container)
         {
-           
+            container.Register<ICourseUnityOfWork, CourseUnityOfWork>();
+            container.Register<ICoursesRepository, CoursesRepository>();
+            container.Register<IAuthorRepository, AuthorRepository>();
         }
     }
 }

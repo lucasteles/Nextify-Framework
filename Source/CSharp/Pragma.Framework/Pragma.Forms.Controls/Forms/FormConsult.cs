@@ -99,7 +99,7 @@ namespace Pragma.Forms.Controls.Forms
             if (id == null)
                 return;
 
-            var question = ShowMessageQuestion($"{ (item.Inativo == 0 ? Messages.WantToInative : Messages.WantToAtive) } (ID:{id.ToString()})", Messages.Attention);
+            var question = ShowMessageQuestion($"{ (!item.Inative ? Messages.WantToInative : Messages.WantToAtive) } (ID:{id.ToString()})", Messages.Attention);
 
             if (question)
             {
@@ -152,7 +152,7 @@ namespace Pragma.Forms.Controls.Forms
                 GridController.InsertAsyncMenu(Messages.Delete, Delete, BaseIcons.trash, 0);
 
             if (HasInative)
-                GridController.InsertAsyncMenu(e => ((IInative)e).Inativo == 1 ? Messages.Ative : Messages.Inative, Inative, BaseIcons.edit_property, 0);
+                GridController.InsertAsyncMenu(e => ((IInative)e).Inative ? Messages.Ative : Messages.Inative, Inative, BaseIcons.edit_property, 0);
 
             if (HasAdd)
                 GridController.InsertAsyncMenu(Messages.New, Add, BaseIcons.add_list, 0);

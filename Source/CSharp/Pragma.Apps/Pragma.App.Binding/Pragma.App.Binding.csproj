@@ -112,6 +112,10 @@
       <Project>{8E4EB077-021C-4C8E-BAA5-9E0184176064}</Project>
       <Name>Pragma.Scheduling</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Validations\Pragma.Validations.csproj">
+      <Project>{5EDA394E-0F70-437A-A783-F93B6D8C4838}</Project>
+      <Name>Pragma.Validations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.App.Business\Pragma.App.Business.csproj">
       <Project>{0F287438-5947-4616-AF3F-17B6C95B457A}</Project>
       <Name>Pragma.App.Business</Name>
@@ -123,6 +127,14 @@
     <ProjectReference Include="..\Pragma.App.Forms.Controllers\Pragma.App.Forms.Controllers.csproj">
       <Project>{7F00A261-2C3C-415D-89BE-9BCEDC3591C0}</Project>
       <Name>Pragma.App.Forms.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Models\Pragma.App.Models.csproj">
+      <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
+      <Name>Pragma.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.App.Validations\Pragma.App.Validations.csproj">
+      <Project>{1F4E1465-7429-4220-BB9C-E355A62E4429}</Project>
+      <Name>Pragma.App.Validations</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

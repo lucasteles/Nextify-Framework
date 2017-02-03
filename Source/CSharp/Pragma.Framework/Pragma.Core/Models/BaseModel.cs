@@ -5,19 +5,17 @@ namespace Pragma.Core
 {
     public abstract class BaseModel : IBase
     {
-        [Column("TG_INATIVO")]
-        public decimal? Inativo { get; set; }
+        public bool Inative { get; set; }
 
-        [Column("FK_OWNER")]
         public int? Owner { get; set; }
 
-        [Column("DH_INCLUSAO")]
-        public DateTime? DhInclusao { get; set; }
 
-        [Column("DH_ALTERACAO")]
-        public DateTime? DhAlteracao { get; set; }
+        public DateTime? Created { get; set; }
 
-        public bool IsInative() => Inativo == 1;
+
+        public DateTime? Updated { get; set; }
+
+        
 
     }
 }

@@ -30,7 +30,7 @@ namespace Pragma.App.Forms
         {
             var menus = new List<PragmaMenuItem>
             {
-                new PragmaMenuItem() {Name="Cursos", Icon = Weather.rain },
+                new PragmaMenuItem() {Name="Cursos", Icon = Weather.rain, ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
                 new PragmaMenuItem() {Name="Authors", Icon = Weather.rain },
                 new PragmaMenuItem() {Name="Tags", Icon = Weather.rain },
                 new PragmaMenuItem() {Name="Cover", Icon = Weather.rain }

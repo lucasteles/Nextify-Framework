@@ -11,8 +11,8 @@ namespace Pragma.App.Binding
 
         public void SetBinding(IContainer container)
         {
-         
-         
+            container.Register<ICoursesBusiness, CoursesBusiness>();
+
         }
     }
 }
