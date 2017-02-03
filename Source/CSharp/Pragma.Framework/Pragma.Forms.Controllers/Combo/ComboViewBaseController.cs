@@ -1,4 +1,7 @@
-﻿using Pragma.Business.Abstraction;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Forms.Controllers.Abstraction;
 using Pragma.Forms.Controls;
@@ -10,7 +13,9 @@ using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controllers
 {
-    public class ComboViewBaseController<TModel, TKey, TView, TViewKey> : AbstractComboBusinessController<TModel, TKey, TView, TViewKey>, IComboController<TView, TViewKey> where TModel : class, IModelWithKey<TKey>, new()
+    public class ComboViewBaseController<TModel, TKey, TView, TViewKey> : 
+            AbstractComboBusinessController<TModel, TKey, TView, TViewKey>, 
+              IComboController<TView, TViewKey> where TModel : class, IModelWithKey<TKey>, new()
     {
         public ComboViewBaseController(IBusiness<TModel, TKey> business) : base(business)
         {

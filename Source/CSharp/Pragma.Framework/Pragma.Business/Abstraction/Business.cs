@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Pragma.Abstraction;
 using Pragma.Core;
 using Pragma.DAO.Abstraction;
 using Pragma.Validations;

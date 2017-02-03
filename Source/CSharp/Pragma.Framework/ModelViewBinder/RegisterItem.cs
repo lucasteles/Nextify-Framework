@@ -1,4 +1,4 @@
-﻿using Pragma.Extensions;
+﻿
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -161,6 +161,22 @@ namespace ModelViewBinder
 
     }
 
-}
+
+    internal static class ExpressionExtensions
+    {
+        public static PropertyInfo GetPropertyInfo<T, V>(this Expression<Func<T, V>> expression)
+        {
+            PropertyInfo property;
+
+            var exp = expression.Body as MemberExpression;
+            if (exp == null)
+                exp = ((UnaryExpression)expression.Body).Operand as MemberExpression;
+            property = (PropertyInfo)exp.Member;
+
+            return property;
+        }
+    }
+    
+    }
 
 

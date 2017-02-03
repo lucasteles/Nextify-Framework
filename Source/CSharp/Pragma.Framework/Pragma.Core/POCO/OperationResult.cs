@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Pragma.Abstraction;
+using Pragma.Core;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Pragma.Core

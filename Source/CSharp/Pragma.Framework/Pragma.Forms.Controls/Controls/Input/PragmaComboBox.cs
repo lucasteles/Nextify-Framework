@@ -1,14 +1,14 @@
 ﻿using MetroFramework.Controls;
-using Pragma.Forms.Controls.Abstraction;
 using System;
 using System.Collections.Generic;
 using Pragma.Core;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Pragma.Abstraction.Forms.Controls;
 
 namespace Pragma.Forms.Controls
 {
-    public partial class PragmaComboBox : MetroComboBox, IControl, IControlWithValidation<PragmaComboBox>
+    public partial class PragmaComboBox : MetroComboBox, IPragmaComboBox, IControlWithValidation<PragmaComboBox>
     {
         public PragmaComboBox()
         {

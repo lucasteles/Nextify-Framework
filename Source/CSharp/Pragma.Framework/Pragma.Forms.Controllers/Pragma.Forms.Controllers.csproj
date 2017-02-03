@@ -85,7 +85,6 @@
   <ItemGroup>
     <Compile Include="Combo\AbstractComboBusinessController.cs" />
     <Compile Include="Combo\AbstractComboController.cs" />
-    <Compile Include="Abstraction\IEditController.cs" />
     <Compile Include="Combo\ComboController.cs" />
     <Compile Include="Combo\ComboBusinessController.cs" />
     <Compile Include="Combo\ComboViewBaseController.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Grid\GridListController.cs" />
     <Compile Include="ItemsContainer\PragmaItemsContainerViewController.cs" />
     <Compile Include="ItemsContainer\PragmaItemsContainerController.cs" />
-    <Compile Include="Abstraction\IGridListController.cs" />
     <Compile Include="Grid\AbstractGridBusinessController.cs" />
     <Compile Include="Grid\AbstractGridController.cs" />
     <Compile Include="Grid\GridController.cs" />
@@ -111,6 +109,10 @@
     <ProjectReference Include="..\ModelViewBinder\ModelViewBinder.csproj">
       <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
       <Name>ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
       <Project>{6e705c0b-2c70-4ada-ace4-44ba7d929440}</Project>

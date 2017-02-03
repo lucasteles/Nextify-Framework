@@ -132,12 +132,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelTool.cs" />
-    <Compile Include="IExcelTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

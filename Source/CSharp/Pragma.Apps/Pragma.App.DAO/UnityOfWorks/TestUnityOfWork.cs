@@ -1,4 +1,5 @@
-﻿using Pragma.DAO;
+﻿using Pragma.Abstraction.DAO;
+using Pragma.DAO;
 using Pragma.DAO.Abstraction;
 using System;
 

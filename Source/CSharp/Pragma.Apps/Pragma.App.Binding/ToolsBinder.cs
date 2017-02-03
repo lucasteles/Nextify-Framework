@@ -1,7 +1,7 @@
-﻿using Pragma.Excel;
+﻿using Pragma.Abstraction.Files;
+using Pragma.Abstraction.IOC;
+using Pragma.Excel;
 using Pragma.Files;
-using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {

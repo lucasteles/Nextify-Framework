@@ -1,6 +1,8 @@
 ﻿using FluentScheduler;
+using Pragma.Abstraction.IOC;
+using Pragma.Abstraction.Logging;
+using Pragma.Abstraction.Scheduling;
 using Pragma.IOC;
-using Pragma.Logging.Abstraction;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,6 @@
 ﻿using Equin.ApplicationFramework;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Core;
 using Pragma.Core.Icons;
 using Pragma.Excel;
@@ -104,7 +106,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             tool.ExportFromList(GetList<TView>(), file);
         }
-        public virtual async Task UseAsync(PragmaDataGrid grid)
+        public virtual async Task UseAsync(IPragmaDataGrid grid)
         {
             if (PgmGrid != null && PgmGrid == grid && _loaded)
             {
@@ -112,7 +114,7 @@ namespace Pragma.Forms.Controllers.Abstraction
                 return;
             }
 
-            PgmGrid = grid;
+            PgmGrid =(PragmaDataGrid) grid;
 
             PgmGrid.GridNotSelectedRightMouseClick += PgmGrid_GridNotSelectedRightMouseClick;
             PgmGrid.GridSelectedRightMouseClick += PgmGrid_GridSelectedRightMouseClick;

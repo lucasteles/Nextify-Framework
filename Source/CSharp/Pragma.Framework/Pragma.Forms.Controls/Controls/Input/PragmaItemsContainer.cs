@@ -1,11 +1,12 @@
-﻿using Pragma.Core;
-using Pragma.Forms.Controls.Abstraction;
+﻿using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core;
+
 using System;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controls
 {
-    public partial class PragmaItemsContainer : PragmaDataGrid, IControl
+    public partial class PragmaItemsContainer : PragmaDataGrid, IPragmaItemsContainer
     {
 
         public event EventHandler OnSetValue;

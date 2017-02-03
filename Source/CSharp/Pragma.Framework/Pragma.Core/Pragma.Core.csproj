@@ -42,11 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\IDisposeContainer.cs" />
-    <Compile Include="Abstraction\IFactory.cs" />
-    <Compile Include="Abstraction\IModelWithId.cs" />
-    <Compile Include="Abstraction\IOperationResult.cs" />
-    <Compile Include="Attributes\PgmHeader.cs" />
     <Compile Include="Icons\Alphabet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -298,9 +293,6 @@
       <DependentUpon>Weather.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Enumerators.cs" />
-    <Compile Include="Abstraction\IModelFormat.cs" />
-    <Compile Include="Abstraction\IBase.cs" />
     <Compile Include="POCO\ExpressionAppender.cs" />
     <Compile Include="POCO\FluentLambda.cs" />
     <Compile Include="POCO\ModelFormat.cs" />
@@ -522,6 +514,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{d9254cc8-a1eb-4a8d-93fb-c79478afe1b4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

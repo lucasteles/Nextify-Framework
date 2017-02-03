@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Pragma.Abstraction.Business;
 using Pragma.App.DAO;
 using Pragma.App.Models;
 using Pragma.App.Validations;

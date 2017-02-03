@@ -1,4 +1,5 @@
-﻿using Pragma.Extensions;
+﻿using Pragma.Abstraction.Forms.Controls;
+using Pragma.Extensions;
 using Pragma.Forms.Controls;
 using System;
 using System.Collections.Generic;
@@ -72,9 +73,9 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             return GetSelectedKey();
         }
-        public virtual async Task UseAsync(PragmaComboBox combo, Expression<Func<TView, TKey>> key, Expression<Func<TView, object>> value)
+        public virtual async Task UseAsync(IPragmaComboBox combo, Expression<Func<TView, TKey>> key, Expression<Func<TView, object>> value)
         {
-            PgmCombo = combo;
+            PgmCombo =(PragmaComboBox)combo;
 
             ExpKey = key.Compile();
             ExpValue = value.Compile();

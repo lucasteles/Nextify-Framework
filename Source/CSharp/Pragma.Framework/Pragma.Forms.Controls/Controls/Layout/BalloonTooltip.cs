@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core;
+using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -6,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Pragma.Forms.Controls
 {
-    public class BalloonTip : IDisposable
+    public class BalloonTip : IDisposable, IBallontip
     {
         private readonly System.Timers.Timer timer = new System.Timers.Timer();
         private readonly SemaphoreSlim semaphore = new SemaphoreSlim(1);
@@ -128,14 +130,7 @@ namespace Pragma.Forms.Controls
         }
     }
 
-    public enum BalloonIcon
-    {
-        NONE,
-        INFO,
-        WARNING,
-        ERROR
-    }
-
+  
     static class User32
     {
         [DllImport("user32.dll")]

@@ -1,4 +1,5 @@
-﻿using Pragma.Forms.Controls.Forms;
+﻿using Pragma.Abstraction.IOC;
+using Pragma.Forms.Controls.Forms;
 using Pragma.IOC;
 using System;
 using System.Windows.Forms;

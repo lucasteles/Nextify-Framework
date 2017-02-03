@@ -7,13 +7,20 @@ using Pragma.Files;
 using Pragma.Forms.Controllers;
 using Pragma.Forms.Controllers.GridItems;
 using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 using Pragma.Logging;
-using Pragma.Logging.Abstraction;
 using Pragma.Mapping;
 using Pragma.Mapping.Core;
 using ModelViewBinder;
 using Pragma.Scheduling;
+using Pragma.Abstraction.IOC;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.DAO;
+using Pragma.Abstraction.Forms.Controllers;
+using Pragma.Abstraction.Forms.Controllers.GridItems;
+using Pragma.Core;
+using Pragma.Abstraction.Logging;
+using Pragma.Abstraction.Scheduling;
+using Pragma.Abstraction.Files;
 
 namespace Pragma.App.Binding
 {

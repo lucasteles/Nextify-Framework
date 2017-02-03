@@ -65,15 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\IContext.cs" />
     <Compile Include="Abstraction\IEntityConfiguration.cs" />
-    <Compile Include="Abstraction\IRepository.cs" />
-    <Compile Include="Abstraction\IUnitOfWork.cs" />
     <Compile Include="BaseContext.cs" />
     <Compile Include="BaseRepository.cs" />
-    <Compile Include="Abstraction\ISimpleRepository.cs" />
     <Compile Include="Configuration\EntityFrameworkConfiguration.cs" />
-    <Compile Include="ModelState.cs" />
     <Compile Include="SimpleRepository.cs" />
     <Compile Include="MissingDllHack.cs" />
     <Compile Include="KeyedBaseModel.cs" />
@@ -82,9 +77,14 @@
     <Compile Include="UserData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
       <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
       <Name>Pragma.Core</Name>

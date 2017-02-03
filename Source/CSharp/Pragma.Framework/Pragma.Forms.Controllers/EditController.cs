@@ -4,13 +4,16 @@ using Pragma.Forms.Controls;
 using Pragma.Forms.Controls.Forms;
 using ModelViewBinder;
 using System.Threading.Tasks;
+using Pragma.Abstraction.Forms.Controllers;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
 
 namespace Pragma.Forms.Controllers
 {
     public class EditController<TEntity, TKey> : IEditController<TEntity, TKey> where TEntity : class, IModelWithKey<TKey>, new()
     {
 
-        private FormEdit form;
+        private FormEdit _form;
 
         public IModelViewBinder<TEntity> Binder { get; set; }
 
@@ -24,21 +27,21 @@ namespace Pragma.Forms.Controllers
         {
             Binder = binder;
         }
-        public async Task<IModelViewBinder<TEntity>> UseAsync(FormEdit form, IBusiness<TEntity, TKey> business)
+        public async Task<IModelViewBinder<TEntity>> UseAsync(IFormEdit form, IBusiness<TEntity, TKey> business)
         {
             PersistData = form.PersistData;
-            this.form = form;
+            _form = (FormEdit)form;
             var Id = (TKey)(form.ID ?? default(TKey));
             Business = business;
 
-            form.StartLoad(Messages.Loading);
+            _form.StartLoad(Messages.Loading);
             Binder.DisableAll();
 
-            form._binder = Binder;
+            _form._binder = Binder;
 
-            form.cmdOk.Click += cmdOk_ClickAsync;
-            form.FormClosed += (s, e) => Dispose();
-            form.RegisterDispose(Business);
+            _form.cmdOk.Click += cmdOk_ClickAsync;
+            _form.FormClosed += (s, e) => Dispose();
+            _form.RegisterDispose(Business);
 
             if (Id.Equals(default(TKey)) && form.ItemsModel == null)
                 Model = new TEntity();
@@ -54,7 +57,7 @@ namespace Pragma.Forms.Controllers
 
                     Model = (TEntity)form.ItemsModel;
                 }
-                form.lblId.Text = $"ID: {Model.Id.ToString()}";
+                _form.lblId.Text = $"ID: {Model.Id.ToString()}";
             }
 
             Binder.SetSource(Model);
@@ -68,14 +71,14 @@ namespace Pragma.Forms.Controllers
         {
             var result = !PersistData ? await Business.ValidAsync(Model) : await Business.AddAsync(Model);
 
-            form.ShowMessage(result);
-            form.ID = Model.Id;
+            _form.ShowMessage(result);
+            _form.ID = Model.Id;
 
             if (!PersistData)
                 if (result.Success)
-                    form.ItemsModel = Model;
+                    _form.ItemsModel = Model;
                 else
-                    form.ItemsModel = null;
+                    _form.ItemsModel = null;
 
             return result.Success;
         }
@@ -83,7 +86,7 @@ namespace Pragma.Forms.Controllers
         protected async virtual Task<bool> UpdateAsync()
         {
             var result = !PersistData ? await Business.ValidAsync(Model) : await Business.UpdateAsync(Model);
-            form.ShowMessage(result);
+            _form.ShowMessage(result);
             return result.Success;
         }
 
@@ -92,14 +95,14 @@ namespace Pragma.Forms.Controllers
             var button = sender as PragmaButton;
             var result = true;
 
-            form.StartLoad(Messages.Saving);
+            _form.StartLoad(Messages.Saving);
             Binder.DisableAll();
             button.Enabled = false;
 
             if (!PersistData)
                 Binder.FillSource();
 
-            if (await form.ValidateAsync())
+            if (await _form.ValidateAsync())
             {
                 if (Business.IsModified(Model))
                     result = await UpdateAsync();
@@ -112,10 +115,10 @@ namespace Pragma.Forms.Controllers
             }
             button.Enabled = true;
             Binder.EnableAll();
-            form.StopLoad();
+            _form.StopLoad();
 
             if (result)
-                form.Close();
+                _form.Close();
         }
 
         public void Dispose()

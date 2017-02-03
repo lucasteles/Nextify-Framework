@@ -38,6 +38,10 @@
       <HintPath>..\..\packages\DryIoc.WebApi.dll.2.2.0\lib\net45\DryIoc.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -61,15 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\IBinder.cs" />
-    <Compile Include="Abstraction\IContainer.cs" />
     <Compile Include="ContainerFactory.cs" />
-    <Compile Include="Enumerators.cs" />
     <Compile Include="IContainerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DryIocContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{d9254cc8-a1eb-4a8d-93fb-c79478afe1b4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
       <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
       <Name>Pragma.Core</Name>
@@ -80,6 +85,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

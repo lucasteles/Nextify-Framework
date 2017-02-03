@@ -1,8 +1,8 @@
 ﻿
+using Pragma.Abstraction.IOC;
 using Pragma.App.Business;
 
 using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {

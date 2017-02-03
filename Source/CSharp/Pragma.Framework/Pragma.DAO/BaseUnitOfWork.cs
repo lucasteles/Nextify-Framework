@@ -1,4 +1,6 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.DAO;
+using Pragma.Core;
 using Pragma.DAO.Abstraction;
 using Pragma.Extensions;
 using System;

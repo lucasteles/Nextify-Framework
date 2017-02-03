@@ -3,10 +3,12 @@ using ModelViewBinder;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Forms.Controllers;
 
 namespace Pragma.Forms.Controls.Forms
 {
-    public partial class FormEdit : FormBase
+    public partial class FormEdit : FormBase, IFormEdit
     {
         public IModelViewBinder _binder;
         public object ID { get; set; }

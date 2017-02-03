@@ -88,6 +88,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{d9254cc8-a1eb-4a8d-93fb-c79478afe1b4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
       <Project>{379E2087-05CA-42B5-B7CB-C9F3E0D9882D}</Project>
       <Name>Pragma.Core</Name>

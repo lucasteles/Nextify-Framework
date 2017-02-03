@@ -1,4 +1,5 @@
-﻿using Pragma.IOC;
+﻿using Pragma.Abstraction.IOC;
+using Pragma.IOC;
 
 namespace Pragma.App.Binding
 {

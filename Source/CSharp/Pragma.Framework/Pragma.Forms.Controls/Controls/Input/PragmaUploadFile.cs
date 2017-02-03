@@ -1,7 +1,9 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction.Files;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core;
 using Pragma.Core.Icons;
 using Pragma.Files;
-using Pragma.Forms.Controls.Abstraction;
+
 using Pragma.Forms.Controls.Validations;
 using System;
 using System.ComponentModel;

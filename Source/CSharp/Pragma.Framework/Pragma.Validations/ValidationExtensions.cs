@@ -1,6 +1,7 @@
 ﻿
 using FluentValidation;
 using FluentValidation.Resources;
+using Pragma.Abstraction;
 using Pragma.Core;
 using System;
 using System.Linq;

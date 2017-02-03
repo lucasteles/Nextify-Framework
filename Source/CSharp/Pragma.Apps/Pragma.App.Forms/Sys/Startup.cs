@@ -1,4 +1,6 @@
-﻿using Pragma.App.Binding;
+﻿using Pragma.Abstraction.IOC;
+using Pragma.Abstraction.Scheduling;
+using Pragma.App.Binding;
 using Pragma.App.Mapping;
 using Pragma.App.Scheduling;
 using Pragma.IOC;

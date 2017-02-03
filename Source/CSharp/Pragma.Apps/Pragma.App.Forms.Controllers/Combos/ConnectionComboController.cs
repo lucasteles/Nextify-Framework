@@ -4,6 +4,7 @@ using Pragma.App.Business;
 
 using Pragma.Forms.Controllers;
 using Pragma.Forms.Controls;
+using Pragma.Abstraction.Forms.Controls;
 
 namespace Pragma.App.Forms.Controllers.Combos
 {

@@ -1,4 +1,7 @@
-﻿using Pragma.Business.Abstraction;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Forms.Controls;
 using System;
@@ -19,7 +22,7 @@ namespace Pragma.Forms.Controllers.Abstraction
             Business = business;
         }
 
-        public async override Task UseAsync(PragmaComboBox combo, Expression<Func<TView, TViewKey>> key, Expression<Func<TView, object>> value)
+        public async override Task UseAsync(IPragmaComboBox combo, Expression<Func<TView, TViewKey>> key, Expression<Func<TView, object>> value)
         {
             await base.UseAsync(combo, key, value);
         }

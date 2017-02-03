@@ -1,5 +1,8 @@
 ﻿
 using FluentValidation;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.DAO;
 using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.DAO.Abstraction;

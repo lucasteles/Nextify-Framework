@@ -1,4 +1,6 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core;
 using Pragma.Extensions;
 using Pragma.Validations;
 using System;
@@ -25,9 +27,9 @@ namespace Pragma.Forms.Controls
         {
             Ballontip.Close();
         }
-        public BaseValidator<TControl> Validator { get; set; }
+        public IBaseValidator<TControl> Validator { get; set; }
         public IOperationResult ValidState { get; set; }
-        public BalloonTip Ballontip { get; set; }
+        public IBallontip Ballontip { get; set; }
         private static BalloonIcon GetToolTipIcon(FailureSeverity failure)
         {
             var iconDictionary = new Dictionary<FailureSeverity, BalloonIcon>

@@ -156,20 +156,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Pragma.Apps\Pragma.App.Models\Pragma.App.Models.csproj">
-      <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
-      <Name>Pragma.App.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Core\Pragma.Core.csproj">
-      <Project>{379E2087-05CA-42B5-B7CB-C9F3E0D9882D}</Project>
-      <Name>Pragma.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pragma.Extensions\Pragma.Extensions.csproj">
-      <Project>{BAA712F4-1F97-4DE6-97E3-F93A374FD635}</Project>
-      <Name>Pragma.Extensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

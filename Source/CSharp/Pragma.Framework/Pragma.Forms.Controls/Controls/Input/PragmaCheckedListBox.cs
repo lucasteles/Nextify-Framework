@@ -1,5 +1,5 @@
-﻿using Pragma.Core;
-using Pragma.Forms.Controls.Abstraction;
+﻿using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

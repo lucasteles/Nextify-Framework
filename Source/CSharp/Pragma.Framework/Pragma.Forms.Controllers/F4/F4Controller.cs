@@ -2,12 +2,16 @@
 using Pragma.Core;
 using Pragma.Extensions;
 using Pragma.Forms.Controls;
-using Pragma.Forms.Controls.Abstraction;
 using Pragma.Forms.Controls.Forms;
 using Pragma.IOC;
 using ModelViewBinder;
 using System;
 using System.Threading.Tasks;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.IOC;
+using Pragma.Abstraction.Forms.Controls.Abstraction;
 
 namespace Pragma.Forms.Controllers
 {
@@ -99,13 +103,13 @@ namespace Pragma.Forms.Controllers
             FormType = typeof(TForm);
         }
 
-        public virtual async Task<IModelViewBinder<TModel>> UseAsync(PragmaF4TextBox textbox)
+        public virtual async Task<IModelViewBinder<TModel>> UseAsync(IPragmaF4TextBox textbox)
         {
-            F4 = textbox;
-            textbox.OnCallWindow += WindowOpen;
-            textbox.OnSetValue += OnSetValue;
-            textbox.Validating += (s, e) => OnValid();
-            textbox.OnValidate += (s, e) => OnValid();
+            F4 = (PragmaF4TextBox)textbox;
+            F4.OnCallWindow += WindowOpen;
+            F4.OnSetValue += OnSetValue;
+            F4.Validating += (s, e) => OnValid();
+            F4.OnValidate += (s, e) => OnValid();
 
             var defaultValue = new TModel().GetKeyAtributteValue();
             F4.ValueText = defaultValue;

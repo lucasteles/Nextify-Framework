@@ -1,8 +1,10 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction.Forms.Controllers;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Abstraction.IOC;
+using Pragma.Core;
 using Pragma.Core.Icons;
 using Pragma.Forms.Controllers.Abstraction;
 using Pragma.Forms.Controls;
-using Pragma.Forms.Controls.Abstraction;
 using Pragma.Forms.Controls.Forms;
 using Pragma.IOC;
 using System;
@@ -30,15 +32,15 @@ namespace Pragma.Forms.Controllers.GridItems
             GridController = gridForItemsController;
         }
 
-        public void SetFormEdit<TForm>() where TForm : FormEdit
+        public void SetFormEdit<TForm>() where TForm : IFormEdit
         {
             FormEditType = typeof(TForm);
         }
 
-        public async Task UseAsync(PragmaItemsContainer items)
+        public async Task UseAsync(IPragmaItemsContainer items)
         {
 
-            _gridItems = items;
+            _gridItems = (PragmaItemsContainer)items;
 
             _gridItems.OnGetValue += OnGet;
             _gridItems.OnSetValue += OnSet;

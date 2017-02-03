@@ -1,5 +1,7 @@
-﻿using Pragma.Core;
-using Pragma.IOC.Abstraction;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.IOC;
+using Pragma.Core;
+
 
 namespace Pragma.IOC
 {

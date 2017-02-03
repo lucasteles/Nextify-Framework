@@ -1,14 +1,15 @@
-﻿using DryIoc;
+﻿using Pragma.Abstraction.IOC;
+using DryIoc;
 using DryIoc.WebApi;
-using Pragma.IOC.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Pragma.Core;
 
 namespace Pragma.IOC
 {
-    public class DryIocContainer : IContainer
+    public class DryIocContainer : Abstraction.IOC.IContainer
     {
         private readonly Container _container;
 
@@ -60,14 +61,14 @@ namespace Pragma.IOC
                 item.SetBinding(this);
         }
 
-        public void RegisterDelegate<TService>(Func<IContainer, TService> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
+        public void RegisterDelegate<TService>(Func<Abstraction.IOC.IContainer, TService> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
             var handler = factoryDelegate;
             if (handler != null)
                 _container.RegisterDelegate((e) => handler(this), reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
         }
 
-        public void RegisterDelegate(Type type, Func<IContainer, object> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
+        public void RegisterDelegate(Type type, Func<Abstraction.IOC.IContainer, object> factoryDelegate, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
             _container.RegisterDelegate(type, (e) => factoryDelegate?.Invoke(this), reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
         }

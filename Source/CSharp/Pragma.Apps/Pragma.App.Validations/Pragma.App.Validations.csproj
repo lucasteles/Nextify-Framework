@@ -54,6 +54,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Core\Pragma.Core.csproj">
       <Project>{379e2087-05ca-42b5-b7cb-c9f3e0d9882d}</Project>
       <Name>Pragma.Core</Name>

@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -67,6 +67,10 @@
     <ProjectReference Include="..\..\Pragma.Framework\ModelViewBinder\ModelViewBinder.csproj">
       <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
       <Name>ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pragma.Framework\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Pragma.Framework\Pragma.Business\Pragma.Business.csproj">
       <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>

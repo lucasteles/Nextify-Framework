@@ -1,4 +1,5 @@
-﻿using Pragma.Core.Icons;
+﻿using Pragma.Abstraction.Forms.Controls;
+using Pragma.Core.Icons;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controls.Forms

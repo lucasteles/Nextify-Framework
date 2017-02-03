@@ -1,6 +1,7 @@
 ﻿using Pragma.Core;
 using System.ComponentModel.DataAnnotations;
 using System;
+using Pragma.Abstraction;
 
 namespace Pragma.App.Models
 {

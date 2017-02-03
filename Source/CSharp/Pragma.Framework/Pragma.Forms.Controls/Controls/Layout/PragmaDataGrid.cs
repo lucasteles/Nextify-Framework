@@ -1,4 +1,5 @@
 ﻿using Equin.ApplicationFramework;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Core;
 using Pragma.Forms.Controls.Tools;
 using System;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Pragma.Forms.Controls
 {
-    public partial class PragmaDataGrid : PragmaUserControl
+    public partial class PragmaDataGrid : PragmaUserControl, IPragmaDataGrid
     {
         #region Propriedades
         /// <summary>
@@ -80,7 +81,7 @@ namespace Pragma.Forms.Controls
         /// <typeparam name="TView">Tipo da View.</typeparam>
         /// <param name="list">Lista de dados.</param>
         /// <param name="columns">Colunas da Grid</param>
-        public void BindList<TView>(BindingListView<TView> list, List<PgmColumn> columns)
+        public void BindList<TView>(BindingListView<TView> list, IList<PgmColumn> columns)
         {
             if (!UseCustomFilter)
                 ClearFilter();

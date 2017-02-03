@@ -1,6 +1,6 @@
-﻿using Pragma.App.DAO;
+﻿using Pragma.Abstraction.IOC;
+using Pragma.App.DAO;
 using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {

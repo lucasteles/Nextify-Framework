@@ -1,9 +1,9 @@
 ﻿using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Interfaces;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Core;
-
-using Pragma.Forms.Controls.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Data;

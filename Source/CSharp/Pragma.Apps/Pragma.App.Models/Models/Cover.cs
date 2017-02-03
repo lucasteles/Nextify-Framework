@@ -1,4 +1,5 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction;
+using Pragma.Core;
 
 namespace Pragma.App.Models
 {

@@ -1,4 +1,5 @@
-﻿using Pragma.App.Forms.Controllers;
+﻿
+using Pragma.App.Forms.Controllers;
 using Pragma.Forms.Controls.Forms;
 using Pragma.IOC;
 
@@ -9,9 +10,7 @@ namespace Pragma.App.Forms
 
 
         public CoursesConsult(
-                ICourseGridController controller,
-                IContainer container
-
+                ICourseGridController controller
             ) : base(controller)
         {
 

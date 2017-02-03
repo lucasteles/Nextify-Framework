@@ -91,7 +91,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Forms.Models", "Prag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelViewBinder", "Pragma.Framework\ModelViewBinder\ModelViewBinder.csproj", "{A2B77554-A658-48B4-8B03-6AB7D52C79B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Abstractions", "Pragma.Abstractions\Pragma.Abstractions.csproj", "{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Abstraction", "Pragma.Framework\Pragma.Abstractions\Pragma.Abstraction.csproj", "{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

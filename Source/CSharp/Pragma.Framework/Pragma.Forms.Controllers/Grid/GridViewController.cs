@@ -1,4 +1,7 @@
 ﻿using Equin.ApplicationFramework;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Extensions;

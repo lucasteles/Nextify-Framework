@@ -1,6 +1,6 @@
 ﻿using MetroFramework.Controls;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Core;
-using Pragma.Forms.Controls.Abstraction;
 using System;
 using System.Threading.Tasks;
 

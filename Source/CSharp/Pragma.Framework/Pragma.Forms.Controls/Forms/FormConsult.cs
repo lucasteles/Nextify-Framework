@@ -1,4 +1,8 @@
-﻿using Pragma.Core;
+﻿using Pragma.Abstraction;
+using Pragma.Abstraction.Files;
+using Pragma.Abstraction.Forms.Controls;
+using Pragma.Abstraction.IOC;
+using Pragma.Core;
 using Pragma.Core.Icons;
 using Pragma.Excel;
 using Pragma.Files;

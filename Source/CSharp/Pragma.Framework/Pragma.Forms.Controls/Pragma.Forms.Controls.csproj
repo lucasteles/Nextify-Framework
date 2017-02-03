@@ -87,12 +87,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\IComboController.cs" />
-    <Compile Include="Abstraction\IControl.cs" />
-    <Compile Include="Abstraction\IControlWithValidation.cs" />
-    <Compile Include="Abstraction\IF4Controller.cs" />
-    <Compile Include="Abstraction\IGridController.cs" />
-    <Compile Include="Abstraction\IGridItemsController.cs" />
     <Compile Include="BaseIcons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -264,7 +258,6 @@
     </Compile>
     <Compile Include="Tools\PgmDataGridViewCheckBoxHeaderCell.cs" />
     <Compile Include="Validations\ControlValidator.cs" />
-    <Compile Include="Abstraction\IControlValidation.cs" />
     <Compile Include="Validations\PragmaComboBoxValidation.cs" />
     <Compile Include="Validations\PragmaUploadFileValidation.cs" />
     <Compile Include="Validations\PragmaFindPathValidation.cs" />
@@ -274,6 +267,10 @@
     <ProjectReference Include="..\ModelViewBinder\ModelViewBinder.csproj">
       <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
       <Name>ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.Business\Pragma.Business.csproj">
       <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>

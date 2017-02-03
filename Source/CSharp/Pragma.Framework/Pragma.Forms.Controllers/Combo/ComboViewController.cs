@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pragma.Business.Abstraction;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
 
 namespace Pragma.Forms.Controllers
 {

@@ -1,9 +1,8 @@
 ﻿
 using FluentValidation;
+using Pragma.Abstraction.IOC;
 using Pragma.App.Models;
 using Pragma.App.Validations;
-using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {

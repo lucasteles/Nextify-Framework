@@ -1,6 +1,7 @@
 ﻿using log4net;
 using log4net.Appender;
-using Pragma.Logging.Abstraction;
+using Pragma.Abstraction.Logging;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
 using FluentValidation.Internal;
+using Pragma.Abstraction.Forms.Controls;
 using System;
 using System.Linq.Expressions;
 
 namespace Pragma.Validations
 {
-    public class BaseValidator<T> : AbstractValidator<T>, IValidator<T>
+    public class BaseValidator<T> : AbstractValidator<T>, IBaseValidator<T>
     {
         public new IRuleBuilderInitial<T, TProperty> RuleFor<TProperty>(Expression<Func<T, TProperty>> expression)
         {

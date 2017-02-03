@@ -1,4 +1,7 @@
 ﻿using Equin.ApplicationFramework;
+using Pragma.Abstraction;
+using Pragma.Abstraction.Business;
+using Pragma.Abstraction.Forms.Controls;
 using Pragma.Business.Abstraction;
 using Pragma.Core;
 using Pragma.Forms.Controls;
@@ -146,7 +149,7 @@ namespace Pragma.Forms.Controllers.Abstraction
         {
             Business = business;
         }
-        public async override Task UseAsync(PragmaDataGrid grid)
+        public async override Task UseAsync(IPragmaDataGrid grid)
         {
             if (loaded)
                 return;

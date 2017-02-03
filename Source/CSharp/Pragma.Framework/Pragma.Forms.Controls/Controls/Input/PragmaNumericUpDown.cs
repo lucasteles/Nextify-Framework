@@ -1,10 +1,10 @@
 ﻿using Pragma.Core;
-using Pragma.Forms.Controls.Abstraction;
 using ModelViewBinder;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pragma.Abstraction.Forms.Controls;
 
 namespace Pragma.Forms.Controls
 {

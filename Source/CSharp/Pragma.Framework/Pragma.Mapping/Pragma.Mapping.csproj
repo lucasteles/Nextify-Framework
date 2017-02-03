@@ -46,19 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMapper.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ProfileRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Pragma.Apps\Pragma.App.Models\Pragma.App.Models.csproj">
       <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
       <Name>Pragma.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Pragma.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pragma.Forms.Models\Pragma.Forms.Models.csproj">
       <Project>{FAB3CC55-1B71-4841-B471-3DA7F1E33FE1}</Project>

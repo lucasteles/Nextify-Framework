@@ -1,4 +1,5 @@
-﻿using Pragma.App.Models;
+﻿using Pragma.Abstraction.DAO;
+using Pragma.App.Models;
 using Pragma.DAO;
 using Pragma.DAO.Abstraction;
 using System.Data.Entity;

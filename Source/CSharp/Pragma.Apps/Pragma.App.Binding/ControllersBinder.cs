@@ -1,9 +1,9 @@
 ﻿
+using Pragma.Abstraction.IOC;
 using Pragma.App.Forms.Controllers;
 using Pragma.App.Forms.Controllers.Combos;
 
 using Pragma.IOC;
-using Pragma.IOC.Abstraction;
 
 namespace Pragma.App.Binding
 {
