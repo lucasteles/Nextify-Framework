@@ -413,10 +413,10 @@ namespace Pragma.DAO
                     changed = true;
                 }
 
-                if (changed && UserData.UserID.HasValue)
-                {
-                    baseEntity.Owner = UserData.UserID;
-                }
+                //if (changed && UserData.UserID.HasValue)
+                //{
+                //    baseEntity.Owner = UserData.UserID;
+                //}
 
             }
 

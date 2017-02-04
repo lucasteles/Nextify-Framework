@@ -24,6 +24,7 @@ namespace Pragma.App.Models
         [PgmColumn(DisplayText = "Preço", Format = "#,###,###.00")]
         public float FullPrice { get; set; }
 
+        
         public bool Inative { get; set; }
        
     }

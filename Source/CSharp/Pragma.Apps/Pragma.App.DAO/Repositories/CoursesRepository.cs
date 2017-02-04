@@ -51,9 +51,6 @@ namespace Pragma.App.DAO
                 .HasForeignKey(c => c.AuthorId)
                 .WillCascadeOnDelete(false);
 
-            modelConfig.HasRequired(c => c.Cover)
-                .WithRequiredPrincipal(c => c.Course);
-
             modelConfig.HasMany(c => c.Tags)
                 .WithMany(t => t.Courses)
                 .Map(m =>

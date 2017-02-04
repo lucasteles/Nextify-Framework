@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pragma.App.Models
 {
-    public class Author : IModelWithKey
+    public class Author : BaseModel, IModelWithKey
     {
         public Author()
         {

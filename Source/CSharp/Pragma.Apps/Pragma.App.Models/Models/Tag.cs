@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Pragma.App.Models
 {
-    public class Tag : IModelWithKey
+    public class Tag : BaseModel, IModelWithKey
     {
         public Tag()
         {

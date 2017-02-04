@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Business", "3-Business", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tools", "5-Tools", "{B9CA9BE2-0EA1-455E-849F-860DE219BEF8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Framework", "3-Framework", "{96D8DE45-5547-440F-9E20-F31ED7464BB8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Framework", "2-Framework", "{96D8DE45-5547-440F-9E20-F31ED7464BB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-App", "1-App", "{444A07AB-75DC-4BB4-94A5-8C3765D7C299}"
 EndProject
@@ -84,8 +84,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Tests", "Pragma.Framework\Pragma.Tests\Pragma.Tests.csproj", "{7E8226F0-BD6A-4344-9533-47A017419C00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Mail", "Pragma.Framework\Pragma.Mail\Pragma.Mail.csproj", "{99465696-0D53-4D73-A020-FF5FC93D27B6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{86441BEE-6043-4E78-9AB9-BA4C9277EFB3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pragma.Forms.Models", "Pragma.Framework\Pragma.Forms.Models\Pragma.Forms.Models.csproj", "{FAB3CC55-1B71-4841-B471-3DA7F1E33FE1}"
 EndProject

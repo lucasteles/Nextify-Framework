@@ -8,9 +8,7 @@ namespace Pragma.Core
     {
         public bool Inative { get; set; }
 
-        public int? Owner { get; set; }
-
-
+       
         public DateTime? Created { get; set; }
 
 
