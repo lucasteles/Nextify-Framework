@@ -38,17 +38,13 @@ namespace Pragma.Forms.Controls.Forms
             this.line = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.buttonsPanel = new System.Windows.Forms.Panel();
-            this.StatusBar = new System.Windows.Forms.StatusStrip();
-            this.ToolConfig = new System.Windows.Forms.ToolStripSplitButton();
-            this.ToolRights = new System.Windows.Forms.ToolStripMenuItem();
-            this.SpinnerLoad = new MetroFramework.Controls.MetroProgressSpinner();
             this.cmdHelp = new Pragma.Forms.Controls.PragmaButton();
             this.lblLoading = new Pragma.Forms.Controls.PragmaLabel();
+            this.SpinnerLoad = new MetroFramework.Controls.MetroProgressSpinner();
             ((System.ComponentModel.ISupportInitialize)(this.MetroStyleManager)).BeginInit();
             this.MainPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
-            this.StatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // MetroStyleManager
@@ -101,70 +97,17 @@ namespace Pragma.Forms.Controls.Forms
             // buttonsPanel
             // 
             this.buttonsPanel.Controls.Add(this.cmdHelp);
-            this.buttonsPanel.Controls.Add(this.StatusBar);
             this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonsPanel.Location = new System.Drawing.Point(549, 0);
+            this.buttonsPanel.Location = new System.Drawing.Point(590, 0);
             this.buttonsPanel.Name = "buttonsPanel";
-            this.buttonsPanel.Size = new System.Drawing.Size(66, 21);
+            this.buttonsPanel.Size = new System.Drawing.Size(25, 21);
             this.buttonsPanel.TabIndex = 72;
-            // 
-            // StatusBar
-            // 
-            this.StatusBar.AutoSize = false;
-            this.StatusBar.BackColor = System.Drawing.Color.White;
-            this.StatusBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.StatusBar.GripMargin = new System.Windows.Forms.Padding(0);
-            this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolConfig});
-            this.StatusBar.Location = new System.Drawing.Point(29, 0);
-            this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Padding = new System.Windows.Forms.Padding(0);
-            this.StatusBar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StatusBar.Size = new System.Drawing.Size(37, 21);
-            this.StatusBar.SizingGrip = false;
-            this.StatusBar.TabIndex = 84;
-            this.StatusBar.Text = "StatusBar";
-            // 
-            // ToolConfig
-            // 
-            this.ToolConfig.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolConfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolRights});
-            this.ToolConfig.Image = ((System.Drawing.Image)(resources.GetObject("ToolConfig.Image")));
-            this.ToolConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ToolConfig.Margin = new System.Windows.Forms.Padding(0);
-            this.ToolConfig.Name = "ToolConfig";
-            this.ToolConfig.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always;
-            this.ToolConfig.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ToolConfig.Size = new System.Drawing.Size(37, 20);
-            this.ToolConfig.Text = "toolStripSplitButton1";
-            // 
-            // ToolRights
-            // 
-            this.ToolRights.Image = ((System.Drawing.Image)(resources.GetObject("ToolRights.Image")));
-            this.ToolRights.Name = "ToolRights";
-            this.ToolRights.Size = new System.Drawing.Size(125, 22);
-            this.ToolRights.Text = "Direitos";
-            // 
-            // SpinnerLoad
-            // 
-            this.SpinnerLoad.Dock = System.Windows.Forms.DockStyle.Left;
-            this.SpinnerLoad.Location = new System.Drawing.Point(12, 0);
-            this.SpinnerLoad.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.SpinnerLoad.Maximum = 100;
-            this.SpinnerLoad.Name = "SpinnerLoad";
-            this.SpinnerLoad.Size = new System.Drawing.Size(21, 21);
-            this.SpinnerLoad.TabIndex = 69;
-            this.SpinnerLoad.TabStop = false;
-            this.SpinnerLoad.UseSelectable = true;
-            this.SpinnerLoad.UseStyleColors = true;
-            this.SpinnerLoad.Visible = false;
             // 
             // cmdHelp
             // 
             this.cmdHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdHelp.BackgroundImage")));
             this.cmdHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdHelp.Location = new System.Drawing.Point(2, 2);
+            this.cmdHelp.Location = new System.Drawing.Point(3, 0);
             this.cmdHelp.Name = "cmdHelp";
             this.cmdHelp.Size = new System.Drawing.Size(22, 22);
             this.cmdHelp.TabIndex = 85;
@@ -181,6 +124,20 @@ namespace Pragma.Forms.Controls.Forms
             this.lblLoading.Size = new System.Drawing.Size(56, 19);
             this.lblLoading.TabIndex = 70;
             this.lblLoading.Text = "Loading";
+            // 
+            // SpinnerLoad
+            // 
+            this.SpinnerLoad.Dock = System.Windows.Forms.DockStyle.Left;
+            this.SpinnerLoad.Location = new System.Drawing.Point(12, 0);
+            this.SpinnerLoad.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.SpinnerLoad.Maximum = 100;
+            this.SpinnerLoad.Name = "SpinnerLoad";
+            this.SpinnerLoad.Size = new System.Drawing.Size(21, 21);
+            this.SpinnerLoad.TabIndex = 69;
+            this.SpinnerLoad.TabStop = false;
+            this.SpinnerLoad.UseSelectable = true;
+            this.SpinnerLoad.UseStyleColors = true;
+            this.SpinnerLoad.Visible = false;
             // 
             // FormBase
             // 
@@ -204,8 +161,6 @@ namespace Pragma.Forms.Controls.Forms
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
-            this.StatusBar.ResumeLayout(false);
-            this.StatusBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -215,11 +170,8 @@ namespace Pragma.Forms.Controls.Forms
         protected System.Windows.Forms.Panel buttonsPanel;
         private System.Windows.Forms.Label line;
         private MetroFramework.Controls.MetroProgressBar TopProgressbar;
-        protected System.Windows.Forms.ToolStripMenuItem ToolRights;
         public System.Windows.Forms.Panel TopPanel;
         protected PragmaButton cmdHelp;
-        public System.Windows.Forms.ToolStripSplitButton ToolConfig;
-        protected System.Windows.Forms.StatusStrip StatusBar;
         protected PragmaLabel lblLoading;
         protected MetroFramework.Controls.MetroProgressSpinner SpinnerLoad;
         public MetroFramework.Components.MetroStyleManager MetroStyleManager;
