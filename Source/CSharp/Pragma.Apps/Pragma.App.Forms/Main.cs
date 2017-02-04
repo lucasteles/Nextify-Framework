@@ -32,8 +32,8 @@ namespace Pragma.App.Forms
             var menus = new List<PragmaMenuItem>
             {
                 new PragmaMenuItem() {Name="Cursos", Icon = Weather.lightning_bolt, ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
-                new PragmaMenuItem() {Name="Authors", Icon = Weather.lightning_bolt},
-                new PragmaMenuItem() {Name="Tags", Icon = Weather.lightning_bolt }
+                new PragmaMenuItem() {Name="Authors", Icon = Weather.rain},
+                new PragmaMenuItem() {Name="Tags", Icon = Weather.sun }
             };
 
             pgmMenu1.SetMenus(menus);

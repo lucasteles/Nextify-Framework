@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.TopProgressbar = new MetroFramework.Controls.MetroProgressBar();
             this.pgmMenu1 = new Pragma.Forms.Controls.PragmaMenuControl();
-            this.mainBrowser = new System.Windows.Forms.WebBrowser();
             this.MainPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -40,16 +39,14 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.mainBrowser);
             this.MainPanel.Controls.Add(this.pgmMenu1);
             this.MainPanel.Size = new System.Drawing.Size(942, 505);
             this.MainPanel.Controls.SetChildIndex(this.TopPanel, 0);
             this.MainPanel.Controls.SetChildIndex(this.pgmMenu1, 0);
-            this.MainPanel.Controls.SetChildIndex(this.mainBrowser, 0);
             // 
             // buttonsPanel
             // 
-            this.buttonsPanel.Location = new System.Drawing.Point(871, 0);
+            this.buttonsPanel.Location = new System.Drawing.Point(912, 0);
             // 
             // TopPanel
             // 
@@ -83,16 +80,6 @@
             this.pgmMenu1.TabIndex = 78;
             this.pgmMenu1.UseSelectable = true;
             // 
-            // mainBrowser
-            // 
-            this.mainBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainBrowser.Location = new System.Drawing.Point(238, 31);
-            this.mainBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.mainBrowser.Name = "mainBrowser";
-            this.mainBrowser.Size = new System.Drawing.Size(704, 474);
-            this.mainBrowser.TabIndex = 79;
-            this.mainBrowser.Url = new System.Uri("http://play.grafana.org/dashboard/db/stats", System.UriKind.Absolute);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +101,5 @@
 
         private Pragma.Forms.Controls.PragmaMenuControl pgmMenu1;
         private MetroFramework.Controls.MetroProgressBar TopProgressbar;
-        private System.Windows.Forms.WebBrowser mainBrowser;
     }
 }

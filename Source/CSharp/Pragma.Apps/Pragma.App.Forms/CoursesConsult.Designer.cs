@@ -28,15 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.MainPanel.SuspendLayout();
+            this.buttonsPanel.SuspendLayout();
+            this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MetroStyleManager)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Grid
+            // 
+            this.Grid.IsTextFilterVisible = true;
+            this.Grid.Location = new System.Drawing.Point(0, 30);
+            this.Grid.Size = new System.Drawing.Size(749, 315);
             // 
             // MainPanel
             // 
-            this.MainPanel.Size = new System.Drawing.Size(749, 347);
+            this.MainPanel.Size = new System.Drawing.Size(749, 345);
             // 
             // buttonsPanel
             // 
-            this.buttonsPanel.Location = new System.Drawing.Point(682, 0);
+            this.buttonsPanel.Location = new System.Drawing.Point(678, 0);
+            // 
+            // TopPanel
+            // 
+            this.TopPanel.Size = new System.Drawing.Size(749, 25);
+            // 
+            // lblLoading
+            // 
+            this.lblLoading.Location = new System.Drawing.Point(37, 0);
+            // 
+            // SpinnerLoad
+            // 
+            this.SpinnerLoad.Size = new System.Drawing.Size(25, 25);
             // 
             // CoursesConsult
             // 
@@ -45,6 +67,11 @@
             this.ClientSize = new System.Drawing.Size(769, 415);
             this.Name = "CoursesConsult";
             this.Text = "Consulta de cursos";
+            this.MainPanel.ResumeLayout(false);
+            this.buttonsPanel.ResumeLayout(false);
+            this.TopPanel.ResumeLayout(false);
+            this.TopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MetroStyleManager)).EndInit();
             this.ResumeLayout(false);
 
         }
