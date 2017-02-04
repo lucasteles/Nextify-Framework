@@ -78,6 +78,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(640, 360);
             this.Name = "frmPrincipal";
+            this.Text = "Sistema Cursos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MDIParent_KeyPress);
             this.MainPanel.ResumeLayout(false);

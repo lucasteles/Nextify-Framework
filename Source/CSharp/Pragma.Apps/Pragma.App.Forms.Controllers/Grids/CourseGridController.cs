@@ -20,6 +20,7 @@ namespace Pragma.App.Forms.Controllers
     {
         public CourseGridController(ICoursesBusiness business) : base(business)
         {
+            UseDatabaseDynamicSearch = true;
 
             // menu de contexto
             AddMenu(new Dictionary<string, Action>

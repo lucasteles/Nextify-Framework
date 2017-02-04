@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pragma.DAO.Abstraction
 {
-    internal interface IEntityConfiguration<T> where T : class
+    public interface IEntityConfiguration<T> where T : class
     {
         EntityTypeConfiguration<T> GetConfiguration();
             

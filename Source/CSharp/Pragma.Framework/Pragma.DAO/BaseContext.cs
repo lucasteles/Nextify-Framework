@@ -2,6 +2,7 @@
 using Pragma.Abstraction.DAO;
 using Pragma.Core;
 using Pragma.DAO.Abstraction;
+using Pragma.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,7 +14,7 @@ using System.Reflection;
 namespace Pragma.DAO
 {
     [DbConfigurationType(typeof(EntityFrameworkConfiguration))]
-    public abstract class BaseContext : DbContext, IContext
+    public  class BaseContext : DbContext, IContext
     {
         internal IList<Action<DbModelBuilder>> modelConfigurationActions = new List<Action<DbModelBuilder>>();
         protected bool loaded;
@@ -51,9 +52,9 @@ namespace Pragma.DAO
         }
 
 
-        internal void LoadRepository<T>() where T : class, IEntityConfiguration<T>, new()
+        public void LoadRepository<T,TEntity>() where T :  IEntityConfiguration<TEntity> where TEntity :class
         {
-            var repository = (T)Activator.CreateInstance(typeof(T), args: null);
+            var repository = (T)Activator.CreateInstance(typeof(T), args: this);
 
             modelConfigurationActions.Add(c =>
                 c.Configurations.Add(repository.GetConfiguration())
@@ -65,14 +66,39 @@ namespace Pragma.DAO
         {
             var type = typeof(IEntityConfiguration<>);
             var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
+             .SelectMany(s => {
+                  try
+                  {
+                      return s.GetTypes();
+                  }
+                  catch
+                  {
+                      return new Type[] { };
+                  }
+
+              })
+              .Where(e=>e.Name.ToLower().Contains("repository") && !e.IsInterface
+                    && e != (typeof(BaseRepository<>))
+                    && e != (typeof(BaseRepository<,>))
+                    && e != (typeof(SimpleRepository<>))
+
+              )
+
+                .Where(p => p.IsAssignableToGenericType(type))
+                .ToList();
+
+
+            
 
             foreach (var item in types)
             {
-                var method = item.GetMethod(nameof(IEntityConfiguration<string>.GetConfiguration));
-                var genericMethod = method.MakeGenericMethod(type);
-                genericMethod.Invoke(null, null); 
+
+                MethodInfo method = GetType().GetMethod(nameof(LoadRepository));
+                var entityType = item.GetInterfaces().Where(e=>e.IsAssignableToGenericType(type)).FirstOrDefault().GetGenericArguments().FirstOrDefault();
+                MethodInfo genericMethod = method.MakeGenericMethod(item, entityType);
+                genericMethod.Invoke(this, null);
+
+               
             }
 
         }

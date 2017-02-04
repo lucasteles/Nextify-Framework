@@ -22,7 +22,7 @@ namespace Pragma.App.Models
         public string AuthorName { get; set; }
 
         [PgmColumn(DisplayText = "Preço", Format = "#,###,###.00")]
-        public decimal FullPrice { get; set; }
+        public float FullPrice { get; set; }
 
         public bool Inative { get; set; }
        

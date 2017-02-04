@@ -134,6 +134,18 @@
             // 
             this.txtLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.txtLogin.BlankIfZero = true;
+            // 
+            // 
+            // 
+            this.txtLogin.CustomButton.Image = null;
+            this.txtLogin.CustomButton.Location = new System.Drawing.Point(122, 1);
+            this.txtLogin.CustomButton.Name = "";
+            this.txtLogin.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtLogin.CustomButton.Style = MetroFramework.MetroColorStyle.Red;
+            this.txtLogin.CustomButton.TabIndex = 1;
+            this.txtLogin.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtLogin.CustomButton.UseSelectable = true;
+            this.txtLogin.CustomButton.Visible = false;
             this.txtLogin.ForeColor = System.Drawing.Color.Black;
             this.txtLogin.Lines = new string[0];
             this.txtLogin.Location = new System.Drawing.Point(328, 38);
@@ -162,6 +174,18 @@
             // 
             this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
             this.txtSenha.BlankIfZero = true;
+            // 
+            // 
+            // 
+            this.txtSenha.CustomButton.Image = null;
+            this.txtSenha.CustomButton.Location = new System.Drawing.Point(122, 1);
+            this.txtSenha.CustomButton.Name = "";
+            this.txtSenha.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtSenha.CustomButton.Style = MetroFramework.MetroColorStyle.Red;
+            this.txtSenha.CustomButton.TabIndex = 1;
+            this.txtSenha.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSenha.CustomButton.UseSelectable = true;
+            this.txtSenha.CustomButton.Visible = false;
             this.txtSenha.ForeColor = System.Drawing.Color.Black;
             this.txtSenha.Lines = new string[0];
             this.txtSenha.Location = new System.Drawing.Point(328, 71);
@@ -221,7 +245,6 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.Resizable = false;
-            this.ShowInTaskbar = true;
             this.Text = "Login";
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();

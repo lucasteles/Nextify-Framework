@@ -13,9 +13,7 @@ namespace Pragma.App.Forms
                 ICourseGridController controller
             ) : base(controller)
         {
-
-
-
+            
             SetFormEdit<CoursesEdit>();
 
             InitializeComponent();

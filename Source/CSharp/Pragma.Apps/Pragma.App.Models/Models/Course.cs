@@ -14,14 +14,12 @@ namespace Pragma.App.Models
 
         [Display(Name = "Nome")]
         public string Name { get; set; }
-
-
-
+        
         public string Description { get; set; }
 
         public int Level { get; set; }
 
-        public decimal FullPrice { get; set; }
+        public float FullPrice { get; set; }
 
         public virtual Author Author { get; set; }
 

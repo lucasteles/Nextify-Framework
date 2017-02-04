@@ -188,7 +188,6 @@ namespace Pragma.Forms.Controls.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.MainPanel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FormBase";
