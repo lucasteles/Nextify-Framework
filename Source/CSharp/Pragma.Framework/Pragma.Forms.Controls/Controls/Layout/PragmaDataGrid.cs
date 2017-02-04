@@ -16,7 +16,9 @@ namespace Pragma.Forms.Controls
         /// <summary>
         /// Cor das linhas ímpar
         /// </summary>
-        private static readonly Color OddRowColor = PragmaColor.CinzaLinhaDataGrid;
+        public Color OddRowColor { get; set; } = ColorTool.CinzaLinhaDataGrid;
+
+        public Color SelectionBackColor { get; set; } = ColorTool.MetroRed;
         /// <summary>
         /// Indica se o botão esquerdo do mouse está pressionado.
         /// </summary>
@@ -71,6 +73,7 @@ namespace Pragma.Forms.Controls
             grdView.MultiSelect = false;
             grdView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            Grid.DefaultCellStyle.SelectionBackColor = SelectionBackColor;
         }
         #endregion
 

@@ -58,13 +58,13 @@ namespace Pragma.Forms.Controls
             var pgmControl = (IControl)control;
             var baseControl = control;
             if (!baseControl.Enabled)
-                baseControl.BackColor = PragmaColor.CinzaDisabled;
+                baseControl.BackColor = ColorTool.CinzaDisabled;
             else if (!pgmControl.IsValid())
-                baseControl.BackColor = PragmaColor.VermelhoError;
+                baseControl.BackColor = ColorTool.VermelhoError;
             else if (pgmControl.Required)
-                baseControl.BackColor = PragmaColor.AmareloAlert;
+                baseControl.BackColor = ColorTool.AmareloAlert;
             else
-                baseControl.BackColor = PragmaColor.Branco;
+                baseControl.BackColor = System.Drawing.Color.White;
         }
 
     }

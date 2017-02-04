@@ -3,9 +3,10 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace PGM.Common
+namespace Pragma.Core
 {
-    public static class PragmaImage
+    public static class ImageTool
+
     {
         /// <summary>
         /// Faz um color shift na imagem, mudando o espectro de cores baseado na cor passada.
@@ -20,7 +21,7 @@ namespace PGM.Common
             //ColorShift
             for (int x = 0; x < image.Width; x++)
                 for (int y = 0; y < image.Height; y++)
-                    newImage.SetPixel(x, y, PragmaColor.ColorShift(image.GetPixel(x, y), color));
+                    newImage.SetPixel(x, y, ColorTool.ColorShift(image.GetPixel(x, y), color));
 
             return newImage;
         }

@@ -57,7 +57,7 @@ namespace Pragma.Forms.Controls
         public void ShowTootipMessage(string message, FailureSeverity severity, string title = "")
         {
             if (severity == FailureSeverity.Warning || severity == FailureSeverity.Error)
-                txtF4.BackColor = PragmaColor.VermelhoError;
+                txtF4.BackColor = ColorTool.VermelhoError;
 
             txtF4.ShowTootipMessage(message, severity, title, -1);
         }

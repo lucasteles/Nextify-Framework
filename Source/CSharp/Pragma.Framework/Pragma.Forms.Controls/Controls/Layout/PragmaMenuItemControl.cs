@@ -1,4 +1,4 @@
-﻿using PGM.Common;
+﻿
 using Pragma.Core;
 using Pragma.Core.Properties;
 using Pragma.Forms.Models;
@@ -21,6 +21,7 @@ namespace Pragma.Forms.Controls
         public Bitmap Icone { get; set; }
         public int Nivel { get; set; }
         public Action ButtonAction { get; set; }
+        public Color IconBaseColor { get; set; } =  ColorTool.MetroRed ;
 
         public PragmaMenuItemControl(PragmaMenuItem menuItem, int nivel)
         {
@@ -84,7 +85,7 @@ namespace Pragma.Forms.Controls
 
             //Linha vermelha lateral
             if (_isMouseOver)
-                using (var brush = new SolidBrush(PragmaColor.VermelhoPragma))
+                using (var brush = new SolidBrush(IconBaseColor))
                     e.Graphics.FillRectangle(brush, new Rectangle(0, 0, 5, ButtonHeight));
 
             //Borda inferior
@@ -123,7 +124,7 @@ namespace Pragma.Forms.Controls
             var rect = new Rectangle(Nivel * ChildPadding + ImagePadding + 5, ImagePadding, ImageSize, ImageSize);
 
             if (Icone != null)
-                e.Graphics.DrawImage(PragmaImage.ColorShift(PragmaImage.Resize(Icone, ImageSize, ImageSize), PragmaColor.VermelhoPragma), rect);
+                e.Graphics.DrawImage(ImageTool.ColorShift(ImageTool.Resize(Icone, ImageSize, ImageSize), IconBaseColor), rect);
         }
 
         private void CmdAbrir_MouseLeave(object sender, EventArgs e)

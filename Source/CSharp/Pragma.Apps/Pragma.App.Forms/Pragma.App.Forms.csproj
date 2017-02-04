@@ -123,11 +123,11 @@
     <Compile Include="CoursesEdit.Designer.cs">
       <DependentUpon>CoursesEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="CoursesEdit.resx">
       <DependentUpon>CoursesEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,6 +1,6 @@
 ﻿namespace Pragma.App.Forms
 {
-    partial class frmPrincipal
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.TopProgressbar = new MetroFramework.Controls.MetroProgressBar();
             this.pgmMenu1 = new Pragma.Forms.Controls.PragmaMenuControl();
+            this.mainBrowser = new System.Windows.Forms.WebBrowser();
             this.MainPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -39,13 +40,21 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.mainBrowser);
             this.MainPanel.Controls.Add(this.pgmMenu1);
+            this.MainPanel.Size = new System.Drawing.Size(942, 505);
             this.MainPanel.Controls.SetChildIndex(this.TopPanel, 0);
             this.MainPanel.Controls.SetChildIndex(this.pgmMenu1, 0);
+            this.MainPanel.Controls.SetChildIndex(this.mainBrowser, 0);
+            // 
+            // buttonsPanel
+            // 
+            this.buttonsPanel.Location = new System.Drawing.Point(871, 0);
             // 
             // TopPanel
             // 
             this.TopPanel.Location = new System.Drawing.Point(0, 5);
+            this.TopPanel.Size = new System.Drawing.Size(942, 26);
             // 
             // cmdHelp
             // 
@@ -67,17 +76,28 @@
             // pgmMenu1
             // 
             this.pgmMenu1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pgmMenu1.IconBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pgmMenu1.Location = new System.Drawing.Point(0, 31);
             this.pgmMenu1.Name = "pgmMenu1";
-            this.pgmMenu1.Size = new System.Drawing.Size(300, 259);
+            this.pgmMenu1.Size = new System.Drawing.Size(238, 474);
             this.pgmMenu1.TabIndex = 78;
             this.pgmMenu1.UseSelectable = true;
             // 
-            // frmPrincipal
+            // mainBrowser
+            // 
+            this.mainBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainBrowser.Location = new System.Drawing.Point(238, 31);
+            this.mainBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.mainBrowser.Name = "mainBrowser";
+            this.mainBrowser.Size = new System.Drawing.Size(704, 474);
+            this.mainBrowser.TabIndex = 79;
+            this.mainBrowser.Url = new System.Uri("http://play.grafana.org/dashboard/db/stats", System.UriKind.Absolute);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(640, 360);
-            this.Name = "frmPrincipal";
+            this.ClientSize = new System.Drawing.Size(962, 575);
+            this.Name = "Main";
             this.Text = "Sistema Cursos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MDIParent_KeyPress);
@@ -94,5 +114,6 @@
 
         private Pragma.Forms.Controls.PragmaMenuControl pgmMenu1;
         private MetroFramework.Controls.MetroProgressBar TopProgressbar;
+        private System.Windows.Forms.WebBrowser mainBrowser;
     }
 }

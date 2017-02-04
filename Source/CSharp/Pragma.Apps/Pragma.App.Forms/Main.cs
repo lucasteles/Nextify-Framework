@@ -8,10 +8,10 @@ using System.Linq;
 
 namespace Pragma.App.Forms
 {
-    public partial class frmPrincipal : FormBase
+    public partial class Main : FormBase
     {
         
-        public frmPrincipal()
+        public Main()
         {
             var Login = DI.Resolve<frmLogin>();
             Login.ShowDialog();
@@ -28,12 +28,12 @@ namespace Pragma.App.Forms
 
         private void frmPrincipal_Load(object sender, System.EventArgs e)
         {
+            
             var menus = new List<PragmaMenuItem>
             {
-                new PragmaMenuItem() {Name="Cursos", Icon = Weather.rain, ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
-                new PragmaMenuItem() {Name="Authors", Icon = Weather.rain },
-                new PragmaMenuItem() {Name="Tags", Icon = Weather.rain },
-                new PragmaMenuItem() {Name="Cover", Icon = Weather.rain }
+                new PragmaMenuItem() {Name="Cursos", Icon = Weather.lightning_bolt, ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
+                new PragmaMenuItem() {Name="Authors", Icon = Weather.lightning_bolt},
+                new PragmaMenuItem() {Name="Tags", Icon = Weather.lightning_bolt }
             };
 
             pgmMenu1.SetMenus(menus);

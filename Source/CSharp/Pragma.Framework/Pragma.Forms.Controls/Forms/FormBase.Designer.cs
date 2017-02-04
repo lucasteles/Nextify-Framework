@@ -38,12 +38,12 @@ namespace Pragma.Forms.Controls.Forms
             this.line = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.buttonsPanel = new System.Windows.Forms.Panel();
-            this.cmdHelp = new Pragma.Forms.Controls.PragmaButton();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.ToolConfig = new System.Windows.Forms.ToolStripSplitButton();
             this.ToolRights = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblLoading = new Pragma.Forms.Controls.PragmaLabel();
             this.SpinnerLoad = new MetroFramework.Controls.MetroProgressSpinner();
+            this.cmdHelp = new Pragma.Forms.Controls.PragmaButton();
+            this.lblLoading = new Pragma.Forms.Controls.PragmaLabel();
             ((System.ComponentModel.ISupportInitialize)(this.MetroStyleManager)).BeginInit();
             this.MainPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -108,16 +108,6 @@ namespace Pragma.Forms.Controls.Forms
             this.buttonsPanel.Size = new System.Drawing.Size(66, 21);
             this.buttonsPanel.TabIndex = 72;
             // 
-            // cmdHelp
-            // 
-            this.cmdHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdHelp.BackgroundImage")));
-            this.cmdHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdHelp.Location = new System.Drawing.Point(2, 2);
-            this.cmdHelp.Name = "cmdHelp";
-            this.cmdHelp.Size = new System.Drawing.Size(22, 22);
-            this.cmdHelp.TabIndex = 85;
-            this.cmdHelp.UseSelectable = true;
-            // 
             // StatusBar
             // 
             this.StatusBar.AutoSize = false;
@@ -153,20 +143,8 @@ namespace Pragma.Forms.Controls.Forms
             // 
             this.ToolRights.Image = ((System.Drawing.Image)(resources.GetObject("ToolRights.Image")));
             this.ToolRights.Name = "ToolRights";
-            this.ToolRights.Size = new System.Drawing.Size(114, 22);
+            this.ToolRights.Size = new System.Drawing.Size(125, 22);
             this.ToolRights.Text = "Direitos";
-            // 
-            // lblLoading
-            // 
-            this.lblLoading.AutoSize = true;
-            this.lblLoading.BackColor = System.Drawing.Color.Transparent;
-            this.lblLoading.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblLoading.Location = new System.Drawing.Point(33, 0);
-            this.lblLoading.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(56, 19);
-            this.lblLoading.TabIndex = 70;
-            this.lblLoading.Text = "Loading";
             // 
             // SpinnerLoad
             // 
@@ -181,6 +159,28 @@ namespace Pragma.Forms.Controls.Forms
             this.SpinnerLoad.UseSelectable = true;
             this.SpinnerLoad.UseStyleColors = true;
             this.SpinnerLoad.Visible = false;
+            // 
+            // cmdHelp
+            // 
+            this.cmdHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdHelp.BackgroundImage")));
+            this.cmdHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdHelp.Location = new System.Drawing.Point(2, 2);
+            this.cmdHelp.Name = "cmdHelp";
+            this.cmdHelp.Size = new System.Drawing.Size(22, 22);
+            this.cmdHelp.TabIndex = 85;
+            this.cmdHelp.UseSelectable = true;
+            // 
+            // lblLoading
+            // 
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoading.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblLoading.Location = new System.Drawing.Point(33, 0);
+            this.lblLoading.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(56, 19);
+            this.lblLoading.TabIndex = 70;
+            this.lblLoading.Text = "Loading";
             // 
             // FormBase
             // 

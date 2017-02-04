@@ -79,11 +79,9 @@ namespace Pragma.Forms.Controls
             if (IsDecimalNumber(_ValueType))
             {
                 var text = new string(Text.Where(c => char.IsDigit(c) || c == ',' || c == '-').ToArray());
-
-                decimal value;
-                var newValue = decimal.TryParse(text, out value) ? value : 0;
-
-                _Value = value;
+                var converter = TypeDescriptor.GetConverter( _ValueType );
+                
+                _Value = converter.ConvertFrom(text);
             }
 
             if (_Value.GetType() == typeof(DateTime))

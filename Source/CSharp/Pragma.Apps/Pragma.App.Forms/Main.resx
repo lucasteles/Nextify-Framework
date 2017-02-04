@@ -121,7 +121,7 @@
   <data name="cmdHelp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAGISURBVFhH7ZZhjYQwEEbPEwbWAAIwgAEMYAMBGMAABjCA
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAGISURBVFhH7ZZhjYQwEEbPEwbWAAIwgAEMYAMBGMAABjCA
         AAxgoJe3yVyaZqadsnsJP/iSL9ml05lHOxR+wo30wFh6YCxVwxzHEeZ5DsMwhK7rQtM0b/Oba4wRc0Vu
         GAqM4/hXvGRia6FcMMuyhNfrpRbNmTnM9aoIQzKtUI29QFmYb4CIPUAmDPud2xrGpmkK+76H8zzDtm3Z
         niK+1EMmTKlZKR4Dr+v6ngdgGismZ04qDEW0ZLERQPIfCMQqxXGpc6ujwnBWaIlip+eMwKA4LjW5Lakw
@@ -132,6 +132,6 @@
 </value>
   </data>
   <metadata name="MetroStyleManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>120, 17</value>
+    <value>123, 17</value>
   </metadata>
 </root>

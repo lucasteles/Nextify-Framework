@@ -28,7 +28,7 @@ namespace Pragma.Forms.Controls.Validations
                 ok = Directory.Exists(tFindFile.txtFind.Text);
 
             if (!ok)
-                tFindFile.txtFind.BackColor = PragmaColor.VermelhoError;
+                tFindFile.txtFind.BackColor = ColorTool.VermelhoError;
 
             return ok;
         }
