@@ -516,13 +516,13 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Pragma.Abstractions\Pragma.Abstraction.csproj">
       <Project>{d9254cc8-a1eb-4a8d-93fb-c79478afe1b4}</Project>
       <Name>Pragma.Abstraction</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
