@@ -58,7 +58,7 @@ namespace Pragma.Forms.Controllers
         }
     }
 
-    public class GridViewController<TModel, TView> : GridViewBaseController<TModel, int, TView> where TModel : class, IModelWithKey, new() where TView : IInative
+    public class GridViewController<TModel, TView> : GridViewController<TModel, int, TView> where TModel : class, IModelWithKey, new() where TView : IInative
     {
         public GridViewController(IBusiness<TModel, int> business) : base(business)
         {

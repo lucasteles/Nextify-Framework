@@ -26,6 +26,7 @@ namespace Pragma.Forms.Controls.Forms
         protected bool FilterInative { get; set; }
         protected IContainer _container { get; set; } = ContainerFactory.Instance;
 
+
         private Type _FormEditType;
 
         public FormConsult(IGridController gridController)
@@ -35,8 +36,9 @@ namespace Pragma.Forms.Controls.Forms
             if (DesignMode)
                 return;
 
-            if (gridController != null)
-                Configure(gridController);
+            GridController = gridController;
+
+
         }
         public FormConsult()
         {
@@ -199,6 +201,9 @@ namespace Pragma.Forms.Controls.Forms
             cmdDelete.Visible = HasDelete;
             cmdEditar.Visible = HasEdit;
             cmdInative.Visible = HasInative;
+
+            if (GridController != null)
+                Configure(GridController);
 
             await GridController.UseAsync(Grid);
             await FormLoadAsync();

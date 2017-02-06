@@ -15,7 +15,6 @@ namespace Pragma.Mapping.Profiles
         {
             CreateMap<Course, CourseDTO>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(e => e.Author.Name))
-                .ForMember(dest => dest.Inative, opt => opt.UseValue(true))
                 ;
             
         }

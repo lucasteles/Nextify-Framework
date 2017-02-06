@@ -7,11 +7,7 @@ namespace  Pragma.Abstraction
     public interface IBase : IInative
     {
 
-        /// <summary>
-        /// Propriedade indicando qual é o código do usuario que incluiu o registro
-        /// </summary>
-        [PgmColumn(DisplayText = "Usuario")]
-        int? Owner { get; set; }
+       
         /// <summary>
         /// Propriedade contendo a data de criação do registro
         /// </summary>

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Pragma.App.Models
 {
 
-    public class Course : IModelWithKey
+    public class Course : BaseModel, IModelWithKey
     {
         [Key]
         public int Id { get; set; }
@@ -27,8 +27,7 @@ namespace Pragma.App.Models
 
         public virtual ICollection<Tag> Tags { get; set; }
 
-        public Cover Cover { get; set; }
-
+      
         public bool IsBeginnerCourse
         {
             get { return Level == 1; }

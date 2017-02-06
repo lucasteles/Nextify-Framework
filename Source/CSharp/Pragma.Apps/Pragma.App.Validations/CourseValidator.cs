@@ -17,14 +17,14 @@ namespace Pragma.App.Validations
                 .WithMessage(c => $"Campo { c.GetDisplayName(r => r.Name) } invalido");
 
             RuleFor(e => e.Name)
-                .Length(0, 10)
+                .Length(0, 20)
                 .SetSeverity(FailureSeverity.Warning)
-                .WithMessage("Nome nao pode ter mais que 10 caracteres");
+                .WithMessage("Nome nao pode ter mais que 20 caracteres");
 
             RuleFor(e => e.Name)
-                .Must(e => e != null && !e.Contains("9"))
+                .Must(e => e != null && !e.ToUpper().Contains("PHP"))
                 .SetSeverity(FailureSeverity.Warning)
-                .WithMessage("Campo nome nao pode ter o numero 9");
+                .WithMessage("Campo nome nao pode conter PHP");
 
 
 

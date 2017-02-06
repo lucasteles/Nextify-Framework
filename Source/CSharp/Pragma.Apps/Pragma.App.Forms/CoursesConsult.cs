@@ -13,6 +13,7 @@ namespace Pragma.App.Forms
                 ICourseGridController controller
             ) : base(controller)
         {
+            HasDelete = true;
             
             SetFormEdit<CoursesEdit>();
 
