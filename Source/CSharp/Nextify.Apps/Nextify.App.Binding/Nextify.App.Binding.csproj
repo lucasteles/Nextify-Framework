@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98B5C86C-2094-4538-91B5-920C319B9A3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nextify.App.Binding</RootNamespace>
+    <AssemblyName>Nextify.App.Binding</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextBinder.cs" />
+    <Compile Include="ControllersBinder.cs" />
+    <Compile Include="Core\FrameworkBinders.cs" />
+    <Compile Include="ValidationBinder.cs" />
+    <Compile Include="ToolsBinder.cs" />
+    <Compile Include="Core\BinderRegister.cs" />
+    <Compile Include="BusinessBinder.cs" />
+    <Compile Include="DaoBinder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Nextify.Framework\ModelViewBinder\ModelViewBinder.csproj">
+      <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
+      <Name>ModelViewBinder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Abstractions\Nextify.Abstraction.csproj">
+      <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
+      <Name>Nextify.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Business\Nextify.Business.csproj">
+      <Project>{6E705C0B-2C70-4ADA-ACE4-44BA7D929440}</Project>
+      <Name>Nextify.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Core\Nextify.Core.csproj">
+      <Project>{379E2087-05CA-42B5-B7CB-C9F3E0D9882D}</Project>
+      <Name>Nextify.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.DAO\Nextify.DAO.csproj">
+      <Project>{8AFC4C3D-B7B0-44BB-BF42-7918EEAE5D95}</Project>
+      <Name>Nextify.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Excel\Nextify.Excel.csproj">
+      <Project>{CAA6579A-800E-4B62-8065-2F71EFACA93E}</Project>
+      <Name>Nextify.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Files\Nextify.Files.csproj">
+      <Project>{0BAE336E-CBE1-44E7-8A0E-D621AB974A12}</Project>
+      <Name>Nextify.Files</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Forms.Controllers\Nextify.Forms.Controllers.csproj">
+      <Project>{A998E7E4-32F4-4D7C-8A1B-ECDC9CAF48DB}</Project>
+      <Name>Nextify.Forms.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Forms.Controls\Nextify.Forms.Controls.csproj">
+      <Project>{DE0AD088-613D-4AC5-AF9D-5AE0FB5BE14B}</Project>
+      <Name>Nextify.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.IOC\Nextify.IOC.csproj">
+      <Project>{3E5DAE00-770C-4D2A-A1E6-E085FD57BD22}</Project>
+      <Name>Nextify.IOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Logging\Nextify.Logging.csproj">
+      <Project>{16E56BAD-E644-433B-A207-DAA82921153D}</Project>
+      <Name>Nextify.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Mapping\Nextify.Mapping.csproj">
+      <Project>{BE74F02F-A056-4020-8438-F8D86B838FB6}</Project>
+      <Name>Nextify.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Scheduling\Nextify.Scheduling.csproj">
+      <Project>{8E4EB077-021C-4C8E-BAA5-9E0184176064}</Project>
+      <Name>Nextify.Scheduling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nextify.Framework\Nextify.Validations\Nextify.Validations.csproj">
+      <Project>{5EDA394E-0F70-437A-A783-F93B6D8C4838}</Project>
+      <Name>Nextify.Validations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nextify.App.Business\Nextify.App.Business.csproj">
+      <Project>{0F287438-5947-4616-AF3F-17B6C95B457A}</Project>
+      <Name>Nextify.App.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nextify.App.DAO\Nextify.App.DAO.csproj">
+      <Project>{A307D1C7-3B11-4F36-9FEB-FA9365C4D5E6}</Project>
+      <Name>Nextify.App.DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nextify.App.Forms.Controllers\Nextify.App.Forms.Controllers.csproj">
+      <Project>{7F00A261-2C3C-415D-89BE-9BCEDC3591C0}</Project>
+      <Name>Nextify.App.Forms.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nextify.App.Models\Nextify.App.Models.csproj">
+      <Project>{7C95EE61-AB2A-4230-8495-8E5547CD65E7}</Project>
+      <Name>Nextify.App.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nextify.App.Validations\Nextify.App.Validations.csproj">
+      <Project>{1F4E1465-7429-4220-BB9C-E355A62E4429}</Project>
+      <Name>Nextify.App.Validations</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
