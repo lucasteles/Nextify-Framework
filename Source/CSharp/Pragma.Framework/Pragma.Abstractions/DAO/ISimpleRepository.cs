@@ -22,7 +22,7 @@ namespace Pragma.Abstraction.DAO
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order);
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, params Expression<Func<TEntity, object>>[] include);
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order);
-        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include);
+        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include);
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include);
         IQueryable<TEntity> FindAllProperties(params string[] value);
         IQueryable<TEntity> FindAllProperties(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params string[] value);

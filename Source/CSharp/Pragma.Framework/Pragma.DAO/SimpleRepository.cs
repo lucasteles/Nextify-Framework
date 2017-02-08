@@ -81,7 +81,7 @@ namespace Pragma.DAO
         public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order)
             => PrepareOrder(Get(where), order);
 
-        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include)
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include)
             => PrepareNavigations(Get(where, order), include);
         public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where)
             => await Get(where).ToListAsync();
@@ -90,7 +90,7 @@ namespace Pragma.DAO
         public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order)
          => await Get(where, order).ToListAsync();
         public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include)
-            => await Find(where, order, include).ToListAsync();
+            => await Get(where, order, include).ToListAsync();
         public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top)
             => Get(where).TakeIfNotZero(top);
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, params Expression<Func<TEntity, object>>[] include)
@@ -98,7 +98,7 @@ namespace Pragma.DAO
         public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order)
             => Get(where, order).TakeIfNotZero(top);
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> where, int top, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include)
-             => Find(where, order, include).TakeIfNotZero(top);
+             => Get(where, order, include).TakeIfNotZero(top);
         public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where, int top)
             => await Get(where).TakeIfNotZero(top).ToListAsync();
         public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> where, int top, params Expression<Func<TEntity, object>>[] include)

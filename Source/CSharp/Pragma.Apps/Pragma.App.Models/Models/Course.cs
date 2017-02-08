@@ -19,7 +19,7 @@ namespace Pragma.App.Models
 
         public int Level { get; set; }
 
-        public float FullPrice { get; set; }
+        public double FullPrice { get; set; }
 
         public virtual Author Author { get; set; }
 

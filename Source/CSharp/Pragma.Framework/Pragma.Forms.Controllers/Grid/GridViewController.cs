@@ -4,6 +4,7 @@ using Pragma.Abstraction.Business;
 using Pragma.Abstraction.Forms.Controls;
 using Pragma.Business.Abstraction;
 using Pragma.Core;
+
 using Pragma.Extensions;
 using Pragma.Forms.Controllers.Abstraction;
 using Pragma.Forms.Controls;
@@ -11,6 +12,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Pragma.Forms.Controllers
@@ -28,10 +30,19 @@ namespace Pragma.Forms.Controllers
             if (!FilterInative)
                 return predicate;
 
-            var fluent = (predicate != null) ?
-             new FluentLambda<TView>(predicate).And(e => e.Inative == false).Exp() : e => e.Inative == false;
+            var filter = InativeModelHelper<TView>.InativeEquals(false);
 
-            return fluent;
+            Expression<Func<TView, bool>> fluent;
+            if (predicate != null)
+            {
+                fluent = new FluentLambda<TView>(predicate).And(filter).Exp();
+            }
+            else {
+                fluent = filter;
+            }
+
+            
+            return fluent; 
         }
     }
 
@@ -71,5 +82,10 @@ namespace Pragma.Forms.Controllers
         {
         }
     }
+
+
+
+
+   
 }
 

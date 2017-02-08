@@ -11,14 +11,12 @@ namespace Pragma.App.DAO
     {
         ICoursesRepository Courses { get; set; }
         IAuthorRepository Authors { get; set; }
-
-
+        
     }
 
     public class CourseUnityOfWork : BaseUnitOfWork, ICourseUnityOfWork
     {
-
-
+        
         public ICoursesRepository Courses { get; set; }
         public IAuthorRepository Authors { get; set; }
 

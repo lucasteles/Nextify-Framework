@@ -294,6 +294,7 @@
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="POCO\ExpressionAppender.cs" />
+    <Compile Include="POCO\ExpressionModelHelpers.cs" />
     <Compile Include="POCO\FluentLambda.cs" />
     <Compile Include="POCO\ModelFormat.cs" />
     <Compile Include="POCO\OperationResult.cs" />

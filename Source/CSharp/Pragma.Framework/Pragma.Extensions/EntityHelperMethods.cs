@@ -9,6 +9,17 @@ namespace Pragma.Extensions
 {
     public static class EntityHelperMethods
     {
+        public static IQueryable<TEntity> WhereGeneric<TEntity, TPredicateWellKnownType>(this IQueryable<TEntity> query, Expression<Func<TPredicateWellKnownType, bool>> predicate)
+        {
+            if (typeof(TEntity).GetInterfaces().Contains(typeof(TPredicateWellKnownType)))
+            {
+                query = ((IQueryable<TPredicateWellKnownType>)query)
+                    .Where(predicate)
+                    .Cast<TEntity>();
+            }
+            return query;
+        }
+
         public static IQueryable<TEntity> WhereAllPropertiesOfSimilarTypeAreEqual<TEntity, TProperty>(this IQueryable<TEntity> query, TProperty value)
         {
             var param = Expression.Parameter(typeof(TEntity));
@@ -137,6 +148,12 @@ namespace Pragma.Extensions
 
         public static IQueryable<TModel> WhereIfNotNull<TModel>(this IQueryable<TModel> query, Expression<Func<TModel, bool>> predicate) => predicate == null ? query : query.Where(predicate);
 
+
+  
+
     }
+
+
+ 
 
 }

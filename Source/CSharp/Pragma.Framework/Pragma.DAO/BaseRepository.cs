@@ -18,13 +18,13 @@ namespace Pragma.DAO
         }
         public virtual TEntity GetById(TKey id)
         {
-            var idEquals = KeyedBaseModel<TEntity, TKey>.IdEquals(id);
+            var idEquals = KeyedModelHelper<TEntity, TKey>.IdEquals(id);
             return Table.FirstOrDefault(idEquals);
         }
 
         public virtual TEntity GetById(TKey id, params Expression<Func<TEntity, object>>[] navigationProperties)
         {
-            var idEquals = KeyedBaseModel<TEntity, TKey>.IdEquals(id);
+            var idEquals = KeyedModelHelper<TEntity, TKey>.IdEquals(id);
 
             var query = PrepareNavigations(navigationProperties);
 
@@ -33,14 +33,14 @@ namespace Pragma.DAO
 
         public virtual async Task<TEntity> GetByIdAsync(TKey id)
         {
-            var idEquals = KeyedBaseModel<TEntity, TKey>.IdEquals(id);
+            var idEquals = KeyedModelHelper<TEntity, TKey>.IdEquals(id);
 
             return await Table.FirstOrDefaultAsync(idEquals);
         }
 
         public virtual async Task<TEntity> GetByIdAsync(TKey id, params Expression<Func<TEntity, object>>[] navigationProperties)
         {
-            var idEquals = KeyedBaseModel<TEntity, TKey>.IdEquals(id);
+            var idEquals = KeyedModelHelper<TEntity, TKey>.IdEquals(id);
             var query = PrepareNavigations(navigationProperties);
             return await query.FirstOrDefaultAsync(idEquals);
         }

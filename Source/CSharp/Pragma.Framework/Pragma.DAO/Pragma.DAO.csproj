@@ -71,7 +71,6 @@
     <Compile Include="Configuration\EntityFrameworkConfiguration.cs" />
     <Compile Include="SimpleRepository.cs" />
     <Compile Include="MissingDllHack.cs" />
-    <Compile Include="KeyedBaseModel.cs" />
     <Compile Include="BaseUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserData.cs" />
