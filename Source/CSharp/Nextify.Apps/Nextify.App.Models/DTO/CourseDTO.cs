@@ -9,19 +9,19 @@ namespace Nextify.App.Models
     {
 
         [Key]
-        [PgmColumn(DisplayText  = "Cód.")]
+        [LayoutColumn(DisplayText  = "Cód.")]
         public int Id { get; set; }
 
-        [PgmColumn(DisplayText = "Nome")]
+        [LayoutColumn(DisplayText = "Nome")]
         public string Name { get; set; }
 
-        [PgmColumn(DisplayText = "Descrição")]
+        [LayoutColumn(DisplayText = "Descrição")]
         public string Description { get; set; }
 
-        [PgmColumn(DisplayText = "Autor")]
+        [LayoutColumn(DisplayText = "Autor")]
         public string AuthorName { get; set; }
 
-        [PgmColumn(DisplayText = "Preço", Format = "#,###,###.00")]
+        [LayoutColumn(DisplayText = "Preço", Format = "#,###,###.00")]
         public double FullPrice { get; set; }
 
         

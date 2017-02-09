@@ -84,7 +84,7 @@ namespace Nextify.Forms.Controls
         /// <typeparam name="TView">Tipo da View.</typeparam>
         /// <param name="list">Lista de dados.</param>
         /// <param name="columns">Colunas da Grid</param>
-        public void BindList<TView>(BindingListView<TView> list, IList<PgmColumn> columns)
+        public void BindList<TView>(BindingListView<TView> list, IList<LayoutColumn> columns)
         {
             if (!UseCustomFilter)
                 ClearFilter();
@@ -99,7 +99,7 @@ namespace Nextify.Forms.Controls
         ///     Usando uma lista de Layout, configura todas as colunas.
         /// </summary>
         /// <param name="headerList">Lista de colunas.</param>
-        public void SetHeader(IList<PgmColumn> headerList)
+        public void SetHeader(IList<LayoutColumn> headerList)
         {
             grdView.Columns.Clear();
             grdView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;

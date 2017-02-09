@@ -15,12 +15,12 @@ namespace Nextify.Forms.Controllers.Abstraction
 {
     public abstract class AbstractGridBusinessController<TModel, TKey, TView> : AbstractGridSimpleBusinessController<TModel, TView> where TModel : class, IModelWithKey<TKey>, new()
     {
-        private List<object> NestingValues { get; set; }
+        private IList<object> NestingValues { get; set; }
         private Func<TView, object> ChildProperty { get; set; }
         private Func<TView, object> FatherProperty { get; set; }
         protected AbstractGridBusinessController(IBusiness<TModel, TKey> business) : base(business)
         {
-            Business = business;
+         
         }
 
         protected override void ToggleNestedVisibility(DataGridViewCellMouseEventArgs eventArgs)
@@ -137,7 +137,7 @@ namespace Nextify.Forms.Controllers.Abstraction
 
     public abstract class AbstractGridSimpleBusinessController<TModel, TView> : AbstractGridController<TView> where TModel : class, new()
     {
-        public ISimpleBusiness<TModel> Business;
+        public readonly ISimpleBusiness<TModel> Business;
         private IDisposable TextChange;
         private bool loaded;
         /// <summary>
@@ -148,6 +148,7 @@ namespace Nextify.Forms.Controllers.Abstraction
         protected AbstractGridSimpleBusinessController(ISimpleBusiness<TModel> business)
         {
             Business = business;
+            Business.ForceUpdate = ForceUpdate;
         }
         public async override Task UseAsync(INextifyDataGrid grid)
         {
@@ -172,6 +173,12 @@ namespace Nextify.Forms.Controllers.Abstraction
                         await RefreshAsync();
                     });
             }
+        }
+
+        protected override void OnSetForceUpdate(bool value)
+        {
+            if (Business!=null)
+                Business.ForceUpdate = value;
         }
 
         public abstract Task RefreshDynamicSearchAsync();

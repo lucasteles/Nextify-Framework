@@ -12,14 +12,14 @@ namespace  Nextify.Core
     /// <summary>
     /// Ao exibir uma model na Grid sem configurar o Header, esse atributo será usado
     /// </summary>
-    public class PgmColumn : Attribute
+    public class LayoutColumn : Attribute
     {
-        public PgmColumn()
+        public LayoutColumn()
         {
 
         }
 
-        public PgmColumn(PgmColumn column)
+        public LayoutColumn(LayoutColumn column)
         {
             foreach (var p in column.GetType().GetProperties())
             {
@@ -99,7 +99,7 @@ namespace  Nextify.Core
         public int DataOrderPriority { get; set; }
     }
 
-    public class PgmPowerpointColumn : PgmColumn
+    public class PgmPowerpointColumn : LayoutColumn
     {
         public PgmPowerpointColumn()
         {

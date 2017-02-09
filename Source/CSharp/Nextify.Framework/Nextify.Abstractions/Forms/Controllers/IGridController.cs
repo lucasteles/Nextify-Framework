@@ -25,7 +25,7 @@ namespace Nextify.Abstraction.Forms.Controls
         event MouseEventHandler GridNotSelectedRightMouseClick;
         event MouseEventHandler GridSelectedRightMouseClick;
 
-        void BindList<TView>(BindingListView<TView> list, IList<PgmColumn> columns);
+        void BindList<TView>(BindingListView<TView> list, IList<LayoutColumn> columns);
         void ClearFilter();
         void FocusFilter();
         DataObject GetClipboardContent();
@@ -33,7 +33,7 @@ namespace Nextify.Abstraction.Forms.Controls
         DataGridViewRowCollection GetRows();
         int GetSelectedRowIndex();
         void ResizeColumns();
-        void SetHeader(IList<PgmColumn> headerList);
+        void SetHeader(IList<LayoutColumn> headerList);
         void SetSelectedRow(int index);
     }
 
@@ -87,6 +87,8 @@ namespace Nextify.Abstraction.Forms.Controls
         void InsertAsyncMenu(Func<object, string> tName, Func<Task> tMethod, Bitmap tIcon, int index);
 
         object GetSelectedModel();
+
+        bool ForceUpdate { get; set; }
 
         object Value { get; set; }
 

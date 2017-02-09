@@ -31,8 +31,10 @@ namespace Nextify.App.Forms
             
             var menus = new List<NextifyMenuItem>
             {
-                new NextifyMenuItem() {Name="Cursos", Icon = Weather.lightning_bolt, ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
-                new NextifyMenuItem() {Name="Authors", Icon = Weather.rain},
+                new NextifyMenuItem() {Name="Cursos", Icon = Weather.lightning_bolt,
+                                        ButtonAction = ()=>DI.ShowForm<CoursesConsult>()},
+                new NextifyMenuItem() {Name="Authors", Icon = Weather.rain,
+                                        ButtonAction = ()=>DI.ShowForm<AuthorConsult>()},
                 new NextifyMenuItem() {Name="Tags", Icon = Weather.sun }
             };
 

@@ -36,8 +36,9 @@ namespace Nextify.Forms.Controls.Forms
             if (DesignMode)
                 return;
 
+            
             GridController = gridController;
-
+            GridController.ForceUpdate = true;
 
         }
         public FormConsult()
@@ -269,6 +270,12 @@ namespace Nextify.Forms.Controls.Forms
                 Hide();
 
             }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+                Close();
+            }
+
         }
 
     }

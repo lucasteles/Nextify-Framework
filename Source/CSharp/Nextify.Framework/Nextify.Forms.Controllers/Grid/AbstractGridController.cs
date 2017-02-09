@@ -28,6 +28,12 @@ namespace Nextify.Forms.Controllers.Abstraction
         protected Expression<Func<TView, bool>> Predicate { get; set; }
         protected Func<Expression<Func<TView, bool>>, int, Task<IEnumerable<TView>>> LoadFunctionWithFilter { get; set; }
         protected Func<int, Task<IEnumerable<TView>>> LoadFunction { get; set; }
+
+        private bool _forceUpdate;
+        public bool ForceUpdate {
+            get { return _forceUpdate; }
+            set { _forceUpdate = value; OnSetForceUpdate(value); } }
+
         public virtual void SetPredicate(Expression<Func<TView, bool>> predicate)
         {
             Predicate = predicate;
@@ -43,6 +49,12 @@ namespace Nextify.Forms.Controllers.Abstraction
                         await LoadFunctionWithFilter?.Invoke(TreatPredicate(Predicate), QtdTopResult) :
                         await LoadFunction?.Invoke(QtdTopResult);
         }
+
+        protected virtual void OnSetForceUpdate(bool value)
+        {
+
+        }
+
         /// <summary>
         /// Ultima ordenação realizada.
         /// </summary>
@@ -61,7 +73,7 @@ namespace Nextify.Forms.Controllers.Abstraction
         /// <summary>
         /// Colunas da Grid.
         /// </summary>
-        public List<PgmColumn> Columns { get; set; }
+        public List<LayoutColumn> Columns { get; set; }
         private List<PropertyDescriptor> Properties { get; set; }
         protected bool IsNested { get; set; }
         protected IComparer<TView> NestingComparer { get; set; }
@@ -236,13 +248,13 @@ namespace Nextify.Forms.Controllers.Abstraction
         /// </summary>
         protected void GetColumnsFromAttributes()
         {
-            Columns = new List<PgmColumn>();
+            Columns = new List<LayoutColumn>();
             foreach (var prop in typeof(TView).GetProperties())
             {
-                var modelAttributes = prop.GetCustomAttributes(typeof(PgmColumn), false);
+                var modelAttributes = prop.GetCustomAttributes(typeof(LayoutColumn), false);
                 if (modelAttributes.Any())
                 {
-                    var gHead = modelAttributes.First() as PgmColumn;
+                    var gHead = modelAttributes.First() as LayoutColumn;
                     gHead.PropertyName = prop.Name;
                     Columns.Add(gHead);
                 }
@@ -254,7 +266,7 @@ namespace Nextify.Forms.Controllers.Abstraction
 
             // se nao estiver configurado nenhum gridheader, coloca a as propriedades do obj
             foreach (var prop in typeof(TView).GetProperties())
-                Columns.Add(new PgmColumn
+                Columns.Add(new LayoutColumn
                 {
                     PropertyName = prop.Name,
                     DisplayText = prop.Name

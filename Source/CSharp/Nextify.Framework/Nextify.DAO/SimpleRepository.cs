@@ -24,6 +24,8 @@ namespace Nextify.DAO
         protected BaseContext Context;
         public DbSet<TEntity> Table { get; set; }
 
+        public bool ForceUpdate { get; set; }
+
         protected IList<Expression<Func<TEntity, object>>> EditNavigationProperties { get; set; } = new List<Expression<Func<TEntity, object>>>();
 
         protected IDbConnection db { get { return Context.Database.Connection; } }
@@ -41,16 +43,18 @@ namespace Nextify.DAO
 
         #region "Meotodos base busca"
 
+        protected IQueryable<TEntity> _get() => ForceUpdate ? Table.AsNoTracking() : Table;
+        
         // Gets
-        public virtual IQueryable<TEntity> Get() => Table;
+        public virtual IQueryable<TEntity> Get() => _get();
 
         public async Task<IEnumerable<TEntity>> GetAsync() => await Get().ToListAsync();
 
         public IQueryable<TEntity> Get(params Expression<Func<TEntity, object>>[] include)
-            => PrepareNavigations(Table, include);
+            => PrepareNavigations(_get(), include);
 
         public async Task<IEnumerable<TEntity>> GetAsync(params Expression<Func<TEntity, object>>[] include)
-            => await PrepareNavigations(Table, include).ToListAsync();
+            => await PrepareNavigations(_get(), include).ToListAsync();
         public IQueryable<TEntity> Get(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order) => PrepareOrder(Get(), order);
         public IQueryable<TEntity> Get(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> order, params Expression<Func<TEntity, object>>[] include)
          => PrepareOrder(Get(include), order);
@@ -177,73 +181,73 @@ namespace Nextify.DAO
         #endregion
         // calculus
 
-        public virtual int Count() => Table.Count();
-        public virtual async Task<int> CountAsync() => await Table.CountAsync();
-        public virtual int Count(Expression<Func<TEntity, bool>> where) => Table.Count(where);
-        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> where) => await Table.CountAsync(where);
+        public virtual int Count() => _get().Count();
+        public virtual async Task<int> CountAsync() => await _get().CountAsync();
+        public virtual int Count(Expression<Func<TEntity, bool>> where) => _get().Count(where);
+        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> where) => await _get().CountAsync(where);
 
 
-        public TResult Max<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> maxSelector) => Table.Where(where).Max(maxSelector);
+        public TResult Max<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> maxSelector) => _get().Where(where).Max(maxSelector);
 
 
-        public TResult Min<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> minSelector) => Table.Where(where).Min(minSelector);
+        public TResult Min<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> minSelector) => _get().Where(where).Min(minSelector);
 
-        public TResult Max<TResult>(Expression<Func<TEntity, TResult>> maxSelector) => Table.Max(maxSelector);
-        public TResult Min<TResult>(Expression<Func<TEntity, TResult>> minSelector) => Table.Min(minSelector);
+        public TResult Max<TResult>(Expression<Func<TEntity, TResult>> maxSelector) => _get().Max(maxSelector);
+        public TResult Min<TResult>(Expression<Func<TEntity, TResult>> minSelector) => _get().Min(minSelector);
 
-        public async Task<TResult> MaxAsync<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> maxSelector) => await Table.Where(where).MaxAsync(maxSelector);
-
-
-        public async Task<TResult> MinAsync<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> minSelector) => await Table.Where(where).MinAsync(minSelector);
-
-        public async Task<TResult> MaxAsync<TResult>(Expression<Func<TEntity, TResult>> maxSelector) => await Table.MaxAsync(maxSelector);
-
-        public async Task<TResult> MinAsync<TResult>(Expression<Func<TEntity, TResult>> minSelector) => await Table.MinAsync(minSelector);
+        public async Task<TResult> MaxAsync<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> maxSelector) => await _get().Where(where).MaxAsync(maxSelector);
 
 
-        public long Sum(Expression<Func<TEntity, long>> selector) => Table.Sum(selector);
-        public double Sum(Expression<Func<TEntity, double>> selector) => Table.Sum(selector);
-        public float Sum(Expression<Func<TEntity, float>> selector) => Table.Sum(selector);
-        public int Sum(Expression<Func<TEntity, int>> selector) => Table.Sum(selector);
-        public decimal Sum(Expression<Func<TEntity, decimal>> selector) => Table.Sum(selector);
-        public async Task<long> SumAsync(Expression<Func<TEntity, long>> selector) => await Table.SumAsync(selector);
-        public async Task<double> SumAsync(Expression<Func<TEntity, double>> selector) => await Table.SumAsync(selector);
-        public async Task<float> SumAsync(Expression<Func<TEntity, float>> selector) => await Table.SumAsync(selector);
-        public async Task<int> SumAsync(Expression<Func<TEntity, int>> selector) => await Table.SumAsync(selector);
-        public async Task<decimal> SumAsync(Expression<Func<TEntity, decimal>> selector) => await Table.SumAsync(selector);
-        public long Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long>> selector) => Table.Where(where).Sum(selector);
-        public double Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double>> selector) => Table.Where(where).Sum(selector);
-        public float Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float>> selector) => Table.Where(where).Sum(selector);
-        public int Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int>> selector) => Table.Where(where).Sum(selector);
-        public decimal Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal>> selector) => Table.Where(where).Sum(selector);
-        public async Task<long> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<double> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<float> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<int> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<decimal> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal>> selector) => await Table.Where(where).SumAsync(selector);
+        public async Task<TResult> MinAsync<TResult>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TResult>> minSelector) => await _get().Where(where).MinAsync(minSelector);
+
+        public async Task<TResult> MaxAsync<TResult>(Expression<Func<TEntity, TResult>> maxSelector) => await _get().MaxAsync(maxSelector);
+
+        public async Task<TResult> MinAsync<TResult>(Expression<Func<TEntity, TResult>> minSelector) => await _get().MinAsync(minSelector);
+
+
+        public long Sum(Expression<Func<TEntity, long>> selector) => _get().Sum(selector);
+        public double Sum(Expression<Func<TEntity, double>> selector) => _get().Sum(selector);
+        public float Sum(Expression<Func<TEntity, float>> selector) => _get().Sum(selector);
+        public int Sum(Expression<Func<TEntity, int>> selector) => _get().Sum(selector);
+        public decimal Sum(Expression<Func<TEntity, decimal>> selector) => _get().Sum(selector);
+        public async Task<long> SumAsync(Expression<Func<TEntity, long>> selector) => await _get().SumAsync(selector);
+        public async Task<double> SumAsync(Expression<Func<TEntity, double>> selector) => await _get().SumAsync(selector);
+        public async Task<float> SumAsync(Expression<Func<TEntity, float>> selector) => await _get().SumAsync(selector);
+        public async Task<int> SumAsync(Expression<Func<TEntity, int>> selector) => await _get().SumAsync(selector);
+        public async Task<decimal> SumAsync(Expression<Func<TEntity, decimal>> selector) => await _get().SumAsync(selector);
+        public long Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long>> selector) => _get().Where(where).Sum(selector);
+        public double Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double>> selector) => _get().Where(where).Sum(selector);
+        public float Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float>> selector) => _get().Where(where).Sum(selector);
+        public int Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int>> selector) => _get().Where(where).Sum(selector);
+        public decimal Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal>> selector) => _get().Where(where).Sum(selector);
+        public async Task<long> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<double> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<float> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<int> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<decimal> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal>> selector) => await _get().Where(where).SumAsync(selector);
 
 
 
-        public long? Sum(Expression<Func<TEntity, long?>> selector) => Table.Sum(selector);
-        public double? Sum(Expression<Func<TEntity, double?>> selector) => Table.Sum(selector);
-        public float? Sum(Expression<Func<TEntity, float?>> selector) => Table.Sum(selector);
-        public int? Sum(Expression<Func<TEntity, int?>> selector) => Table.Sum(selector);
-        public decimal? Sum(Expression<Func<TEntity, decimal?>> selector) => Table.Sum(selector);
-        public async Task<long?> SumAsync(Expression<Func<TEntity, long?>> selector) => await Table.SumAsync(selector);
-        public async Task<double?> SumAsync(Expression<Func<TEntity, double?>> selector) => await Table.SumAsync(selector);
-        public async Task<float?> SumAsync(Expression<Func<TEntity, float?>> selector) => await Table.SumAsync(selector);
-        public async Task<int?> SumAsync(Expression<Func<TEntity, int?>> selector) => await Table.SumAsync(selector);
-        public async Task<decimal?> SumAsync(Expression<Func<TEntity, decimal?>> selector) => await Table.SumAsync(selector);
-        public long? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long?>> selector) => Table.Where(where).Sum(selector);
-        public double? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double?>> selector) => Table.Where(where).Sum(selector);
-        public float? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float?>> selector) => Table.Where(where).Sum(selector);
-        public int? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int?>> selector) => Table.Where(where).Sum(selector);
-        public decimal? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal?>> selector) => Table.Where(where).Sum(selector);
-        public async Task<long?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long?>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<double?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double?>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<float?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float?>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<int?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int?>> selector) => await Table.Where(where).SumAsync(selector);
-        public async Task<decimal?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal?>> selector) => await Table.Where(where).SumAsync(selector);
+        public long? Sum(Expression<Func<TEntity, long?>> selector) => _get().Sum(selector);
+        public double? Sum(Expression<Func<TEntity, double?>> selector) => _get().Sum(selector);
+        public float? Sum(Expression<Func<TEntity, float?>> selector) => _get().Sum(selector);
+        public int? Sum(Expression<Func<TEntity, int?>> selector) => _get().Sum(selector);
+        public decimal? Sum(Expression<Func<TEntity, decimal?>> selector) => _get().Sum(selector);
+        public async Task<long?> SumAsync(Expression<Func<TEntity, long?>> selector) => await _get().SumAsync(selector);
+        public async Task<double?> SumAsync(Expression<Func<TEntity, double?>> selector) => await _get().SumAsync(selector);
+        public async Task<float?> SumAsync(Expression<Func<TEntity, float?>> selector) => await _get().SumAsync(selector);
+        public async Task<int?> SumAsync(Expression<Func<TEntity, int?>> selector) => await _get().SumAsync(selector);
+        public async Task<decimal?> SumAsync(Expression<Func<TEntity, decimal?>> selector) => await _get().SumAsync(selector);
+        public long? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long?>> selector) => _get().Where(where).Sum(selector);
+        public double? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double?>> selector) => _get().Where(where).Sum(selector);
+        public float? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float?>> selector) => _get().Where(where).Sum(selector);
+        public int? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int?>> selector) => _get().Where(where).Sum(selector);
+        public decimal? Sum(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal?>> selector) => _get().Where(where).Sum(selector);
+        public async Task<long?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, long?>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<double?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, double?>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<float?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, float?>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<int?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, int?>> selector) => await _get().Where(where).SumAsync(selector);
+        public async Task<decimal?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal?>> selector) => await _get().Where(where).SumAsync(selector);
 
         #endregion
 
@@ -422,13 +426,21 @@ namespace Nextify.DAO
 
         }
 
-      
+        public void ReloadEntity(TEntity entity)
+        {
+            Context.Entry(entity).Reload();
+        }
 
 
-
+        public  void ReloadNavigationProperty<TElement>(TEntity entity, Expression<Func<TEntity, ICollection<TElement>>> navigationProperty)
+       where TElement : class
+        {
+            Context.Entry(entity).Collection(navigationProperty).Query();
+        }
 
         #endregion
 
     }
 
+    
 }

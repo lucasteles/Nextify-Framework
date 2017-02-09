@@ -28,9 +28,9 @@ namespace Nextify.App.Forms
            var bind = await Controller.UseAsync(this, Business);
 
             bind
-              .Register(e => e.Name, txtName)
-              .Register(e => e.FullPrice, txtPrice)
-              .Register(e => e.Level, txtLevel);
+              .Bind(e => e.Name, txtName)
+              .Bind(e => e.FullPrice, txtPrice)
+              .Bind(e => e.Level, txtLevel);
 
 
         }

@@ -139,7 +139,7 @@ namespace Nextify.Extensions
                                     .Where(e => allowedBaseTypes.Contains(e.PropertyType));
 
             if (onlyPgm)
-                properties = properties.Where(e => e.GetCustomAttributes(typeof(PgmColumn), true).HasElements());
+                properties = properties.Where(e => e.GetCustomAttributes(typeof(LayoutColumn), true).HasElements());
 
             return properties.Select(p => p.Name);
         }

@@ -12,6 +12,8 @@ namespace Nextify.Abstraction.Business
     {
         bool SaveChildren { get; set; }
 
+        bool ForceUpdate {get;set;}
+
         Task<IOperationResult> ValidAsync(params TEntity[] entity);
         IOperationResult Valid(params TEntity[] entity);
         Task<IOperationResult> ValidDeleteAsync(params TEntity[] entity);

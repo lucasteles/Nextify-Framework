@@ -6,10 +6,10 @@ namespace Nextify.Tests
     public class TestModel
     {
         [Key]
-        [PgmColumn()]
+        [LayoutColumn()]
         public int Id { get; set; }
 
-        [PgmColumn()]
+        [LayoutColumn()]
         public string Property { get; set; }
         public static TestModel[] GetData()
         {

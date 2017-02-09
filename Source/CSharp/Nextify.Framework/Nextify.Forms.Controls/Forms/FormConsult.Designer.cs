@@ -90,6 +90,8 @@ namespace Nextify.Forms.Controls.Forms
             this.Grid.IsTextFilterVisible = true;
             this.Grid.Location = new System.Drawing.Point(0, 30);
             this.Grid.Name = "Grid";
+            this.Grid.OddRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.Grid.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Grid.Size = new System.Drawing.Size(580, 297);
             this.Grid.TabIndex = 79;
             this.Grid.UseCustomFilter = false;
@@ -130,6 +132,7 @@ namespace Nextify.Forms.Controls.Forms
             this.cmdDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdDelete.BackgroundImage")));
             this.cmdDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cmdDelete.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdDelete.Location = new System.Drawing.Point(208, 2);
             this.cmdDelete.Margin = new System.Windows.Forms.Padding(2);
             this.cmdDelete.Name = "cmdDelete";

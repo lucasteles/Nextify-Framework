@@ -24,7 +24,7 @@ namespace ModelViewBinder
     public interface IModelViewBinder<TSource> : IModelViewBinder
     {
         IList<IRegisterItem<TSource>> Controls { get; set; }
-        IModelViewBinderWithCallback<TSource> Register<TTarget>(Expression<Func<TSource, object>> expression, TTarget control) where TTarget : class, IControlWithValue;
+        IModelViewBinderWithCallback<TSource> Bind<TTarget>(Expression<Func<TSource, object>> expression, TTarget control) where TTarget : class, IControlWithValue;
         IModelViewBinderWithCallback<TSource> Register<TPropertie, TTarget>(Expression<Func<TSource, TPropertie>> expression, TTarget control, Expression<Func<TTarget, TPropertie>> controlExpression) where TTarget : class;
         IModelViewBinderWithCallback<TSource> Register<TPropertie, TTarget, TConvertFromModel>(Expression<Func<TSource, TConvertFromModel>> expression, TTarget control, Expression<Func<TTarget, TPropertie>> controlExpression, Func<TConvertFromModel, TPropertie> convertFunction) where TTarget : class;
         IModelViewBinderWithCallback<TSource> Register<TPropertie, TTarget, TConvertFromModel>(Expression<Func<TSource, TConvertFromModel>> expression, TTarget control, Expression<Func<TTarget, TPropertie>> controlExpression, Func<TConvertFromModel, TPropertie> convertFromModelFunction, Func<TPropertie, TConvertFromModel> convertToModelFunction) where TTarget : class;

@@ -11,6 +11,8 @@ namespace Nextify.Abstraction.DAO
     {
         DbSet<TEntity> Table { get; set; }
 
+        bool ForceUpdate { get; set; }
+
         void Add(params TEntity[] entity);
         int Count();
         int Count(Expression<Func<TEntity, bool>> where);
@@ -213,6 +215,9 @@ namespace Nextify.Abstraction.DAO
 
         Task<decimal?> SumAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, decimal?>> selector);
 
+        void ReloadNavigationProperty<TElement>(TEntity entity, Expression<Func<TEntity, ICollection<TElement>>> navigationProperty)
+       where TElement : class;
 
+        void ReloadEntity(TEntity entity);
     }
 }

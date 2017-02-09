@@ -12,6 +12,8 @@ namespace Nextify.App.Binding
         public void SetBinding(IContainer container)
         {
             container.Register<ICoursesBusiness, CoursesBusiness>();
+            container.Register<ICoursesBusiness, CoursesBusiness>();
+            container.Register<IAuthorBusiness, AuthorBusiness>();
 
         }
     }

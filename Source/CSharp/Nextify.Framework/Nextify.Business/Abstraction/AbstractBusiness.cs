@@ -20,8 +20,18 @@ namespace Nextify.Business.Abstraction
         protected ISimpleRepository<TEntity> _entityRepository;
         protected IUnitOfWork _UnitOfWork;
         protected IValidator<TEntity> _validator;
-
         protected IList<IDisposable> ItensToDispose = new List<IDisposable>();
+
+        private bool _forceUpdate;
+        public bool ForceUpdate {
+            get { return _forceUpdate; }
+            set {
+                _forceUpdate = value;
+
+                if (_entityRepository != null)
+                    _entityRepository.ForceUpdate = _forceUpdate;
+            }
+        }
 
         protected AbstractBusiness(IUnitOfWork UnitOfWork, IValidator<TEntity> validator, IValidator<TEntity> deleteValidator)
         {
@@ -31,11 +41,14 @@ namespace Nextify.Business.Abstraction
             _validator = validator;
             _deleteValidator = deleteValidator;
             _entityRepository = UnitOfWork.TryGetRepositoryOfType<TEntity>();
+            _entityRepository.ForceUpdate = ForceUpdate;
             Check.IfNull(() => _entityRepository);
 
         }
 
-        public bool SaveChildren { get; set; }
+        public bool SaveChildren { get; set; } = true;
+
+
         public virtual IOperationResult Add(params TEntity[] entity)
         {
             return _add(entity);
