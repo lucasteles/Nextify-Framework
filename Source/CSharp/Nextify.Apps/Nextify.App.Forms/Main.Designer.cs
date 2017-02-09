@@ -40,18 +40,18 @@
             // MainPanel
             // 
             this.MainPanel.Controls.Add(this.pgmMenu1);
-            this.MainPanel.Size = new System.Drawing.Size(942, 505);
+            this.MainPanel.Size = new System.Drawing.Size(637, 505);
             this.MainPanel.Controls.SetChildIndex(this.TopPanel, 0);
             this.MainPanel.Controls.SetChildIndex(this.pgmMenu1, 0);
             // 
             // buttonsPanel
             // 
-            this.buttonsPanel.Location = new System.Drawing.Point(912, 0);
+            this.buttonsPanel.Location = new System.Drawing.Point(607, 0);
             // 
             // TopPanel
             // 
             this.TopPanel.Location = new System.Drawing.Point(0, 5);
-            this.TopPanel.Size = new System.Drawing.Size(942, 26);
+            this.TopPanel.Size = new System.Drawing.Size(637, 26);
             // 
             // cmdHelp
             // 
@@ -83,7 +83,7 @@
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(962, 575);
+            this.ClientSize = new System.Drawing.Size(657, 575);
             this.Name = "Main";
             this.Text = "Sistema Cursos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);

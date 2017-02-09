@@ -111,28 +111,40 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorConsult.cs">
+    <Compile Include="Forms\TagConsult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthorConsult.Designer.cs">
+    <Compile Include="Forms\TagConsult.Designer.cs">
+      <DependentUpon>TagConsult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorConsult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorConsult.Designer.cs">
       <DependentUpon>AuthorConsult.cs</DependentUpon>
     </Compile>
-    <Compile Include="AuthorEdit.cs">
+    <Compile Include="Forms\TagEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthorEdit.Designer.cs">
+    <Compile Include="Forms\TagEdit.Designer.cs">
+      <DependentUpon>TagEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorEdit.Designer.cs">
       <DependentUpon>AuthorEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="CoursesConsult.cs">
+    <Compile Include="Forms\CoursesConsult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CoursesConsult.Designer.cs">
+    <Compile Include="Forms\CoursesConsult.Designer.cs">
       <DependentUpon>CoursesConsult.cs</DependentUpon>
     </Compile>
-    <Compile Include="CoursesEdit.cs">
+    <Compile Include="Forms\CoursesEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CoursesEdit.Designer.cs">
+    <Compile Include="Forms\CoursesEdit.Designer.cs">
       <DependentUpon>CoursesEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
@@ -156,16 +168,22 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\Startup.cs" />
-    <EmbeddedResource Include="AuthorConsult.resx">
+    <EmbeddedResource Include="Forms\TagConsult.resx">
+      <DependentUpon>TagConsult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorConsult.resx">
       <DependentUpon>AuthorConsult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AuthorEdit.resx">
+    <EmbeddedResource Include="Forms\TagEdit.resx">
+      <DependentUpon>TagEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorEdit.resx">
       <DependentUpon>AuthorEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CoursesConsult.resx">
+    <EmbeddedResource Include="Forms\CoursesConsult.resx">
       <DependentUpon>CoursesConsult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CoursesEdit.resx">
+    <EmbeddedResource Include="Forms\CoursesEdit.resx">
       <DependentUpon>CoursesEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">

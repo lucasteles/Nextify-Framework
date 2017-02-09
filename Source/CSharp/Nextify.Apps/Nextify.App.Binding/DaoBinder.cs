@@ -11,6 +11,7 @@ namespace Nextify.App.Binding
             container.Register<ICourseUnityOfWork, CourseUnityOfWork>();
             container.Register<ICoursesRepository, CoursesRepository>();
             container.Register<IAuthorRepository, AuthorRepository>();
+            container.Register<ITagRepository,TagRepository>();
         }
     }
 }

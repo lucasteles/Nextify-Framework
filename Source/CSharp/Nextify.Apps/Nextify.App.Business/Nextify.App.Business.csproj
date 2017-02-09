@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TagBusiness.cs" />
     <Compile Include="AuthorBusiness.cs" />
     <Compile Include="CoursesBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
