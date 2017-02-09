@@ -1,39 +1,44 @@
-﻿using Nextify.Abstraction.Forms.Controllers.GridItems;
+﻿using Nextify.Abstraction.Forms.Controller;
+using Nextify.Abstraction.Forms.Controllers.GridItems;
 using Nextify.Abstraction.Forms.Controls;
 using Nextify.Forms.Controllers.GridItems;
+using Nextify.Forms.Controls.Forms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nextify.Forms.Controllers.GridItems
 {
-    public class NextifyItemsContainerController<TModel> : AbstractNextifyItemsContainerController<TModel>, INextifyItemsContainerController where TModel : class, new()
+    public class ItemsContainerController<TModel> : AbstractItemsContainerController<TModel>, IItemsContainerController where TModel : class, new()
     {
         public IList<TModel> Items { get; set; }
 
         protected readonly new IGridListController<TModel> GridController;
 
-        public NextifyItemsContainerController(IGridListController<TModel> gridForItemsController) : base(gridForItemsController)
+        public ItemsContainerController(IGridListController<TModel> gridForItemsController) : base(gridForItemsController)
         {
             GridController = gridForItemsController;
 
         }
         public override async Task AddAsync()
         {
-            var EditForm = GetEditForm();
-            EditForm.ShowDialog();
+            var EditForm = GetEditFormAction();
+            (EditForm as FormEdit).ShowDialog();
             if (EditForm.ItemsModel != null)
             {
                 Items.Add(EditForm.ItemsModel as TModel);
+                await _gridItems.ValidateAsync();
             }
 
-            await Task.FromResult(0);
+            await GridController.RefreshAsync();
+            
 
         }
 
         public async override Task EditAsync()
         {
-            var EditForm = GetEditForm();
+            var EditForm = GetEditFormAction();
 
             if (GridController.Count() == 0)
                 await AddAsync();
@@ -44,13 +49,16 @@ namespace Nextify.Forms.Controllers.GridItems
                 EditForm.ShowDialog(item);
 
             }
-            await Task.FromResult(0);
+            await _gridItems.ValidateAsync();
+            await GridController.RefreshAsync();
         }
 
         public override async Task RemoveAsync()
         {
             Items.Remove(GridController.GetSelected());
-            await Task.FromResult(0);
+            _gridItems._value = Items;
+            await _gridItems.ValidateAsync();
+            await GridController.RefreshAsync();
         }
         protected override void OnGet(object sender, EventArgs e)
         {
@@ -60,7 +68,9 @@ namespace Nextify.Forms.Controllers.GridItems
 
         protected override async void OnSet(object sender, EventArgs e)
         {
-            GridController.Items = Items = sender as IList<TModel>;
+            if (sender!=null)
+            GridController.Items = Items = ((IEnumerable<TModel>)sender).ToList();
+
             await GridController.UseAsync(_gridItems);
         }
     }

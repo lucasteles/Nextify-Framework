@@ -77,10 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combos\ConnectionComboController.cs" />
+    <Compile Include="F4\TagF4Controller.cs" />
     <Compile Include="F4\AuthorF4Controller.cs" />
     <Compile Include="Grids\TagGridController.cs" />
     <Compile Include="Grids\AuthorGridController.cs" />
     <Compile Include="Grids\CourseGridController.cs" />
+    <Compile Include="ItemsContainer\TagsItensContainerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,9 +123,7 @@
       <Name>Nextify.App.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ItemsContainer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

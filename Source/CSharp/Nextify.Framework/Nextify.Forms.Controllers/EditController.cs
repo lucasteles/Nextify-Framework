@@ -41,7 +41,9 @@ namespace Nextify.Forms.Controllers
 
             _form.cmdOk.Click += cmdOk_ClickAsync;
             _form.FormClosed += (s, e) => Dispose();
-            _form.RegisterDispose(Business);
+
+            if (PersistData)
+                _form.RegisterDispose(Business);
 
             if (Id.Equals(default(TKey)) && form.ItemsModel == null)
                 Model = new TEntity();
@@ -104,10 +106,12 @@ namespace Nextify.Forms.Controllers
 
             if (await _form.ValidateAsync())
             {
-                if (Business.IsModified(Model))
-                    result = await UpdateAsync();
-                else if (Model.Id.Equals(default(TKey)))
+                
+                   
+                if (Model.Id.Equals(default(TKey)))
                     result = await AddEntityAsync();
+                else
+                    result = await UpdateAsync();
             }
             else
             {

@@ -80,7 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\PgmHeader.cs" />
+    <Compile Include="Attributes\LayoutColumn.cs" />
     <Compile Include="Business\IBusiness.cs" />
     <Compile Include="Business\ISimpleBusiness.cs" />
     <Compile Include="Forms\Controllers\IComboController.cs" />

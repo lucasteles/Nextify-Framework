@@ -92,9 +92,9 @@
     <Compile Include="EditController.cs" />
     <Compile Include="F4\F4Controller.cs" />
     <Compile Include="Grid\GridListController.cs" />
-    <Compile Include="ItemsContainer\AbstractNextifyItemsContainerController.cs" />
-    <Compile Include="ItemsContainer\NextifyItemsContainerViewController.cs" />
-    <Compile Include="ItemsContainer\NextifyItemsContainerController.cs" />
+    <Compile Include="ItemsContainer\AbstractItemsContainerController.cs" />
+    <Compile Include="ItemsContainer\ItemsContainerViewController.cs" />
+    <Compile Include="ItemsContainer\ItemsContainerController.cs" />
     <Compile Include="Grid\AbstractGridBusinessController.cs" />
     <Compile Include="Grid\AbstractGridController.cs" />
     <Compile Include="Grid\GridController.cs" />

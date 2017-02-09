@@ -37,6 +37,8 @@
             this.f4Author = new Nextify.Forms.Controls.NextifyF4TextBox();
             this.nextifyLabel4 = new Nextify.Forms.Controls.NextifyLabel();
             this.txtAuthorName = new Nextify.Forms.Controls.NextifyTextBox();
+            this.cntTags = new Nextify.Forms.Controls.NextifyItemsContainer();
+            this.nextifyLabel5 = new Nextify.Forms.Controls.NextifyLabel();
             this.MainPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -45,6 +47,8 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.nextifyLabel5);
+            this.MainPanel.Controls.Add(this.cntTags);
             this.MainPanel.Controls.Add(this.txtAuthorName);
             this.MainPanel.Controls.Add(this.nextifyLabel4);
             this.MainPanel.Controls.Add(this.f4Author);
@@ -54,7 +58,7 @@
             this.MainPanel.Controls.Add(this.txtLevel);
             this.MainPanel.Controls.Add(this.txtPrice);
             this.MainPanel.Controls.Add(this.txtName);
-            this.MainPanel.Size = new System.Drawing.Size(472, 278);
+            this.MainPanel.Size = new System.Drawing.Size(469, 470);
             this.MainPanel.Controls.SetChildIndex(this.txtName, 0);
             this.MainPanel.Controls.SetChildIndex(this.txtPrice, 0);
             this.MainPanel.Controls.SetChildIndex(this.txtLevel, 0);
@@ -65,14 +69,16 @@
             this.MainPanel.Controls.SetChildIndex(this.f4Author, 0);
             this.MainPanel.Controls.SetChildIndex(this.nextifyLabel4, 0);
             this.MainPanel.Controls.SetChildIndex(this.txtAuthorName, 0);
+            this.MainPanel.Controls.SetChildIndex(this.cntTags, 0);
+            this.MainPanel.Controls.SetChildIndex(this.nextifyLabel5, 0);
             // 
             // buttonsPanel
             // 
-            this.buttonsPanel.Location = new System.Drawing.Point(442, 0);
+            this.buttonsPanel.Location = new System.Drawing.Point(439, 0);
             // 
             // TopPanel
             // 
-            this.TopPanel.Size = new System.Drawing.Size(472, 26);
+            this.TopPanel.Size = new System.Drawing.Size(469, 26);
             // 
             // lblLoading
             // 
@@ -293,11 +299,38 @@
             this.txtAuthorName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtAuthorName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // cntTags
+            // 
+            this.cntTags.IsAutoSizeColumns = true;
+            this.cntTags.IsSortable = true;
+            this.cntTags.IsTextFilterVisible = true;
+            this.cntTags.Location = new System.Drawing.Point(60, 252);
+            this.cntTags.Name = "cntTags";
+            this.cntTags.OddRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cntTags.Required = false;
+            this.cntTags.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cntTags.Size = new System.Drawing.Size(346, 131);
+            this.cntTags.TabIndex = 88;
+            this.cntTags.UseCustomFilter = false;
+            this.cntTags.UseOddRowColor = true;
+            this.cntTags.UseSelectable = true;
+            this.cntTags.Value = null;
+            // 
+            // nextifyLabel5
+            // 
+            this.nextifyLabel5.AutoSize = true;
+            this.nextifyLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.nextifyLabel5.Location = new System.Drawing.Point(56, 230);
+            this.nextifyLabel5.Name = "nextifyLabel5";
+            this.nextifyLabel5.Size = new System.Drawing.Size(36, 19);
+            this.nextifyLabel5.TabIndex = 89;
+            this.nextifyLabel5.Text = "Tags";
+            // 
             // CoursesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 348);
+            this.ClientSize = new System.Drawing.Size(489, 540);
             this.Name = "CoursesEdit";
             this.Text = "Edição de cursos";
             this.MainPanel.ResumeLayout(false);
@@ -321,5 +354,7 @@
         private Nextify.Forms.Controls.NextifyLabel nextifyLabel4;
         private Nextify.Forms.Controls.NextifyF4TextBox f4Author;
         private Nextify.Forms.Controls.NextifyTextBox txtAuthorName;
+        private Nextify.Forms.Controls.NextifyItemsContainer cntTags;
+        private Nextify.Forms.Controls.NextifyLabel nextifyLabel5;
     }
 }

@@ -15,6 +15,7 @@ namespace Nextify.App.Models
         [Key]
         public int Id { get; set; }
         
+        [LayoutColumn(DisplayText = "Nome")]
         public string Name { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }

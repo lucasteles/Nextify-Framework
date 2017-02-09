@@ -123,6 +123,12 @@
     <Compile Include="Forms\AuthorConsult.Designer.cs">
       <DependentUpon>AuthorConsult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TagCourseEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TagCourseEdit.Designer.cs">
+      <DependentUpon>TagCourseEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TagEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorConsult.resx">
       <DependentUpon>AuthorConsult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TagCourseEdit.resx">
+      <DependentUpon>TagCourseEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TagEdit.resx">
       <DependentUpon>TagEdit.cs</DependentUpon>

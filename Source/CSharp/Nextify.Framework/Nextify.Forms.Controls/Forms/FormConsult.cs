@@ -225,7 +225,9 @@ namespace Nextify.Forms.Controls.Forms
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            RegisterDispose(GridController);
+            if (!GridController.F4Mode)
+                RegisterDispose(GridController);
+
             base.OnFormClosed(e);
         }
 

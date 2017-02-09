@@ -1,10 +1,11 @@
 ﻿using Nextify.Abstraction.Forms.Controllers;
+using Nextify.Abstraction.Forms.Controls;
 using Nextify.Core;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Nextify.Abstraction.Forms.Controls
+namespace Nextify.Abstraction.Forms.Controller
 {
     public interface INextifyItemsContainer : IControl
     {
@@ -15,11 +16,12 @@ namespace Nextify.Abstraction.Forms.Controls
     }
 
 
-    public interface INextifyItemsContainerController
+    public interface IItemsContainerController
     {
         bool HasAdd { get; set; }
         bool HasEdit { get; set; }
         bool HasRemove { get; set; }
+        Func<IFormEdit> GetEditFormAction { get; set; }
 
         Task AddAsync();
         Task EditAsync();

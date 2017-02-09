@@ -7,19 +7,19 @@ using Nextify.App.Business;
 
 namespace Nextify.App.Forms.Controllers.F4
 {
-    public interface IAuthorF4Controller : IF4Controller<Author>
+    public interface ITagF4Controller : IF4Controller<Tag>
     {
 
     }
 
-    public class AuthorF4Controller : F4Controller<Author>, IAuthorF4Controller
+    public class TagF4Controller : F4Controller<Tag>, ITagF4Controller
     {
-        public AuthorF4Controller(
-            IAuthorGridController grid, 
-            IAuthorBusiness business 
+        public TagF4Controller(
+            ITagGridController grid, 
+            ITagBusiness business
             ) : base(grid, business)
         {
-
+            
 
         }
     }

@@ -17,6 +17,9 @@ namespace Nextify.Forms.Controllers.GridItems
 
         protected async override Task<IEnumerable<TView>> GetForGridAsync()
         {
+            if (Items == null)
+                Items = new List<TView>();
+
             return await Task.FromResult(Items);
         }
 

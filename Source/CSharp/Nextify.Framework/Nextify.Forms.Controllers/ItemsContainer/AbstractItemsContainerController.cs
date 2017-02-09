@@ -1,4 +1,5 @@
-﻿using Nextify.Abstraction.Forms.Controllers;
+﻿using Nextify.Abstraction.Forms.Controller;
+using Nextify.Abstraction.Forms.Controllers;
 using Nextify.Abstraction.Forms.Controls;
 using Nextify.Abstraction.IOC;
 using Nextify.Core;
@@ -12,13 +13,15 @@ using System.Threading.Tasks;
 
 namespace Nextify.Forms.Controllers.GridItems
 {
-    public abstract class AbstractNextifyItemsContainerController<TModel> : INextifyItemsContainerController where TModel : class, new()
+    public abstract class AbstractItemsContainerController<TModel> : IItemsContainerController where TModel : class, new()
     {
         readonly IContainer _container = ContainerFactory.Instance;
 
         protected NextifyItemsContainer _gridItems;
 
         protected Type FormEditType;
+
+        public Func<IFormEdit> GetEditFormAction { get; set; }  
 
         public bool HasAdd { get; set; } = true;
 
@@ -27,9 +30,10 @@ namespace Nextify.Forms.Controllers.GridItems
 
         readonly protected IGridController GridController;
 
-        protected AbstractNextifyItemsContainerController(IGridController gridForItemsController)
+        protected AbstractItemsContainerController(IGridController gridForItemsController)
         {
             GridController = gridForItemsController;
+            GetEditFormAction = GetEditForm;
         }
 
         public void SetFormEdit<TForm>() where TForm : IFormEdit
@@ -71,7 +75,7 @@ namespace Nextify.Forms.Controllers.GridItems
             if (HasEdit)
                 GridController.InsertAsyncMenu(Messages.Edit, EditAsync, BaseIcons.edit, 0);
         }
-        protected FormEdit GetEditForm()
+       protected  FormEdit GetEditForm()
         {
             if (FormEditType == null)
                 throw new Exception("FormEdit type was not set");

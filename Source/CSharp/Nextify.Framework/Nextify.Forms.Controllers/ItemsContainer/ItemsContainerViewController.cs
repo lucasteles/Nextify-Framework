@@ -1,5 +1,7 @@
-﻿using Nextify.Abstraction.Forms.Controllers.GridItems;
+﻿using Nextify.Abstraction.Forms.Controller;
+using Nextify.Abstraction.Forms.Controllers.GridItems;
 using Nextify.Abstraction.Forms.Controls;
+using Nextify.Forms.Controls.Forms;
 using Nextify.Mapping;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Nextify.Forms.Controllers.GridItems
 {
-    public class NextifyItemsContainerController<TModel, TView> : AbstractNextifyItemsContainerController<TModel>, INextifyItemsContainerController where TModel : class, new()
+    public class ItemsContainerController<TModel, TView> : AbstractItemsContainerController<TModel>, IItemsContainerController where TModel : class, new()
     {
         protected IMapper Mapper;
 
@@ -17,7 +19,7 @@ namespace Nextify.Forms.Controllers.GridItems
 
         protected readonly new IGridListController<TView> GridController;
 
-        public NextifyItemsContainerController(IGridListController<TView> gridController) : base(gridController)
+        public ItemsContainerController(IGridListController<TView> gridController) : base(gridController)
         {
             GridController = gridController;
             Mapper = IOC.ContainerFactory.Instance.Resolve<IMapper>();
@@ -45,7 +47,7 @@ namespace Nextify.Forms.Controllers.GridItems
 
         public override async Task AddAsync()
         {
-            var EditForm = GetEditForm();
+            var EditForm = GetEditFormAction() as FormEdit;
             EditForm.ShowDialog();
             if (EditForm.ItemsModel != null)
             {
@@ -61,7 +63,7 @@ namespace Nextify.Forms.Controllers.GridItems
 
         public async override Task EditAsync()
         {
-            var EditForm = GetEditForm();
+            var EditForm = GetEditFormAction();
 
             if (GridController.Count() == 0)
                 await AddAsync();

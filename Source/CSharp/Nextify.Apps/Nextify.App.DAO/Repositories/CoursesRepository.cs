@@ -20,7 +20,8 @@ namespace Nextify.App.DAO
         public CoursesRepository(IContext context) : base(context)
         {
             IncludeForEdit(
-                    e => e.Author
+                    e => e.Author,
+                    e => e.Tags
                 );
 
 
