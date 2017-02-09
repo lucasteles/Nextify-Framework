@@ -17,8 +17,9 @@ namespace Nextify.Forms.Controllers
 {
     public class F4Controller<TModel> : F4Controller<TModel, int> where TModel : class, IModelWithKey, new()
     {
-        public F4Controller(IGridController grid, IBusiness<TModel> business, IContainer container) : base(grid, business, container)
+        public F4Controller(IGridController grid, IBusiness<TModel> business) : base(grid, business)
         {
+
         }
     }
 
@@ -27,7 +28,7 @@ namespace Nextify.Forms.Controllers
         protected IBusiness<TModel, TKey> Business;
         public bool ValidInative { get; set; } = true;
 
-        public F4Controller(IGridController grid, IBusiness<TModel, TKey> business, IContainer container) : base(grid, container)
+        public F4Controller(IGridController grid, IBusiness<TModel, TKey> business) : base(grid)
         {
             Business = business;
         }
@@ -92,10 +93,10 @@ namespace Nextify.Forms.Controllers
 
         protected FormConsult Form;
 
-        public F4SimpleController(IGridController grid, IContainer container)
+        public F4SimpleController(IGridController grid)
         {
             GridController = grid;
-            Container = container;
+            Container = IOC.ContainerFactory.Instance;
         }
 
         public void SetForm<TForm>() where TForm : FormConsult
