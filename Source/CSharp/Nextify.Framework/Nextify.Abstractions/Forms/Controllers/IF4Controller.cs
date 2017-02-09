@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Nextify.Abstraction.Forms.Controls.Abstraction
 {
 
-    public interface INextifyF4TextBox
+    public interface INextifyF4TextBox : IControl
     {
 
     }

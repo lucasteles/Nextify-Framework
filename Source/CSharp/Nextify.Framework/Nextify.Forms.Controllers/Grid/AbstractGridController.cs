@@ -30,7 +30,7 @@ namespace Nextify.Forms.Controllers.Abstraction
         protected Func<int, Task<IEnumerable<TView>>> LoadFunction { get; set; }
 
         private bool _forceUpdate;
-        public bool ForceUpdate {
+        public bool ForceRefreshFromDatabase {
             get { return _forceUpdate; }
             set { _forceUpdate = value; OnSetForceUpdate(value); } }
 

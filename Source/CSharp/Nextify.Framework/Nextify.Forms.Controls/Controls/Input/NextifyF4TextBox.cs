@@ -1,11 +1,12 @@
 ﻿using Nextify.Abstraction.Forms.Controls;
+using Nextify.Abstraction.Forms.Controls.Abstraction;
 using Nextify.Core;
 using System;
 using System.Threading.Tasks;
 
 namespace Nextify.Forms.Controls
 {
-    public partial class NextifyF4TextBox : NextifyUserControl, IControl
+    public partial class NextifyF4TextBox : NextifyUserControl, INextifyF4TextBox
     {
         public event EventHandler OnCallWindow;
         public event EventHandler OnSetValue;

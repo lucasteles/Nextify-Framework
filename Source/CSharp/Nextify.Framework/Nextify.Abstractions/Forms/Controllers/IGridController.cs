@@ -88,7 +88,7 @@ namespace Nextify.Abstraction.Forms.Controls
 
         object GetSelectedModel();
 
-        bool ForceUpdate { get; set; }
+        bool ForceRefreshFromDatabase { get; set; }
 
         object Value { get; set; }
 

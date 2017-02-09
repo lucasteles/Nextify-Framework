@@ -26,6 +26,7 @@ namespace Nextify.Forms.Controls.Forms
         protected bool FilterInative { get; set; }
         protected IContainer _container { get; set; } = ContainerFactory.Instance;
 
+        public bool ForceRefreshFromDatabase = true;
 
         private Type _FormEditType;
 
@@ -38,7 +39,7 @@ namespace Nextify.Forms.Controls.Forms
 
             
             GridController = gridController;
-            GridController.ForceUpdate = true;
+            
 
         }
         public FormConsult()
@@ -48,7 +49,7 @@ namespace Nextify.Forms.Controls.Forms
         public void Configure(IGridController gridController)
         {
             GridController = gridController;
-
+            GridController.ForceRefreshFromDatabase = ForceRefreshFromDatabase;
             gridController.StartLoad += (s, e) => StartLoad(Messages.Loading);
             gridController.EndLoad += (s, e) => { StopLoad(); };
 

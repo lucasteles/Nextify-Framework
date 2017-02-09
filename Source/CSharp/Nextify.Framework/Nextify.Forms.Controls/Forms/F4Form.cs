@@ -12,7 +12,7 @@ namespace Nextify.Forms.Controls.Forms
             HasEdit = HasAdd = HasInative = HasDelete = false;
 
             FilterInative = true;
-
+            
             cmtFilterInative.BackgroundImage = BaseIcons.glasses_invert;
         }
 
@@ -20,6 +20,7 @@ namespace Nextify.Forms.Controls.Forms
         {
             controller.F4Mode = true;
             Configure(controller);
+            ForceRefreshFromDatabase = GridController.ForceRefreshFromDatabase = false;
             GridController.FilterInative = FilterInative;
             await Task.FromResult(0);
         }

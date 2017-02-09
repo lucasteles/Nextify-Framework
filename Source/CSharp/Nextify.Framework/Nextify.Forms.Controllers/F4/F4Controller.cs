@@ -73,6 +73,7 @@ namespace Nextify.Forms.Controllers
             }
             if (Validate())
             {
+                F4.Value = Model;
                 F4.DoChange();
                 return true;
             }
@@ -148,7 +149,7 @@ namespace Nextify.Forms.Controllers
 
         protected void OnSetValue(object sender, EventArgs args)
         {
-            if (sender == null)
+            if (sender == null || sender.Equals(Model))
                 return;
 
             if (!(sender is TModel))

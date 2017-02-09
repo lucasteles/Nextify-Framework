@@ -148,7 +148,7 @@ namespace Nextify.Forms.Controllers.Abstraction
         protected AbstractGridSimpleBusinessController(ISimpleBusiness<TModel> business)
         {
             Business = business;
-            Business.ForceUpdate = ForceUpdate;
+            Business.ForceUpdate = ForceRefreshFromDatabase;
         }
         public async override Task UseAsync(INextifyDataGrid grid)
         {
