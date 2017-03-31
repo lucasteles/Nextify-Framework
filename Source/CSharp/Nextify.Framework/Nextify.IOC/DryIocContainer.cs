@@ -36,23 +36,23 @@ namespace Nextify.IOC
 
         public void Register<T>(Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
-            _container.Register<T>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+            _container.Register<T>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey, made: FactoryMethod.ConstructorWithResolvableArguments);
         }
 
         public void Register(Type type, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
 
-            _container.Register(type, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+            _container.Register(type, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey, made: FactoryMethod.ConstructorWithResolvableArguments);
         }
 
         public void Register<TService, TImplementation>(Lifecircle reuse = Lifecircle.Transient, object serviceKey = null) where TImplementation : TService
         {
-            _container.Register<TService, TImplementation>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+            _container.Register<TService, TImplementation>(reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey, made: FactoryMethod.ConstructorWithResolvableArguments);
         }
 
         public void Register(Type service, Type implementation, Lifecircle reuse = Lifecircle.Transient, object serviceKey = null)
         {
-            _container.Register(service, implementation, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey);
+            _container.Register(service, implementation, reuseSwitch[reuse], ifAlreadyRegistered: IfAlreadyRegistered.Replace, serviceKey: serviceKey, made: FactoryMethod.ConstructorWithResolvableArguments);
         }
 
         public void RegisterBinders(params IBinder[] binders)

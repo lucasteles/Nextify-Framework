@@ -29,7 +29,7 @@ namespace Nextify.Forms.Controls
 
         private bool _required { get; set; }
         public bool Required { get { return _required; } set { _required = value; } }
-        object IControlWithValue.Value
+        object ITargetWithValue.Value
         {
             get
             {

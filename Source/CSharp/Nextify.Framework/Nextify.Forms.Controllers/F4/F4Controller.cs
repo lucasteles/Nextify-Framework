@@ -12,6 +12,7 @@ using Nextify.Abstraction.Forms.Controls;
 using Nextify.Abstraction.Business;
 using Nextify.Abstraction.IOC;
 using Nextify.Abstraction.Forms.Controls.Abstraction;
+using ModelViewBinder.Forms;
 
 namespace Nextify.Forms.Controllers
 {
@@ -123,7 +124,7 @@ namespace Nextify.Forms.Controllers
             else
                 await form.DoLoad();
 
-            Binder = new ModelViewBinder<TModel>();
+            Binder = new FormModelViewBinder<TModel>();
 
             return Binder;
         }

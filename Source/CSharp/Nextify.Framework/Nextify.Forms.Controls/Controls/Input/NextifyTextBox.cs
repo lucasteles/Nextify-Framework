@@ -48,6 +48,8 @@ namespace Nextify.Forms.Controls
         private bool _required;
         public bool Required { get { return _required; } set { _required = value; this.SetBgColor(); } }
 
+        private bool locked = false;
+
         public event EventHandler ValueChanged;
         protected object _Value;
         protected Type _ValueType;
@@ -106,6 +108,8 @@ namespace Nextify.Forms.Controls
             if (DesignMode)
                 return;
 
+            locked = true;
+            _ValueType = value?.GetType();
             if (value != null)
             {
                 if (IsInt(value.GetType()))
@@ -132,7 +136,10 @@ namespace Nextify.Forms.Controls
             if (_ValueType == typeof(DateTime))
                 throw new Exception("You cant use this control for datetime!");
 
-            _ValueType = value?.GetType();
+            locked = false;
+
+
+            ValueChanged?.Invoke(this, EventArgs.Empty);
             _Value = value;
         }
         private string MaskValue(object objvalue)
@@ -354,7 +361,7 @@ namespace Nextify.Forms.Controls
         }
         private void __TextChanged(object sender, EventArgs e)
         {
-            if (DesignMode)
+            if (DesignMode || locked)
                 return;
 
             if (Mask != string.Empty)

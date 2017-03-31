@@ -16,18 +16,21 @@ namespace Nextify.Forms.Controls
 
         public IControlValidator<NextifyDateTimePicker> Validator { get; set; }
 
-        object IControlWithValue.Value
+ 
+
+        object ITargetWithValue.Value
         {
             get
             {
-                return GetValue();
+                throw new NotImplementedException();
             }
 
             set
             {
-                SetValue(value);
+                throw new NotImplementedException();
             }
         }
+
         public NextifyDateTimePicker()
         {
             InitializeComponent();

@@ -404,17 +404,15 @@ namespace Nextify.DAO
             {
                 var baseEntity = entity as IBase;
 
-                var changed = false;
+                
                 if (Context.Entry(baseEntity).State == EntityState.Added || (!baseEntity.Created.HasValue))
                 {
                     baseEntity.Created = DateTime.Now;
-                    changed = true;
                 }
 
                 if (Context.Entry(baseEntity).State == EntityState.Modified)
                 {
                     baseEntity.Updated = DateTime.Now;
-                    changed = true;
                 }
 
                 //if (changed && UserData.UserID.HasValue)

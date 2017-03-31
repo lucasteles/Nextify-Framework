@@ -15,7 +15,7 @@ namespace Nextify.Abstraction.Forms.Controls
 
     }
 
-    public interface IControl : IBindableComponent, IControlWithValue, IValidatable
+    public interface IControl : IBindableComponent, ITargetWithValue, IValidatable
     {
 
         /// <summary>

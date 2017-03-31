@@ -96,10 +96,7 @@ namespace Nextify.Forms.Controls.Forms
 
         public override Task FormAfterLoadAsync()
         {
-            if (PersistData)
-                _binder.SetForm(this);
-            else
-                _binder.FillTargets();
+            _binder.FillTargets();
 
             Enabled = true;
             StopLoad();

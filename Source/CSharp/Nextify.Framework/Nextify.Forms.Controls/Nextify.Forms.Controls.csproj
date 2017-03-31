@@ -50,6 +50,10 @@
       <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ModelViewBinder, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ModelViewBinder.1.0.10\lib\net45\ModelViewBinder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -264,10 +268,6 @@
     <Compile Include="Validations\NextifyTextBoxValidation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModelViewBinder\ModelViewBinder.csproj">
-      <Project>{a2b77554-a658-48b4-8b03-6ab7d52c79b5}</Project>
-      <Name>ModelViewBinder</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nextify.Abstractions\Nextify.Abstraction.csproj">
       <Project>{D9254CC8-A1EB-4A8D-93FB-C79478AFE1B4}</Project>
       <Name>Nextify.Abstraction</Name>
